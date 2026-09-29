@@ -1,0 +1,2141 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="梟のミネルヴァが問いを重ねて、古今東西の思想からあなたの思想を言い当てる。思い浮かべた哲学者や学派を当てる推理モードと、思想図鑑つき。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="哲学アキネーター">
+<meta property="og:description" content="梟のミネルヴァが問いを重ねて、古今東西の思想からあなたの思想を言い当てる。思い浮かべた哲学者や学派を当てる推理モードと、思想図鑑つき。">
+<meta property="og:url" content="https://xenoah.github.io/owl-of-minerva/">
+<meta property="og:image" content="https://xenoah.github.io/owl-of-minerva/apple-touch-icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://xenoah.github.io/owl-of-minerva/">
+<meta name="theme-color" content="#E8EAF1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#10152B" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Cpath%20d%3D%27M13%2022%20L9%204%20L27%2014%20Z%20M51%2022%20L55%204%20L37%2014%20Z%27%20fill%3D%27%233A4570%27/%3E%3Cellipse%20cx%3D%2732%27%20cy%3D%2737%27%20rx%3D%2725%27%20ry%3D%2726%27%20fill%3D%27%233A4570%27/%3E%3Ccircle%20cx%3D%2722.5%27%20cy%3D%2731%27%20r%3D%2710.5%27%20fill%3D%27%23E7E0CC%27/%3E%3Ccircle%20cx%3D%2741.5%27%20cy%3D%2731%27%20r%3D%2710.5%27%20fill%3D%27%23E7E0CC%27/%3E%3Ccircle%20cx%3D%2722.5%27%20cy%3D%2731%27%20r%3D%276.5%27%20fill%3D%27%23E3A43A%27/%3E%3Ccircle%20cx%3D%2741.5%27%20cy%3D%2731%27%20r%3D%276.5%27%20fill%3D%27%23E3A43A%27/%3E%3Ccircle%20cx%3D%2722.5%27%20cy%3D%2731%27%20r%3D%273.2%27%20fill%3D%27%23141A33%27/%3E%3Ccircle%20cx%3D%2741.5%27%20cy%3D%2731%27%20r%3D%273.2%27%20fill%3D%27%23141A33%27/%3E%3Cpath%20d%3D%27M32%2035%20L28%2040%20L32%2047%20L36%2040%20Z%27%20fill%3D%27%238F6212%27/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+</style>
+<title>哲学アキネーター</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+/* Layout: 一本柱の舞台。上に梟と独り言、中央に問いの札、下に答えの札が積み重なる。図鑑は同じ柱の索引カード。 */
+:root{
+  --bg:#E8EAF1;          /* 藍の気配を含んだ和紙 */
+  --surface:#F7F8FB;
+  --surface-2:#DFE3EE;
+  --ink:#1A2140;         /* 藍墨 */
+  --muted:#586082;
+  --line:#C6CCDD;
+  --accent:#8F6212;      /* 真鍮・ランプの灯 */
+  --accent-strong:#6E4A08;
+  --accent-soft:#EFE2C2;
+  --on-accent:#FFFDF6;
+  --agree:#2E6F57;
+  --agree-soft:#D8EBE2;
+  --disagree:#9A3F35;
+  --disagree-soft:#F1DCD8;
+  --owl-body:#3A4570;
+  --owl-wing:#2C3660;
+  --owl-belly:#D8D0BA;
+  --owl-face:#E7E0CC;
+  --owl-eye:#E3A43A;
+  --star:rgba(26,33,64,.10);
+  --shadow:0 1px 2px rgba(26,33,64,.06),0 8px 24px -12px rgba(26,33,64,.25);
+  --font-display:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho","YuMincho",serif;
+  --font-body:"Zen Kaku Gothic New","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;
+  --font-latin:"Cormorant Garamond","Cormorant",Georgia,"Times New Roman",serif;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#10152B; --surface:#182042; --surface-2:#212B55; --ink:#EAE6D9; --muted:#A3A9C6; --line:#2E3968;
+    --accent:#E3B65A; --accent-strong:#F0CB7C; --accent-soft:#3A3220; --on-accent:#1A1406;
+    --agree:#7FC9A6; --agree-soft:#1E3A33; --disagree:#E69A8E; --disagree-soft:#43252A;
+    --owl-body:#5C6899; --owl-wing:#4A5585; --owl-belly:#CFC6AE; --owl-face:#DDD5BF; --owl-eye:#F2BB4B;
+    --star:rgba(234,230,217,.16); --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 28px -14px rgba(0,0,0,.6);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10152B; --surface:#182042; --surface-2:#212B55; --ink:#EAE6D9; --muted:#A3A9C6; --line:#2E3968;
+  --accent:#E3B65A; --accent-strong:#F0CB7C; --accent-soft:#3A3220; --on-accent:#1A1406;
+  --agree:#7FC9A6; --agree-soft:#1E3A33; --disagree:#E69A8E; --disagree-soft:#43252A;
+  --owl-body:#5C6899; --owl-wing:#4A5585; --owl-belly:#CFC6AE; --owl-face:#DDD5BF; --owl-eye:#F2BB4B;
+  --star:rgba(234,230,217,.16); --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 28px -14px rgba(0,0,0,.6);
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html,body{min-height:100%}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:var(--font-body); font-size:16px; line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  background-image:
+    radial-gradient(1.2px 1.2px at 12% 18%, var(--star) 50%, transparent 51%),
+    radial-gradient(1px 1px at 78% 9%, var(--star) 50%, transparent 51%),
+    radial-gradient(1.4px 1.4px at 88% 42%, var(--star) 50%, transparent 51%),
+    radial-gradient(1px 1px at 33% 64%, var(--star) 50%, transparent 51%),
+    radial-gradient(1.2px 1.2px at 61% 83%, var(--star) 50%, transparent 51%),
+    radial-gradient(1px 1px at 5% 92%, var(--star) 50%, transparent 51%);
+  background-size:420px 420px;
+}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+.app{max-width:680px;margin:0 auto;padding-inline:16px;padding-block:0 48px}
+.topbar{
+  position:sticky; top:env(safe-area-inset-top,0px); z-index:5;
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding-block:12px; background:var(--bg);
+  border-bottom:1px solid var(--line);
+}
+.brand{
+  background:none;border:0;padding:4px 0;cursor:pointer;
+  font-family:var(--font-display);font-weight:800;font-size:1.05rem;letter-spacing:.06em;
+  display:flex;align-items:center;gap:8px
+}
+.brand-mark{width:26px;height:26px;display:inline-block}
+.nav{display:flex;gap:4px}
+.nav button{
+  background:none;border:1px solid transparent;border-radius:999px;cursor:pointer;
+  padding:6px 14px;font-size:.88rem;color:var(--muted);font-weight:500
+}
+.nav button[aria-current="page"]{border-color:var(--line);color:var(--ink);background:var(--surface)}
+
+.view{padding-block:20px 0}
+.eyebrow{font-size:.78rem;letter-spacing:.14em;color:var(--muted);margin:0}
+.latin{font-family:var(--font-latin);font-style:italic;font-weight:500;letter-spacing:.02em}
+h1,h2,h3{font-family:var(--font-display);text-wrap:balance;margin:0}
+
+/* ---------- 梟 ---------- */
+.owl{width:100%;height:auto;display:block;overflow:visible}
+.o-body{fill:var(--owl-body)}
+.o-tuft{fill:var(--owl-body)}
+.o-wing{fill:var(--owl-wing)}
+.o-belly{fill:var(--owl-belly)}
+.o-chev{fill:none;stroke:var(--owl-body);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.o-disc{fill:var(--owl-face)}
+.o-iris{fill:var(--owl-eye)}
+.o-pupil{fill:#141A33}
+.o-glint{fill:#FFFDF4}
+.o-lid{fill:var(--owl-face);transform-box:fill-box;transform-origin:center;transform:scaleY(0)}
+.o-beak{fill:var(--accent)}
+.o-feet{fill:none;stroke:var(--accent);stroke-width:2.4;stroke-linecap:round}
+.o-branch{fill:none;stroke:var(--muted);stroke-width:3;stroke-linecap:round;opacity:.5}
+.o-happy{fill:none;stroke:#141A33;stroke-width:3.2;stroke-linecap:round;opacity:0}
+.o-pupils{transition:transform .35s ease}
+.o-lids .o-lid{animation:blink 6s infinite}
+.o-lids .o-lid:nth-child(2){animation-delay:.02s}
+.owl.is-think .o-pupils{transform:translate(-3px,-4px)}
+.owl.is-surprise .o-pupil{transform:scale(1.28);transform-box:fill-box;transform-origin:center}
+.owl.is-surprise .o-lids .o-lid{animation:none}
+.owl.is-happy .o-eyes{opacity:0}
+.owl.is-happy .o-happy{opacity:1}
+.owl-tilt{transform-origin:50% 90%;}
+.owl.is-bob .owl-tilt{animation:bob .6s ease}
+@keyframes blink{0%,94%,100%{transform:scaleY(0)}96%{transform:scaleY(1)}}
+@keyframes bob{0%{transform:rotate(0)}35%{transform:rotate(-6deg)}70%{transform:rotate(3deg)}100%{transform:rotate(0)}}
+
+/* ---------- ホーム ---------- */
+.hero{display:grid;grid-template-columns:120px 1fr;gap:20px;align-items:center;padding-block:16px 8px}
+.hero .owl-slot{width:120px}
+.hero h1{font-size:clamp(2rem,7.5vw,3rem);font-weight:800;line-height:1.15;letter-spacing:.02em}
+.hero .motto{font-family:var(--font-latin);font-style:italic;font-size:1rem;color:var(--muted);margin:0 0 6px}
+.lede{margin:18px 0 0;color:var(--ink);max-width:36em}
+.lede strong{font-family:var(--font-display);font-weight:800;color:var(--accent);font-size:1.15em;font-variant-numeric:tabular-nums}
+.modes{display:grid;gap:12px;margin-top:24px}
+.mode-card{
+  text-align:left;cursor:pointer;display:grid;gap:4px;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  padding:18px 20px;box-shadow:var(--shadow);transition:transform .15s ease,border-color .15s ease
+}
+.mode-card:hover{transform:translateY(-2px);border-color:var(--accent)}
+.mode-card.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.mode-card.primary .mode-desc{color:color-mix(in srgb,var(--bg) 78%,transparent)}
+.mode-card.primary .mode-kicker{color:var(--accent-soft)}
+.mode-kicker{font-size:.75rem;letter-spacing:.2em;color:var(--accent);font-weight:700}
+.mode-title{font-family:var(--font-display);font-size:1.3rem;font-weight:700;line-height:1.35}
+.mode-desc{font-size:.9rem;color:var(--muted);line-height:1.65}
+.resume{margin-top:12px;background:none;border:1px dashed var(--accent);color:var(--accent);border-radius:var(--r);padding:12px 16px;cursor:pointer;width:100%;font-weight:500}
+.facts{display:flex;flex-wrap:wrap;gap:8px 20px;margin:28px 0 0;padding:16px 0 0;border-top:1px solid var(--line);list-style:none;font-size:.85rem;color:var(--muted)}
+.facts b{font-family:var(--font-display);color:var(--ink);font-size:1.25rem;font-weight:800;margin-right:4px;font-variant-numeric:tabular-nums}
+.linkish{background:none;border:0;padding:0;color:var(--accent);cursor:pointer;text-decoration:underline;text-underline-offset:3px;font-weight:500}
+
+/* ---------- 問い ---------- */
+.stage{display:grid;grid-template-columns:78px 1fr;gap:14px;align-items:end}
+.stage .owl-slot{width:78px}
+.owl-talk{position:relative;padding-bottom:6px;min-width:0}
+.owl-line{font-family:var(--font-display);font-size:1rem;margin:0 0 8px;color:var(--ink);min-height:1.6em}
+.meter{height:4px;background:var(--surface-2);border-radius:4px;overflow:hidden}
+.meter span{display:block;height:100%;width:0;background:var(--accent);transition:width .5s ease}
+.meter-label{font-size:.75rem;color:var(--muted);margin:4px 0 0;font-variant-numeric:tabular-nums;letter-spacing:.05em}
+.qcard{
+  margin-top:16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  padding:20px 20px 24px;box-shadow:var(--shadow);position:relative
+}
+.qcard::before{content:"";position:absolute;left:32px;top:-8px;width:14px;height:14px;background:var(--surface);border-left:1px solid var(--line);border-top:1px solid var(--line);transform:rotate(45deg)}
+.qmeta{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.qno{font-family:var(--font-display);font-weight:800;color:var(--accent);font-size:.95rem;letter-spacing:.08em;font-variant-numeric:tabular-nums}
+.qgroup{font-size:.72rem;letter-spacing:.14em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:1px 10px}
+.qlead{margin:0 0 4px;font-size:.85rem;color:var(--muted)}
+.qtext{font-size:clamp(1.18rem,4.6vw,1.45rem);font-weight:700;line-height:1.6;letter-spacing:.01em}
+.qcard.enter{animation:rise .35s ease}
+@keyframes rise{from{transform:translateY(6px);opacity:.4}to{transform:none;opacity:1}}
+.answers{display:grid;gap:8px;margin-top:16px}
+.ans{
+  display:grid;grid-template-columns:28px 1fr auto;align-items:center;gap:10px;
+  text-align:left;cursor:pointer;min-height:50px;padding:8px 14px;
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;font-weight:500;
+  transition:background .12s ease,border-color .12s ease,transform .08s ease
+}
+.ans:hover{border-color:var(--accent)}
+.ans:active{transform:scale(.99)}
+.ans .mark{font-family:var(--font-display);font-size:1.15rem;text-align:center;line-height:1}
+.ans .key{font-size:.72rem;color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:0 6px;font-variant-numeric:tabular-nums}
+.ans[data-a="2"] .mark,.ans[data-a="1"] .mark{color:var(--agree)}
+.ans[data-a="-1"] .mark,.ans[data-a="-2"] .mark{color:var(--disagree)}
+.ans[data-a="0"] .mark{color:var(--muted)}
+.play-foot{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;margin-top:18px}
+.ghost{background:none;border:1px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer;font-size:.85rem;color:var(--muted)}
+.ghost:hover{color:var(--ink);border-color:var(--muted)}
+.ghost:disabled{opacity:.4;cursor:default}
+.ghost.warn{border-color:var(--disagree);color:var(--disagree)}
+
+/* ---------- 推測 ---------- */
+.guess{text-align:center;padding-block:12px 0}
+.guess .owl-slot{width:132px;margin:0 auto}
+.guess-lead{font-family:var(--font-display);color:var(--muted);margin:18px 0 6px}
+.guess-name{font-size:clamp(1.9rem,8vw,2.6rem);font-weight:800;line-height:1.25}
+.guess-orig{font-size:1.2rem;color:var(--muted);margin:4px 0 0}
+.guess-meta{font-size:.85rem;color:var(--muted);margin:10px 0 0}
+.guess-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:26px auto 0;max-width:420px}
+.btn{
+  cursor:pointer;border-radius:12px;padding:12px 16px;font-weight:700;border:1px solid var(--line);
+  background:var(--surface);min-height:48px
+}
+.btn.solid{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn.ink{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.btn:hover{filter:brightness(1.05)}
+
+/* ---------- 結果 ---------- */
+.result-head{display:grid;grid-template-columns:92px 1fr;gap:16px;align-items:center}
+.result-head .owl-slot{width:92px}
+.verdict{margin:0;color:var(--muted);font-family:var(--font-display)}
+.r-name{font-size:clamp(1.9rem,7.6vw,2.7rem);font-weight:800;line-height:1.2;margin-top:4px}
+.r-orig{margin:4px 0 0;color:var(--muted);font-size:1.15rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 0;padding:0;list-style:none}
+.chip{font-size:.78rem;border:1px solid var(--line);border-radius:999px;padding:2px 10px;color:var(--muted);background:var(--surface)}
+.kw{
+  margin:22px 0 0;padding:14px 18px;border-left:3px solid var(--accent);background:var(--accent-soft);
+  font-family:var(--font-display);font-weight:700;font-size:1.08rem;line-height:1.6;border-radius:0 10px 10px 0
+}
+.desc{margin:16px 0 0;max-width:40em}
+.thinkers{margin:12px 0 0;font-size:.9rem;color:var(--muted)}
+.thinkers b{color:var(--ink);font-weight:500}
+.score{display:flex;align-items:baseline;gap:12px;margin:26px 0 0;padding:16px 0;border-block:1px solid var(--line)}
+.score-num{font-family:var(--font-display);font-size:2.6rem;font-weight:800;color:var(--accent);line-height:1;font-variant-numeric:tabular-nums}
+.score-num small{font-size:1rem;margin-left:2px}
+.score-cap{font-size:.85rem;color:var(--muted);line-height:1.5}
+.section-h{font-size:1.02rem;font-weight:700;margin:28px 0 10px;display:flex;align-items:center;gap:10px}
+.section-h::after{content:"";flex:1;height:1px;background:var(--line)}
+.reasons{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.reasons li{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;font-size:.92rem;line-height:1.6}
+.pill{font-size:.72rem;font-weight:700;border-radius:999px;padding:2px 9px;white-space:nowrap;margin-top:2px}
+.pill.pos{background:var(--agree-soft);color:var(--agree)}
+.pill.neg{background:var(--disagree-soft);color:var(--disagree)}
+.pill.neu{background:var(--surface-2);color:var(--muted)}
+.near{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.near button{
+  width:100%;display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:center;text-align:left;cursor:pointer;
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px
+}
+.near button:hover{border-color:var(--accent)}
+.near .n-name{font-family:var(--font-display);font-weight:700;min-width:0}
+.near .n-pct{font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.near .bar{grid-column:1 / -1;height:3px;background:var(--surface-2);border-radius:3px;overflow:hidden}
+.near .bar span{display:block;height:100%;background:var(--accent)}
+.result-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:28px}
+.result-actions .wide{grid-column:1 / -1}
+.copy-fallback{font-size:.85rem;background:var(--surface);border:1px dashed var(--line);border-radius:10px;padding:10px 12px;margin-top:10px;user-select:all}
+
+/* ---------- 降参 ---------- */
+.fail-head{display:grid;grid-template-columns:92px 1fr;gap:16px;align-items:center}
+.fail-head .owl-slot{width:92px}
+.field{
+  width:100%;font:inherit;padding:11px 14px;border-radius:12px;border:1px solid var(--line);
+  background:var(--surface);color:var(--ink)
+}
+.field::placeholder{color:var(--muted)}
+
+/* ---------- 図鑑 ---------- */
+.dex-head h2{font-size:1.8rem;font-weight:800}
+.dex-head p{margin:4px 0 0;color:var(--muted);font-size:.9rem}
+.filters{display:grid;gap:10px;margin:16px 0 8px}
+.chiprow{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+.fchip{
+  flex:none;cursor:pointer;font-size:.82rem;border:1px solid var(--line);border-radius:999px;padding:5px 12px;
+  background:var(--surface);color:var(--muted)
+}
+.fchip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.dex-count{font-size:.82rem;color:var(--muted);margin:6px 0 0;font-variant-numeric:tabular-nums}
+.era-h{font-family:var(--font-display);font-size:1rem;font-weight:700;margin:22px 0 8px;display:flex;align-items:baseline;gap:8px}
+.era-h small{font-family:var(--font-body);font-weight:400;color:var(--muted);font-size:.78rem}
+.dex-list{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.dex-item{
+  width:100%;text-align:left;cursor:pointer;display:grid;gap:0;
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px
+}
+.dex-item:hover{border-color:var(--accent)}
+.dex-item .d-name{font-family:var(--font-display);font-weight:700;font-size:1.02rem;line-height:1.45}
+.dex-item .d-sub{font-size:.8rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:0 10px}
+.dex-item .d-sub .latin{font-size:.95rem}
+.empty{color:var(--muted);text-align:center;padding:24px 0}
+
+/* ---------- 詳細シート ---------- */
+.sheet{position:fixed;inset:0;z-index:20;display:flex;align-items:flex-end;justify-content:center}
+.sheet-backdrop{position:absolute;inset:0;background:rgba(10,13,28,.55)}
+.sheet-panel{
+  position:relative;width:100%;max-width:680px;max-height:88%;overflow-y:auto;
+  background:var(--bg);border-radius:18px 18px 0 0;border:1px solid var(--line);border-bottom:0;
+  padding:18px 20px calc(28px + env(safe-area-inset-bottom,0px));
+  animation:sheetIn .25s ease
+}
+@keyframes sheetIn{from{transform:translateY(30px);opacity:.6}to{transform:none;opacity:1}}
+.sheet-close{position:sticky;top:0;float:right;background:var(--surface);border:1px solid var(--line);border-radius:999px;width:36px;height:36px;cursor:pointer;font-size:1.1rem;line-height:1}
+.stances{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.stances li{display:grid;grid-template-columns:5.6em 1fr;gap:10px;align-items:start;font-size:.9rem;line-height:1.6}
+.stances .pill{text-align:center}
+.rel-row{display:flex;flex-wrap:wrap;gap:6px}
+.rel-row button{cursor:pointer;font-size:.85rem;border:1px solid var(--line);border-radius:999px;padding:5px 12px;background:var(--surface);font-family:var(--font-display);font-weight:700}
+.rel-row button:hover{border-color:var(--accent)}
+
+.toast{
+  position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);
+  background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:.88rem;z-index:30;box-shadow:var(--shadow)
+}
+
+@media (min-width:600px){
+  .modes{grid-template-columns:1fr 1fr}
+  .answers{grid-template-columns:repeat(5,1fr)}
+  .ans{grid-template-columns:1fr;justify-items:center;text-align:center;min-height:92px;padding:12px 8px;gap:6px;font-size:.88rem;line-height:1.4}
+  .ans .mark{font-size:1.5rem}
+  .hero{grid-template-columns:150px 1fr}
+  .hero .owl-slot{width:150px}
+  .stage{grid-template-columns:96px 1fr}
+  .stage .owl-slot{width:96px}
+  .sheet{align-items:center}
+  .sheet-panel{border-radius:18px;border-bottom:1px solid var(--line);max-height:84%}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<noscript><p style="padding:24px">このページを遊ぶには JavaScript を有効にしてください。</p></noscript>
+<div class="app">
+  <header class="topbar">
+    <button class="brand" id="brand" type="button"><span class="brand-mark owl-slot" data-mini="1"></span>哲学アキネーター</button>
+    <nav class="nav" aria-label="メニュー">
+      <button type="button" id="navPlay" aria-current="page">問答</button>
+      <button type="button" id="navDex">思想図鑑</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ホーム -->
+    <section class="view" id="v-home">
+      <div class="hero">
+        <div class="owl-slot" data-state="happy"></div>
+        <div>
+          <p class="motto">γνῶθι σεαυτόν ― 汝自身を知れ</p>
+          <h1>哲学<br>アキネーター</h1>
+        </div>
+      </div>
+      <p class="lede">古代ギリシアから現代まで、東洋・西洋・イスラーム・アフリカ・中南米の <strong id="countPh">0</strong> の思想を知る梟ミネルヴァが、問いを重ねて答えを言い当てます。</p>
+      <div class="modes">
+        <button class="mode-card primary" id="startDiag" type="button">
+          <span class="mode-kicker">診断</span>
+          <span class="mode-title">あなたの思想を言い当てる</span>
+          <span class="mode-desc">世界・知・生き方・社会についての問いに答えると、あなたの考えに最も近い思想を示します。</span>
+        </button>
+        <button class="mode-card" id="startGuess" type="button">
+          <span class="mode-kicker">推理</span>
+          <span class="mode-title">思い浮かべた思想を当てる</span>
+          <span class="mode-desc">哲学者や学派を一つ心に決めてください。時代・地域・主張を尋ねて当てにいきます。</span>
+        </button>
+      </div>
+      <button class="resume" id="resume" type="button" hidden>中断した問答を続ける</button>
+      <ul class="facts">
+        <li><b id="fPh">0</b>の思想</li>
+        <li><b id="fQ">0</b>の問い</li>
+        <li><b id="fReg">0</b>の地域</li>
+        <li><b>先史</b>から現代まで</li>
+      </ul>
+      <p style="margin:14px 0 0;font-size:.9rem;color:var(--muted)">収録されている思想は <button class="linkish" type="button" id="toDex">思想図鑑</button> で一覧できます。</p>
+    </section>
+
+    <!-- 問い -->
+    <section class="view" id="v-play" hidden>
+      <div class="stage">
+        <div class="owl-slot" id="playOwl"></div>
+        <div class="owl-talk">
+          <p class="owl-line" id="owlLine"></p>
+          <div class="meter" aria-hidden="true"><span id="meterFill"></span></div>
+          <p class="meter-label" id="meterLabel"></p>
+        </div>
+      </div>
+      <article class="qcard" id="qcard" aria-live="polite">
+        <div class="qmeta"><span class="qno" id="qNo"></span><span class="qgroup" id="qGroup"></span></div>
+        <p class="qlead" id="qLead"></p>
+        <h2 class="qtext" id="qText"></h2>
+      </article>
+      <div class="answers" id="answers"></div>
+      <div class="play-foot">
+        <button class="ghost" id="btnUndo" type="button">← ひとつ戻る</button>
+        <span style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="ghost" id="btnFinish" type="button" hidden>ここで結果を見る</button>
+          <button class="ghost" id="btnQuit" type="button">やめる</button>
+        </span>
+      </div>
+    </section>
+
+    <!-- 推測 -->
+    <section class="view" id="v-guess" hidden>
+      <div class="guess">
+        <div class="owl-slot" id="guessOwl"></div>
+        <p class="guess-lead" id="guessLead">あなたが思い浮かべているのは……</p>
+        <h2 class="guess-name" id="guessName"></h2>
+        <p class="guess-orig latin" id="guessOrig"></p>
+        <p class="guess-meta" id="guessMeta"></p>
+        <div class="guess-actions">
+          <button class="btn solid" id="guessYes" type="button">正解！</button>
+          <button class="btn" id="guessNo" type="button">違う</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 結果 -->
+    <section class="view" id="v-result" hidden>
+      <div class="result-head">
+        <div class="owl-slot" data-state="happy"></div>
+        <div style="min-width:0">
+          <p class="verdict" id="rVerdict"></p>
+          <h2 class="r-name" id="rName"></h2>
+          <p class="r-orig latin" id="rOrig"></p>
+        </div>
+      </div>
+      <ul class="chips" id="rChips"></ul>
+      <p class="kw" id="rKw"></p>
+      <p class="desc" id="rDesc"></p>
+      <p class="thinkers">代表的な思想家：<b id="rTh"></b></p>
+      <div class="score" id="rScore">
+        <span class="score-num" id="rPct"></span>
+        <span class="score-cap" id="rPctCap"></span>
+      </div>
+      <div id="rReasonsWrap">
+        <h3 class="section-h">決め手になった答え</h3>
+        <ul class="reasons" id="rReasons"></ul>
+      </div>
+      <div id="rNearWrap">
+        <h3 class="section-h" id="rNearH">ほかに近い思想</h3>
+        <ul class="near" id="rNear"></ul>
+      </div>
+      <div class="result-actions">
+        <button class="btn ink wide" id="rAgain" type="button">もう一度はじめる</button>
+        <button class="btn" id="rMore" type="button">さらに答えて精度を上げる</button>
+        <button class="btn" id="rCopy" type="button">結果をコピー</button>
+        <button class="btn wide" id="rDetail" type="button">この思想を図鑑で見る</button>
+      </div>
+      <p class="copy-fallback" id="copyFallback" hidden></p>
+    </section>
+
+    <!-- 降参 -->
+    <section class="view" id="v-fail" hidden>
+      <div class="fail-head">
+        <div class="owl-slot" data-state="surprise"></div>
+        <div>
+          <h2 style="font-size:1.8rem;font-weight:800">参りました……</h2>
+          <p style="margin:4px 0 0;color:var(--muted)">答えを教えてもらえませんか。次の問答の糧にします。</p>
+        </div>
+      </div>
+      <h3 class="section-h">もしかして、この中に？</h3>
+      <ul class="near" id="failTop"></ul>
+      <h3 class="section-h">名前で探す</h3>
+      <label for="failSearch" class="eyebrow" style="display:block;margin-bottom:6px">思想名・哲学者名・原語</label>
+      <input class="field" id="failSearch" type="search" placeholder="例：ストア、カント、禅" autocomplete="off">
+      <ul class="near" id="failList" style="margin-top:10px"></ul>
+      <div class="result-actions"><button class="btn ink wide" id="failAgain" type="button">もう一度はじめる</button></div>
+    </section>
+
+    <!-- 図鑑 -->
+    <section class="view" id="v-dex" hidden>
+      <div class="dex-head">
+        <h2>思想図鑑</h2>
+        <p>ミネルヴァが知っている思想の一覧。時代順に並んでいます。</p>
+      </div>
+      <div class="filters">
+        <input class="field" id="dexSearch" type="search" placeholder="思想名・哲学者・キーワードで検索" autocomplete="off" aria-label="図鑑を検索">
+        <div class="chiprow" id="regionChips" role="group" aria-label="地域で絞り込む"></div>
+        <div class="chiprow" id="eraChips" role="group" aria-label="時代で絞り込む"></div>
+      </div>
+      <p class="dex-count" id="dexCount"></p>
+      <div id="dexBody"></div>
+    </section>
+  </main>
+</div>
+
+<div class="sheet" id="sheet" hidden>
+  <div class="sheet-backdrop" id="sheetBackdrop"></div>
+  <div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="sName">
+    <button class="sheet-close" id="sheetClose" type="button" aria-label="閉じる">×</button>
+    <p class="eyebrow" id="sEra"></p>
+    <h2 id="sName" style="font-size:1.75rem;font-weight:800;line-height:1.3;margin-top:4px"></h2>
+    <p class="latin" id="sOrig" style="margin:2px 0 0;color:var(--muted);font-size:1.1rem"></p>
+    <ul class="chips" id="sChips"></ul>
+    <p class="kw" id="sKw"></p>
+    <p class="desc" id="sDesc"></p>
+    <p class="thinkers">代表的な思想家：<b id="sTh"></b></p>
+    <h3 class="section-h">この思想の立場</h3>
+    <ul class="stances" id="sStances"></ul>
+    <h3 class="section-h">立場の近い思想</h3>
+    <div class="rel-row" id="sRel"></div>
+  </div>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+// ===== 質問項目（思想の立場を測る命題） =====
+// [key, 分野, 命題]
+const TRAITS = [
+  // ── 世界・存在
+  ["mat","存在","世界は究極的には物質（物理的なもの）だけでできている"],
+  ["idl","存在","心や精神こそが実在の根本であり、物質はその現れにすぎない"],
+  ["dua","存在","心と身体（物質）は、まったく別の種類の存在だ"],
+  ["one","存在","万物は根底でひとつであり、ものの区別や分離は究極的には存在しない"],
+  ["flux","存在","世界の本質は絶えざる変化と生成であり、固定した実体などない"],
+  ["form","存在","目に見える個々のものを超えて、永遠不変の真理や本質（イデア・普遍）が実在する"],
+  ["god","存在","世界を創造した人格的な神が存在する"],
+  ["pant","存在","神（聖なるもの）とは、自然や宇宙そのもののことだ"],
+  ["noself","存在","変わらない「私」という実体は存在しない"],
+  ["det","存在","すべての出来事は、原因によってあらかじめ決まっている"],
+  ["free","存在","人間には、何ものにも決定されない本当の自由意志がある"],
+  ["telos","存在","自然や宇宙には、それ自体に目的や意味が組み込まれている"],
+  ["nihil","存在","人生や世界には、客観的な意味も価値もない"],
+  ["after","存在","死後も魂や意識は何らかの形で続く（来世や輪廻を含む）"],
+  ["maya","存在","私たちが見ている日常の世界は、幻や仮の現れにすぎない"],
+  ["void","存在","「無」や「空」こそが、あらゆるものの根底にある"],
+  ["psy","存在","心や意識は、人間や動物だけでなく万物に宿っている"],
+  ["num","存在","数や数学的な秩序こそが、宇宙の根本原理だ"],
+  ["dial","存在","物事は、矛盾や対立がぶつかり合うことで発展していく"],
+  ["harm","存在","陰と陽のように、対立するものの調和と均衡こそが大切だ"],
+  ["war","存在","世界は、善と悪（光と闇）という二つの力が戦う場だ"],
+  ["flat","存在","人間は世界の中心ではなく、動物やモノや機械と並ぶ存在のひとつにすぎない"],
+  // ── 知・認識
+  ["rsn","知","真理は、感覚や経験よりも理性（論理的な思考）によって知られる"],
+  ["emp","知","すべての知識は、結局は経験（見る・聞く・触れる）から得られる"],
+  ["sci","知","科学こそが、世界を知るための最も信頼できる方法だ"],
+  ["skep","知","私たちは確実な知識を持てない。だから断定は控えるべきだ"],
+  ["rel","知","真理や善悪は、文化や時代や立場によって変わる相対的なものだ"],
+  ["prag","知","「真理」とは、実際に役立ち、うまく機能する考えのことだ"],
+  ["mys","知","言葉や論理を超えた直観・悟り・神秘体験によってこそ、最も深い真理に触れられる"],
+  ["lang","知","哲学の難問の多くは、言葉の使い方を分析すれば解ける（あるいは消える）"],
+  ["faith","知","信仰は理性を超えたものであり、理性より優先されるべきだ"],
+  ["cons","知","私たちの「現実」や「常識」は、社会や言語によって作られたものだ"],
+  ["sys","知","世界のすべてを、ひとつの壮大な体系として説明し尽くせる"],
+  ["cmn","知","日常の常識的なものの見方は、基本的に正しい"],
+  ["lgc","知","哲学は、数学や記号論理のような厳密な方法で行うべきだ"],
+  // ── 生き方・倫理
+  ["hed","生","快楽（心地よさ・楽しさ）こそが人生の最高の善だ"],
+  ["util","生","行為の善し悪しは、結果としてどれだけ多くの幸福を生むかで決まる"],
+  ["duty","生","結果がどうであれ、守らなければならない義務や道徳法則がある"],
+  ["virt","生","善い人格（徳）を身につけることが、善く生きることの核心だ"],
+  ["ego","生","自分自身の利益を追求することこそ、正しい生き方だ"],
+  ["care","生","他者への共感・慈しみ・思いやりが、道徳の根本だ"],
+  ["simp","生","欲を減らし、質素に生きることが幸福への道だ"],
+  ["calm","生","変えられないことは受け入れ、何事にも動じない心の平静を保つべきだ"],
+  ["nat","生","自然の流れに従い、作為やはからいを捨てて生きるべきだ"],
+  ["auth","生","社会や他人に流されず、自分の生き方は自分で選び取るべきだ"],
+  ["mreal","生","善悪には、誰がどう思おうと変わらない客観的な正解がある"],
+  ["emo","生","道徳的な判断は、結局のところ感情や好みの表明にすぎない"],
+  ["anim","生","動物にも、人間と同じように道徳的な配慮をすべきだ"],
+  ["eco","生","自然や生態系そのものに、人間の役に立つかどうかとは無関係な価値がある"],
+  ["pess","生","生きることは本質的に苦しみであり、存在しないほうがましかもしれない"],
+  ["will","生","既存の道徳や常識を乗り越え、自らの力を肯定して強く生きるべきだ"],
+  ["libr","生","人生の究極の目標は、苦しみや生死の繰り返しからの解脱（救済）だ"],
+  ["rite","生","礼儀・儀式・伝統的な作法を身につけることが、人を善くする"],
+  ["fam","生","親への孝行や家族の絆こそが、道徳の基本だ"],
+  ["good","生","人間は生まれつき善良な本性をもっている"],
+  ["act","生","頭で考えるより、実践や行動の中でこそ真理は現れる"],
+  ["beau","生","美や芸術こそが、人生や真理にとって本質的に重要だ"],
+  ["grace","生","人は自分の力ではなく、神や仏の恵み（他力）によってこそ救われる"],
+  ["union","生","究極の目標は、神や宇宙（絶対的なもの）と一体になることだ"],
+  ["dread","生","死や不安と正面から向き合うことこそ、本来の自分を生きる入口だ"],
+  ["abs","生","世界は不条理で意味をもたないが、それでも反抗し生き抜くことに価値がある"],
+  ["anti","生","新たに子どもをこの世に生み出すことは、道徳的に問題がある"],
+  // ── 社会・政治
+  ["state","社会","秩序を守るためには、強い国家や権力が必要だ"],
+  ["anar","社会","国家やあらゆる支配は廃止されるべきだ"],
+  ["eq","社会","富や財産は、できるだけ平等に分けられるべきだ"],
+  ["mkt","社会","私有財産と自由な市場を最大限に尊重すべきだ"],
+  ["lib","社会","個人の自由こそが、最も重要な社会的価値だ"],
+  ["trad","社会","長く続いた伝統や慣習には、理屈を超えた知恵が詰まっている"],
+  ["comm","社会","個人よりも先に、共同体や人と人とのつながりがある"],
+  ["rev","社会","今の社会の仕組みは、根本からつくり変えられるべきだ"],
+  ["prog","社会","歴史は、ある方向（進歩や完成）に向かって進んでいる"],
+  ["pow","社会","知識や道徳の背後には、しばしば権力や支配の関係が隠れている"],
+  ["opp","社会","性別・人種・植民地支配などによる抑圧の構造こそ、問われるべきだ"],
+  ["tech","社会","科学技術によって、人間の身体や知能や寿命を積極的に強化すべきだ"],
+  ["cosmo","社会","人は国家や民族より先に「世界市民」だ"],
+  ["cont","社会","国家や社会のルールは、人々の合意（契約）によって正当化される"],
+  ["hide","社会","政治や世間から距離を置き、静かに隠れて生きるのがよい"],
+  ["econ","社会","経済（モノの生産のしくみ）こそが、社会や思想のあり方を決めている"],
+  ["fut","社会","はるか未来の人々への影響こそ、いま最も優先すべきことだ"],
+  ["nation","社会","民族や国ごとに固有の精神や伝統があり、それを大切にすべきだ"],
+  ["alien","社会","現代の技術文明や資本主義は、人間を本来の姿から疎外している"],
+  // ── 心・人間
+  ["body","心","身体こそが、私たちが世界を経験し意味をつくる基盤だ"],
+  ["othr","心","他者との出会いや対話こそが、哲学や倫理の出発点だ"],
+  ["unc","心","人間の行動や思考は、自分では気づかない無意識に強く動かされている"],
+  ["strc","心","人間の思考や行動は、言語や社会の見えない構造に規定されている"],
+  ["evo","心","進化（自然選択）こそが、人間の心や道徳を理解する鍵だ"]
+];
+
+const REGIONS = {
+  gr:{label:"古代ギリシア・ローマ", macro:"west"},
+  eu:{label:"ヨーロッパ", macro:"west"},
+  de:{label:"ドイツ語圏", macro:"west"},
+  fr:{label:"フランス語圏", macro:"west"},
+  uk:{label:"イギリス", macro:"west"},
+  us:{label:"アメリカ", macro:"west"},
+  au:{label:"オーストラリア", macro:"west"},
+  it:{label:"イタリア", macro:"west"},
+  ru:{label:"ロシア", macro:"west"},
+  cn:{label:"中国", macro:"eastasia"},
+  jp:{label:"日本", macro:"eastasia"},
+  kr:{label:"朝鮮半島", macro:"eastasia"},
+  in:{label:"インド", macro:"india"},
+  tb:{label:"チベット", macro:"india"},
+  me:{label:"イスラーム圏・中東", macro:"islam"},
+  af:{label:"アフリカ", macro:"south"},
+  la:{label:"ラテンアメリカ", macro:"south"},
+  ww:{label:"世界各地", macro:"world"}
+};
+const MACROS = {
+  west:"西洋", eastasia:"東アジア", india:"インド・チベット",
+  islam:"イスラーム圏・中東", south:"アフリカ・中南米", world:"世界各地"
+};
+const DOMAINS = {
+  m:"存在論", e:"認識論", l:"倫理・生き方", s:"社会・政治",
+  p:"心の哲学", k:"科学・論理・言語", r:"宗教", a:"美学"
+};
+
+const PH = [];
+function P(id,name,orig,y,r,th,kw,desc,tr,dom){
+  PH.push({id,name,orig,y,r,th,kw,desc,tr,dom});
+}
+
+// ===== 古代ギリシア・ローマ／ヘレニズム／古代オリエント =====
+P("milesian","ミレトス学派","Milesian School",-585,"gr","タレス、アナクシマンドロス、アナクシメネス","万物の根源（アルケー）は何か",
+"神話に頼らず、自然そのものの中に万物の根源を探した最初の哲学者たち。タレスは水、アナクシマンドロスは限りのない「ト・アペイロン」、アナクシメネスは空気を根源とした。タレスは「万物は神々に満ちている」とも語ったと伝わる。",
+"mat1 one1 sci1 rsn1 psy1 flux1 god-1","mk");
+
+P("heraclitus","ヘラクレイトスの流転説","Heracliteanism",-500,"gr","ヘラクレイトス","万物は流転する／ロゴス",
+"同じ川に二度入ることはできない。世界は絶えず変化しているが、その変化は対立するもの同士の緊張と調和を保つ理法（ロゴス）に貫かれている。燃えては消える「火」を世界の象徴とし、戦いを万物の父と呼んだ。",
+"flux2 dial2 harm1 one1 form-1 rsn1 mat1","m");
+
+P("eleatic","エレア学派","Eleatic School",-475,"gr","パルメニデス、ゼノン、メリッソス","あるものはあり、あらぬものはあらぬ",
+"変化や多様性は感覚が見せる錯覚にすぎず、理性で考えれば「ある」ものは唯一で、生まれも滅びもせず、動かない。ゼノンは「アキレスと亀」などのパラドックスで、運動が不可能であることを論証しようとした。",
+"one2 flux-2 rsn2 emp-2 maya2 form1 lgc1 sys1","me");
+
+P("pythagorean","ピタゴラス派","Pythagoreanism",-530,"gr","ピタゴラス、フィロラオス","万物は数である",
+"宇宙の根本原理を数と調和に見出し、美しく響く音程が単純な整数比でできていることを発見した。魂は不死で輪廻すると信じ、肉食を避けるなど厳しい戒律をもつ宗教的な共同体でもあった。",
+"num2 harm2 after2 form1 rsn1 simp1 comm1 anim1 libr1 dua1 beau1","mr");
+
+P("pluralist","古代の多元論","Pluralism",-450,"gr","エンペドクレス、アナクサゴラス","四元素と「愛」「争い」／ヌース（知性）",
+"変化を否定したエレア派に応えて、根源を一つではなく複数とした。エンペドクレスは火・空気・水・土の四元素が「愛」と「争い」の力で結合・分離して万物が生じるとし、アナクサゴラスは無数の種子を「ヌース（知性）」が秩序づけたと考えた。",
+"mat1 one-2 harm1 dial1 sci1 idl-1","m");
+
+P("atomism","古代原子論","Atomism",-430,"gr","レウキッポス、デモクリトス","原子と空虚",
+"世界は、それ以上分割できない無数の原子と、原子が動き回る空虚だけからできている。色や味は約束事にすぎず、あらゆる現象は原子の結合と分離で説明できる。徹底した機械論的な唯物論の源流である。",
+"mat2 det2 god-1 telos-2 sci2 after-2 idl-2 one-1 calm1 rsn1 psy-1","mk");
+
+P("sophist","ソフィストの相対主義","Sophism",-450,"gr","プロタゴラス、ゴルギアス","人間は万物の尺度である",
+"報酬を取って弁論術を教えた知識人たち。万人に共通する絶対的な真理を疑い、何が真で何が善いかは人それぞれ、ポリスごとに異なるとした。ゴルギアスは「何も存在しない。存在しても知りえない。知りえても伝えられない」と論じた。",
+"rel2 skep1 mreal-2 form-2 prag1 cons1 god-1 lang1 ego1","els");
+
+P("socratic","ソクラテスの哲学","Socratic Philosophy",-430,"gr","ソクラテス","無知の知／ただ生きるのではなく、善く生きる",
+"自分が本当は知らないと自覚することから知は始まる。街角での問答を通して相手の思い込みを吟味し、魂をできるだけ善くすることを説いた。徳は知であり、本当に善を知っていれば誰も進んで悪をなさない。",
+"virt2 othr2 mreal1 skep1 rsn1 after1 good1 hed-1 ego-1 act1 simp1","le");
+
+P("platonism","プラトン主義","Platonism",-387,"gr","プラトン","イデア論／洞窟の比喩／哲人政治",
+"感覚でとらえる世界は移ろう影にすぎず、真の実在は永遠不変の「イデア」である。魂は不死であり、哲学とは魂を洞窟の影から真の光へと向け変えることだ。理想の国家は、善のイデアを知る哲学者が統治すべきだとした。",
+"form2 rsn2 emp-2 maya1 dua2 after2 mreal2 virt2 sys1 num1 beau1 state1 hed-1 flux-1 telos1 lib-1","mels");
+
+P("aristotelian","アリストテレス主義","Aristotelianism",-335,"gr","アリストテレス","中庸／エウダイモニア（幸福）／人間はポリス的動物",
+"イデアを個物から切り離さず、本質は個々のもののうちにあるとした。自然のあらゆるものには目的があり、人間の目的は理性を十分に働かせる「幸福」である。徳とは過不足のない中庸であり、人は共同体の中でこそ善く生きられる。論理学・生物学・政治学の祖でもある。",
+"telos2 virt2 form1 emp1 rsn1 cmn2 sci1 sys2 comm2 mreal1 lgc1 dua-1 hed-1 harm1","mlsk");
+
+P("cynic","キュニコス派（犬儒派）","Cynicism",-400,"gr","アンティステネス、ディオゲネス","自然に従え、体面を捨てよ／私は世界市民だ",
+"富・名誉・社会の慣習をすべて虚飾として退け、樽に住んだディオゲネスのように最低限の自然な暮らしを実践した。大王アレクサンドロスに望みを問われ「日陰になるからどいてくれ」と答えたという逸話が残る。",
+"simp2 nat2 trad-2 cosmo2 virt2 auth2 hed-1 act2 rite-2 rev1 anar1","l");
+
+P("cyrenaic","キュレネ派","Cyrenaics",-400,"gr","アリスティッポス","いまこの瞬間の快楽",
+"最高の善は、いまこの瞬間に感じる身体の快楽である。過去の快楽や未来の快楽ではなく現在の快を重んじた。ただし快楽に溺れるのではなく、快楽を支配する主人であれと説いた。",
+"hed2 ego1 skep1 emp1 simp-1 virt-1 calm-1","l");
+
+P("epicurean","エピクロス派","Epicureanism",-307,"gr","エピクロス、ルクレティウス","アタラクシア（心の平静）／隠れて生きよ",
+"善とは快であるが、それは贅沢ではなく「身体に苦痛がなく、心に動揺がない」状態のことだ。原子論によって死や神々への恐れを取り除き、「死は私たちにとって何ものでもない」と説いた。友人たちと庭園で静かに暮らすことを勧めた。",
+"hed2 simp2 calm1 hide2 mat2 after-2 telos-1 god-1 emp1 sci1 othr1 free1 det-1","lm");
+
+P("stoic","ストア派","Stoicism",-300,"gr","ゼノン、セネカ、エピクテトス、マルクス・アウレリウス","自然に従って生きよ／アパテイア（情念からの自由）",
+"自分の力で変えられるもの（判断や意志）と、変えられないものを区別し、後者には心を乱さない。宇宙は理性（ロゴス）に貫かれた一つの生命体であり、徳こそが唯一の善である。すべての人間は理性を分かち合う世界市民だとした。",
+"virt2 calm2 nat2 cosmo2 telos2 det1 pant2 rsn1 mat1 hed-2 duty1 mreal2 simp1 one1","lm");
+
+P("pyrrhonism","ピュロン主義","Pyrrhonism",-320,"gr","ピュロン、セクストス・エンペイリコス","判断保留（エポケー）",
+"どんな主張にも、同じくらい説得力のある反対の主張を立てられる。だからあらゆる判断を保留すれば、かえって心の平静が訪れる。独断を避け、目の前の現れや土地の慣習に従って穏やかに生きることを勧めた。",
+"skep2 calm2 rel1 mreal-1 sys-2 rsn-1 cmn1 trad1 hide1","el");
+
+P("academic_skep","アカデメイア派の懐疑主義","Academic Skepticism",-265,"gr","アルケシラオス、カルネアデス、キケロ","確実さはなくとも、もっともらしさに従う",
+"プラトンの学園アカデメイアで生まれた懐疑論。確実な知識は得られないと認めながらも、「もっともらしさ（蓋然性）」を基準に行動し判断することはできると考え、ストア派の独断と激しく論争した。",
+"skep2 prag1 rsn1 sys-1 othr1 mreal0","e");
+
+P("neoplatonism","新プラトン主義","Neoplatonism",250,"gr","プロティノス、プロクロス","一者からの流出と還帰",
+"万物は、言葉を超えた究極の「一者」から光のようにあふれ出る（流出）。魂は物質から離れて知性へ、さらに一者へと還っていき、恍惚のうちにそれと合一する。のちのキリスト教・イスラームの神秘思想に深い影響を与えた。",
+"one2 union2 mys2 form2 idl2 maya1 after2 dua1 simp1 mat-2 beau2 sys2","mr");
+
+P("hermetism","ヘルメス主義","Hermeticism",150,"gr","ヘルメス・トリスメギストス（伝説上の賢者）","上なるものは下なるもののごとし",
+"伝説の賢者に帰された文書群にもとづく神秘思想。宇宙（マクロコスモス）と人間（ミクロコスモス）は照応し合い、霊的な知によって人は神的なものへ還れるとした。ルネサンスの錬金術・占星術・魔術思想の源泉となった。",
+"mys2 one1 union2 psy1 idl1 after1 num1 harm2 sys1","mr");
+
+P("gnosticism","グノーシス主義","Gnosticism",130,"gr","ヴァレンティノス、バシレイデス","知（グノーシス）による救済",
+"物質世界は、劣った偽りの創造神が作った牢獄である。人の内には真の神に由来する光の火花が閉じ込められており、それが「知（グノーシス）」によって目覚めるとき、魂は物質を脱して本来の光の世界へ帰還する。",
+"dua2 maya2 mys2 libr2 god1 mat-2 pess1 union1 after2 telos-1 war2","rm");
+
+P("zoroastrian","ゾロアスター教の思想","Zoroastrianism",-1000,"me","ザラスシュトラ（ゾロアスター）","善思・善語・善行／光と闇の闘い",
+"世界は善なる神アフラ・マズダーと悪しき霊アンラ・マンユが戦う場であり、人間は自らの自由な選択によって善の側に立たねばならない。世界の終わりの審判と救世主の到来を説き、のちの一神教の終末観にも影響を与えたとされる。",
+"war2 god2 free2 after2 mreal2 prog1 virt1 act1 rite1","r");
+
+P("manichaeism","マニ教","Manichaeism",240,"me","マニ","光と闇の二元論",
+"世界は光の王国と闇の王国の混ざり合いから生まれ、人間の魂は闇（物質）に囚われた光のかけらである。厳しい禁欲と菜食によって光を解き放つことを説き、一時はローマから中国まで広がった。若き日のアウグスティヌスも信者だった。",
+"war2 dua2 libr2 simp2 maya1 after2 god1 mat-2 pess1 anim1","r");
+
+// ===== 中世（キリスト教・イスラーム・ユダヤ） =====
+P("augustinian","アウグスティヌスの思想","Augustinianism",400,"eu","アウグスティヌス","恩寵／内なる真理／神の国",
+"真理は外の世界ではなく心の内に探すべきであり、神の光に照らされることで知られる。人間は原罪によって自力では善をなせず、神の恩寵によってのみ救われる。歴史は「神の国」と「地の国」がせめぎ合いながら終末へ向かう物語だとした。",
+"god2 grace2 faith1 good-2 after2 dua1 mys1 form1 prog1 hed-1","rl");
+
+P("thomism","トマス主義","Thomism",1260,"eu","トマス・アクィナス","信仰と理性の調和／自然法",
+"アリストテレス哲学とキリスト教を統合した、スコラ哲学の頂点。神の存在は理性によって論証でき、信仰は理性を否定せず完成させる。人間の理性が自然の中に読み取る「自然法」こそが、道徳と法の基礎になると説いた。",
+"god2 rsn1 telos2 virt2 mreal2 sys2 form1 after2 free1 dua1 cmn1 trad1 emp1 comm1 faith0","rml");
+
+P("nominalism","唯名論","Nominalism",1320,"uk","ウィリアム・オッカム、ロスケリヌス","普遍は名前にすぎない／オッカムの剃刀",
+"「人間性」や「赤さ」のような普遍は、それ自体としては存在しない。存在するのは個々のものだけで、普遍は名前や概念にすぎない。不必要な仮定を削ぎ落とせという「オッカムの剃刀」は、近代科学の考え方に影響を与えた。",
+"form-2 emp1 lgc1 lang1 god1 faith1 sci1 sys-1","mk");
+
+P("apophatic","キリスト教神秘主義","Christian Mysticism",500,"eu","偽ディオニュシオス、マイスター・エックハルト、十字架のヨハネ","否定神学／魂の根底での神の誕生",
+"神はあらゆる言葉と概念を超えているため、「神は〜である」とは語れず、「〜でない」と否定を重ねることでしか近づけない。エックハルトは、あらゆる執着を離れて空っぽになった魂の根底でこそ、神が生まれると説いた。",
+"god1 mys2 union2 lang-1 void1 simp1 rsn-1 faith1 one1 after1 noself1","r");
+
+P("averroism","アヴェロエス主義","Averroism",1180,"me","イブン・ルシュド（アヴェロエス）","哲学と啓示はともに真理に通じる",
+"アリストテレスの偉大な注釈者。論証による哲学と、啓示による宗教はどちらも真理に至る道であり、正しく理解すれば矛盾しないと説いた。ラテン世界では、人類に共通する単一の知性があるという説が大論争を呼んだ。",
+"rsn2 sci1 god1 faith-1 telos1 form1 after-1 sys1 emp1","mr");
+
+P("avicennism","イブン・シーナーの哲学","Avicennism",1020,"me","イブン・シーナー（アヴィセンナ）","本質と存在の区別／空中人間",
+"ペルシアの医学者にして哲学者。ものの「本質」と「存在」を区別し、存在が必然である唯一のもの（神）からすべてが流れ出ると考えた。感覚を完全に奪われて宙に浮かんでいても自分の存在はわかる、という「空中人間」の思考実験で知られる。",
+"god2 rsn2 dua2 form1 sys2 after2 sci1","mrp");
+
+P("farabi","ファーラービーの有徳都市論","Al-Farabi's Virtuous City",930,"me","ファーラービー","第二の師／有徳都市",
+"アリストテレスに次ぐ「第二の師」と称された。人間の幸福は孤立した個人ではなく共同体の中で実現されるとし、哲学者にして預言者のような統治者が人々を導く「有徳都市」を構想した。",
+"rsn2 comm2 virt2 state1 form1 god1 sys1 telos1","s");
+
+P("mutazila","ムウタズィラ派","Mu'tazila",800,"me","ワースィル・イブン・アター、アブドゥル・ジャッバール","神の正義と人間の自由意志",
+"理性を重んじたイスラームの神学派。神は正義であるから、人間に自由意志を与え、行為の責任を問う。何が善で何が悪かは啓示がなくとも理性で知りうると主張し、コーランは永遠ではなく創造されたものだと論じた。",
+"god2 rsn2 free2 mreal2 faith-1 duty1","r");
+
+P("asharite","アシュアリー派とガザーリー","Ash'arism & al-Ghazali",1095,"me","アシュアリー、ガザーリー","因果の必然性の否定／哲学者の自己矛盾",
+"火が綿を燃やすのは火そのものの力ではなく、そのつど働く神の意志による。原因と結果の必然的なつながりを否定し、万物を神の全能に委ねた。ガザーリーは哲学者を批判した後、懐疑の果てにスーフィズムの体験の中に確信を見出した。",
+"god2 faith2 rsn-1 det1 free-1 mys1 skep1 sci-1 mreal1","r");
+
+P("sufism","スーフィズム","Sufism",800,"me","ラービア、ハッラージュ、ルーミー","神への愛と自我の消滅（ファナー）",
+"修行と神への燃えるような愛によって自我を滅し、神のうちに溶け入ることをめざすイスラームの神秘主義。ルーミーの詩や、旋回して祈るセマーの舞踊で知られる。",
+"god2 union2 mys2 noself1 simp2 care1 beau1 faith1 rsn-1 one1 after2","r");
+
+P("ibn_arabi","存在一性論","Wahdat al-Wujud",1220,"me","イブン・アラビー","存在はただ一つ",
+"真に存在するのは神だけであり、世界のあらゆるものは、唯一の存在が無数の姿をとって自らを現した「顕現」である。スーフィズムの体験を、壮大な形而上学の体系へとまとめ上げた。",
+"one2 god1 pant1 union2 mys2 maya1 sys2 idl1","mr");
+
+P("mulla_sadra","モッラー・サドラーの超越論的神智学","Transcendent Theosophy",1630,"me","モッラー・サドラー","存在の優位／実体運動",
+"本質よりも存在こそが根源的な実在であり、存在には光のように濃淡の段階がある。さらに事物は、その実体そのものが絶えず変化し続ける「実体運動」のうちにあると説き、理性・啓示・神秘体験を一つに統合した。",
+"one1 flux2 god2 mys1 rsn1 union1 sys2 after2","mr");
+
+P("ibn_khaldun","イブン・ハルドゥーンの歴史社会学","Ibn Khaldun",1377,"me","イブン・ハルドゥーン","アサビーヤ（連帯意識）と王朝の興亡",
+"歴史を出来事の羅列ではなく、社会の構造と法則から説明しようとした。砂漠の民の強い連帯意識が新しい王朝を興し、都市の豊かさと贅沢がそれを弱めて滅亡に至る。この循環を描いた『歴史序説』は社会学の先駆とされる。",
+"comm2 sci1 emp2 prog-1 econ1 state1","s");
+
+P("maimonides","マイモニデスのユダヤ哲学","Maimonidean Philosophy",1190,"me","マイモニデス（モーシェ・ベン・マイモーン）","迷える者への手引き",
+"聖書の教えとアリストテレス哲学を調和させようとした中世最大のユダヤ哲学者。神については肯定的には語れず、否定によってしか語れないとした。律法の一つひとつに合理的な意味を見出そうとした。",
+"god2 rsn2 duty2 virt1 lang-1 faith0 rite1","r");
+
+P("kabbalah","カバラ","Kabbalah",1200,"eu","モーセス・デ・レオン、イツハク・ルリア","セフィロトの樹／世界の修復（ティクーン・オラム）",
+"ユダヤ教の神秘思想。無限なる神は、十のセフィロト（神の属性）を通して段階的に世界へと流れ出る。砕けてしまった世界の光は、人間の祈りと善い行いによって修復されると考えた。",
+"god2 mys2 union1 num1 one1 after1 act1 sys1 faith1","rm");
+
+// ===== ルネサンス・近世 =====
+P("humanism","ルネサンス人文主義","Renaissance Humanism",1400,"it","ペトラルカ、ピコ・デラ・ミランドラ、エラスムス","人間の尊厳",
+"古代ギリシア・ローマの古典を学び直し、神中心だった中世から「人間」に光を当てた運動。ピコは、人間は神のように定まった姿をもたず、自ら何者にでもなれる自由をもつ点にこそ尊厳があると説いた。",
+"free2 auth1 beau2 good1 trad1 rsn1 god1 cosmo1 lib1 prog1","la");
+
+P("machiavellism","マキャヴェリズム","Machiavellism",1513,"it","マキャヴェリ","君主は愛されるより恐れられよ",
+"政治を宗教や道徳から切り離し、現実の人間と権力のあり方をありのままに分析した。人間は恩知らずで移り気なものであり、国家を守るためなら、君主は必要に応じて悪をなすことも学ばねばならないと説いた。",
+"state2 good-2 util1 mreal-1 emp1 ego1 pow1 virt-1 duty-2 rel1 care-1","s");
+
+P("bruno","ブルーノの無限宇宙論","Giordano Bruno",1584,"it","ジョルダーノ・ブルーノ","無限の宇宙と無数の世界",
+"宇宙は無限であり、太陽のような星々と無数の世界が広がっている。神はこの無限の宇宙そのものに宿り、あらゆるものに魂が息づいている。異端とされ火刑に処されたが、その宇宙像は近代を先取りしていた。",
+"pant2 one1 psy1 sci1 flux1 god-1 mys1","m");
+
+P("bacon","ベーコンの経験論","Baconian Empiricism",1620,"uk","フランシス・ベーコン","知は力なり／四つのイドラ",
+"人間の知性は、種族・洞窟・市場・劇場という四つの「イドラ（偶像）」によって歪められている。偏見を取り除き、観察と実験を積み重ねる帰納法によって自然を知れば、人類は自然を支配し生活を豊かにできる。",
+"emp2 sci2 tech1 prog1 act1 rsn-1 trad-1","ek");
+
+P("montaigne","モンテーニュのモラリスト思想","Montaigne",1580,"fr","モンテーニュ","私は何を知っているか（ク・セ・ジュ）",
+"『エセー』で自分自身を題材に、人間の判断がいかに不確かで移ろいやすいかを見つめた。独断を避け、異文化の習慣にも寛容であること、そしてありのままの自分と穏やかに付き合って生きることを説いた。",
+"skep2 rel2 calm1 nat1 hed1 trad1 sys-2 auth1 cmn1","le");
+
+P("cartesian","デカルトの合理論","Cartesianism",1637,"fr","デカルト","われ思う、ゆえにわれあり",
+"あらゆるものを疑っても、疑っている自分が存在することだけは疑えない。この確実な出発点から、理性だけを頼りに知識を建て直そうとした。精神と物体をまったく別の実体とみなす心身二元論で知られる。",
+"rsn2 dua2 god2 skep1 lgc2 num1 emp-1 free2 sci1 sys1 anim-2 after1","emp");
+
+P("spinozism","スピノザ主義","Spinozism",1670,"eu","スピノザ","神即自然",
+"神とは自然そのものであり、唯一の実体である。心と身体は同じ一つの実体の二つの側面にすぎない。すべては必然的に起こるのであり、それを理性で深く理解し受け入れることにこそ、真の自由と至福がある。",
+"pant2 one2 det2 free-2 rsn2 lgc2 sys2 telos-2 calm2 god-1 dua-2 lib1 psy1","ml");
+
+P("leibniz","ライプニッツのモナド論","Monadology",1714,"de","ライプニッツ","モナド／予定調和／最善世界",
+"世界は、無数の精神的な単位「モナド」からできている。モナドは互いに影響し合わないが、神があらかじめ定めた調和によってぴたりと一致している。神はありうる世界の中から最善のものを選んだのであり、この世界は可能なかぎり最善である。",
+"rsn2 idl1 psy2 god2 harm2 det1 telos2 sys2 lgc2 num1 pess-2","m");
+
+P("occasionalism","機会原因論","Occasionalism",1675,"fr","マルブランシュ","唯一の真の原因は神",
+"心と物体は直接作用し合うことができない。私が手を動かそうと思うとき、その意志を「機会」として神が手を動かしているのだ。自然界のあらゆる因果関係の真の原因は、神ただ一人だとした。",
+"god2 dua2 det1 rsn1 free-1 sci-1","mr");
+
+P("hobbes","ホッブズの社会契約論","Hobbesianism",1651,"uk","トマス・ホッブズ","万人の万人に対する闘争／リヴァイアサン",
+"国家のない自然状態では、人は自分の身を守るために互いに争い、人生は孤独で貧しく残忍で短いものになる。だから人々は契約を結んで、強大な主権者に権力を委ね、平和を手に入れる。世界を物体の運動として説明する唯物論者でもあった。",
+"cont2 state2 good-2 mat2 det1 ego1 emp1 sci1 lib-1 anar-2 mreal-1 lgc1","s");
+
+P("locke","ロックの経験論と自由主義","Lockean Liberalism",1690,"uk","ジョン・ロック","タブラ・ラサ（白紙）／生命・自由・財産",
+"心は生まれたときは白紙であり、あらゆる観念は経験から得られる。人は生まれながらに生命・自由・財産への権利をもち、政府はそれを守るための契約にすぎない。政府が権利を踏みにじるなら、人々は抵抗してよいと説いた。",
+"emp2 lib2 cont2 mkt1 god1 cmn1 rsn1 state-1 mreal1 rev1 anar-1","es");
+
+P("berkeley","バークリーの非物質論","Immaterialism",1710,"uk","ジョージ・バークリー","存在するとは知覚されることである",
+"物質などというものは存在しない。机があるとは、それが見られ触れられているということにほかならない。誰も見ていないときにも物が存在し続けるのは、神が常にそれを知覚しているからだ。",
+"idl2 mat-2 emp2 god2 cmn1","me");
+
+P("hume","ヒュームの懐疑的経験論","Humean Empiricism",1740,"uk","デイヴィッド・ヒューム","因果は習慣にすぎない／理性は情念の奴隷である",
+"知識はすべて経験から得た印象に由来する。原因と結果の必然的なつながりは観察できず、習慣が生んだ思い込みにすぎない。「自我」も知覚の束でしかなく、道徳は理性ではなく感情や共感にもとづくとした。",
+"emp2 skep2 noself2 emo2 care1 rsn-2 god-1 sci1 cmn1 mreal-1 trad1","el");
+
+P("reid","スコットランド常識学派","Common Sense Realism",1764,"uk","トマス・リード","常識の原理",
+"懐疑論を突き詰めたヒュームに対して、外の世界が存在すること、他人にも心があること、記憶がおおむね信頼できることなど、人間に自然に備わった「常識の原理」は証明なしに信頼してよいと反論した。",
+"cmn2 skep-2 emp1 god1 free1 mreal1 dua1","e");
+
+P("pascal","パスカルの思想","Pascal",1660,"fr","ブレーズ・パスカル","人間は考える葦である／心には理性の知らない理由がある",
+"人間は宇宙の中で一本の葦のように弱いが、考えるという点で偉大である。しかし理性には限界があり、神は理性よりも心で感じられる。神が存在するほうに賭けることが合理的だという「賭け」の議論でも知られる。",
+"god2 faith2 rsn-1 dread1 pess1 grace2 mys1 prag1 after2","rl");
+
+P("deism","理神論","Deism",1700,"uk","トーランド、ヴォルテール、トマス・ペイン","時計職人としての神",
+"神は世界を創造し、合理的な自然法則を与えたあとは介入しない。ちょうど時計を作り終えた時計職人のように。奇跡や啓示を退け、理性だけで知ることのできる「自然宗教」を唱えた。",
+"god1 rsn2 faith-2 sci1 det1 mys-2 telos1 trad-1","r");
+
+P("enlightenment","啓蒙主義","Enlightenment",1750,"fr","ヴォルテール、ディドロ、コンドルセ","理性の光で迷信と専制を打ち破れ",
+"理性と科学によって、人々を迷信や偏見や専制から解放し、社会を進歩させられると信じた18世紀の運動。『百科全書』を編み、宗教的寛容、言論の自由、人権の尊重を訴えた。",
+"rsn2 sci2 prog2 lib2 trad-2 faith-2 cosmo1 rev1 mreal1 good1","sk");
+
+P("montesquieu","モンテスキューの三権分立論","Montesquieu",1748,"fr","モンテスキュー","権力は権力によって抑制されねばならない",
+"自由を守るには、立法・行政・司法の権力を分け、互いに抑制させなければならない。また法や政治のあり方は、その国の気候や風土、習慣によって異なるべきだと論じた。",
+"lib2 rel1 trad1 state-1 emp1 cont1","s");
+
+P("rousseau","ルソーの社会思想","Rousseau",1762,"fr","ジャン＝ジャック・ルソー","一般意志／人間は自由なものとして生まれた",
+"人間は本来善良だが、文明と私有財産が不平等と堕落をもたらした。人々が全体の利益をめざす「一般意志」に従うことで、自由と平等を取り戻す新しい社会契約を構想した。自然に即した教育を説いた『エミール』でも知られる。",
+"good2 nat2 eq2 cont2 comm2 rev2 alien1 care1 prog-1 lib1 trad-1","sl");
+
+P("vico","ヴィーコの歴史哲学","Vico",1725,"it","ジャンバッティスタ・ヴィーコ","真なるものは作られたもの／歴史の循環",
+"人間が本当に知りうるのは、自分たちで作ったもの、すなわち歴史と社会である。諸国民の歴史は「神々の時代」「英雄の時代」「人間の時代」をめぐって循環すると考え、デカルト的な理性万能に異を唱えた。",
+"cons1 trad1 comm1 prog-1 sci-1 beau1 rsn-1","s");
+
+P("smith","アダム・スミスの道徳と経済","Adam Smith",1776,"uk","アダム・スミス","見えざる手／共感と公平な観察者",
+"人々が自分の利益を追求すると、「見えざる手」に導かれるように社会全体の富が増える。一方で、人間の道徳は他者への共感から生まれ、心の中の「公平な観察者」の目によって磨かれると論じた。",
+"mkt2 lib1 care1 emo1 ego1 emp1 prog1 econ1 state-1","sl");
+
+P("burke","保守主義","Conservatism",1790,"uk","エドマンド・バーク","急激な革命より、慎重な改革を",
+"フランス革命を批判し、社会は抽象的な理性で一挙に設計し直せるものではないと説いた。伝統・慣習・制度は、何世代にもわたって蓄積された知恵である。改めるべきところは改めつつ、少しずつ慎重に進むべきだ。",
+"trad2 rev-2 comm1 rsn-1 god1 lib1 prog-1 state1 cont-1 cmn1 rite1","s");
+
+P("utopian","ユートピア思想・空想的社会主義","Utopian Socialism",1820,"fr","トマス・モア、サン＝シモン、フーリエ、ロバート・オウエン","理想の共同体を設計する",
+"私有財産や競争のない、理想の共同体を思い描き、実際に作ろうとした思想家たち。オウエンは工場の労働環境を改善し、協同組合の村を建設した。のちにマルクスらからは「空想的」と批判された。",
+"eq2 comm2 prog2 rev1 care1 good1 mkt-1 rsn1","s");
+
+P("mechanism","機械論的唯物論","Mechanistic Materialism",1748,"fr","ラ・メトリ、ドルバック、ラプラス","人間機械論／ラプラスの悪魔",
+"人間も含めて、世界はすべて物質とその運動からなる精巧な機械である。魂も神も必要ない。宇宙のすべての粒子の位置と力を知る知性があれば、未来も過去も完全に計算できる、とラプラスは述べた。",
+"mat2 det2 god-2 sci2 after-2 free-2 telos-2 num1 hed1 dua-2","mk");
+
+// ===== ドイツ観念論と19世紀 =====
+P("kant","カントの批判哲学（義務論）","Kantianism",1781,"de","イマヌエル・カント","コペルニクス的転回／定言命法",
+"私たちが世界に合わせて認識するのではなく、世界のほうが私たちの認識の形式（時間・空間・カテゴリー）に従って現れる。物そのものは知りえない。道徳においては、結果ではなく「誰にでも当てはまる法則」として行為せよという無条件の命令に従うべきだとした。",
+"duty2 rsn2 free2 mreal2 cons1 sys2 cosmo2 util-2 hed-2 maya1 lib1 prog1 god0 emp0","elm");
+
+P("fichte","フィヒテの知識学","Fichte",1794,"de","J.G.フィヒテ","自我は自らを定立する",
+"世界の根源は、自らを活動的に打ち立てる「自我」である。自我に対立する外の世界（非我）も、自我が自らの自由を実現するために立てたものだ。のちに『ドイツ国民に告ぐ』で国民の精神的な再生を訴えた。",
+"idl2 free2 act2 sys2 nation2 rsn1 duty1 auth1","m");
+
+P("schelling","シェリングの同一哲学","Schelling",1800,"de","F.W.J.シェリング","自然は目に見える精神、精神は目に見えない自然",
+"自然と精神は、根源的に同一のものの二つの現れである。自然は眠れる精神であり、精神は目覚めた自然だ。芸術こそが、この絶対的な同一性を最もよく直観させてくれると考えた。",
+"one2 idl1 pant1 beau2 mys1 psy1 telos1 sys2","ma");
+
+P("hegel","ヘーゲル哲学","Hegelianism",1807,"de","G.W.F.ヘーゲル","弁証法／絶対精神／ミネルヴァの梟は黄昏に飛び立つ",
+"世界と歴史は、「精神」が矛盾と対立を乗り越えながら（弁証法）自己を実現していく壮大な過程である。歴史とは自由の意識が進歩していく歩みであり、哲学はその全体を体系として把握する。",
+"dial2 idl2 sys2 prog2 one1 rsn2 comm1 state1 telos2 flux1","ms");
+
+P("romanticism","ドイツ・ロマン主義","German Romanticism",1798,"de","ノヴァーリス、シュレーゲル兄弟、ヘルダー","無限への憧れ",
+"啓蒙の冷たい理性に対して、感情・想像力・自然・民族の伝統を重んじた運動。詩と芸術こそが無限なるものを表現しうると考え、一人ひとりの個性のかけがえのなさを讃えた。",
+"beau2 mys1 rsn-1 nat1 nation1 auth2 trad1 one1 pant1 emo1","a");
+
+P("schopenhauer","ショーペンハウアーのペシミズム","Schopenhauerian Pessimism",1819,"de","アルトゥル・ショーペンハウアー","世界は私の表象である／生への意志",
+"世界の本質は、盲目的で果てしない「生への意志」であり、満たされない欲望が苦しみを生み続ける。芸術、とりわけ音楽による一時の救い、他者の苦しみへの同情、そして意志そのものを否定する禁欲に救済を見た。仏教やウパニシャッドに深く共鳴した。",
+"pess2 beau2 care2 simp2 libr1 maya1 one1 god-2 idl1 noself1 anim1 will-1 det1","mla");
+
+P("utilitarian","功利主義","Utilitarianism",1789,"uk","ジェレミー・ベンサム、J.S.ミル、シジウィック","最大多数の最大幸福",
+"正しい行為とは、影響を受けるすべての者の幸福の総量を最大にする行為である。快楽と苦痛を道徳の物差しとし、苦しむことができる動物も配慮の対象に含めた。ミルは快楽の質の違いと、個人の自由の大切さを強調した。",
+"util2 hed1 emp1 anim1 duty-1 sci1 lib1 eq1 trad-1 prog1 god-1 mreal1","ls");
+
+P("positivism","コントの実証主義","Positivism",1840,"fr","オーギュスト・コント","神学的段階→形而上学的段階→実証的段階",
+"人類の知識は、神々で説明する段階、抽象的な原理で説明する段階を経て、観察と実証にもとづく科学の段階へと進歩する。社会もまた科学的に研究されるべきだと考え、「社会学」という言葉を生んだ。",
+"sci2 emp2 prog2 god-1 faith-1 sys1 comm1 mys-2 form-1","ks");
+
+P("feuerbach","フォイエルバッハの人間学","Feuerbach",1841,"de","ルートヴィヒ・フォイエルバッハ","神は人間の本質を投影したものだ",
+"人間が神を作ったのであって、神が人間を作ったのではない。神とは、愛・知恵・力といった人間自身の本質を外に投影したものにすぎない。天上の神学を、地上の人間学へと引き戻そうとした。",
+"mat1 god-2 care1 othr1 body1 faith-2 comm1","r");
+
+P("marxism","マルクス主義","Marxism",1848,"de","カール・マルクス、フリードリヒ・エンゲルス","史的唯物論／万国の労働者よ、団結せよ",
+"社会の土台は経済（生産のしくみ）であり、法・政治・宗教・思想はその上に立つ上部構造にすぎない。歴史は階級闘争の歴史であり、資本主義は労働者を搾取し、労働を本来の姿から疎外する。革命によって階級のない社会が実現すると考えた。",
+"econ2 mat2 eq2 rev2 dial2 prog2 alien2 comm1 mkt-2 god-2 faith-2 pow1 act2 sci1 opp1","s");
+
+P("stirner","シュティルナーの唯一者","Stirnerite Egoism",1844,"de","マックス・シュティルナー","唯一者とその所有",
+"神・国家・人類・道徳・正義。あらゆる抽象的な理念は、個人を支配する「幽霊」にすぎない。唯一なる「私」だけが私の関心事であり、何ものにも従属する必要はない。徹底した個人主義的アナキズムの源流となった。",
+"ego2 anar2 auth2 mreal-2 god-2 comm-2 duty-2 trad-2 form-2 will1","ls");
+
+P("kierkegaard","キルケゴールの実存思想","Kierkegaard",1843,"eu","セーレン・キルケゴール","死に至る病（絶望）／信仰への跳躍",
+"大切なのは客観的な体系ではなく、「私にとっての真理」である。人は美的な生き方、倫理的な生き方を経て、不安と絶望の中から理性を超えた「信仰への跳躍」によって、ただ一人の単独者として神の前に立つ。",
+"faith2 god2 auth2 dread2 sys-2 free2 rsn-1 mys1 comm-1 after1 grace1","lr");
+
+P("nietzsche","ニーチェ哲学","Nietzschean Philosophy",1883,"de","フリードリヒ・ニーチェ","神は死んだ／超人／永劫回帰",
+"キリスト教道徳は、弱者が強者への恨み（ルサンチマン）から作り出した「奴隷道徳」である。神の死とともにニヒリズムが到来する。既存の価値を転倒し、同じ人生が永遠に繰り返されてもそれを「よし」と肯定できる「超人」をめざせと説いた。",
+"will2 god-2 nihil1 mreal-2 auth2 rel1 pow1 beau2 flux1 care-1 duty-2 eq-1 body1 trad-1 comm-1 pess-2 hed-1","l");
+
+P("nihilism","ニヒリズム","Nihilism",1860,"ru","ツルゲーネフ（命名者）、ピーサレフ","あらゆる価値は無価値になった",
+"あらゆる価値・意味・真理には根拠がないとする立場。19世紀のロシアでは、既存の権威・宗教・道徳を否定する若者たちの運動として現れた。ニーチェはこれを、ヨーロッパがたどる運命として診断した。",
+"nihil2 mreal-2 god-2 telos-2 pess1 rev1 trad-2","l");
+
+P("transcendentalism","アメリカ超越主義","Transcendentalism",1836,"us","エマソン、ヘンリー・デイヴィッド・ソロー","自己信頼／森の生活／市民的不服従",
+"神的なものは自然と一人ひとりの魂の内に宿っている。社会の慣習に従うより自分自身の直観を信頼し、自然の中で簡素に生きよ。ソローは湖畔の小屋で自給自足の暮らしを試み、不正な法には従わない市民的不服従を唱えた。",
+"nat2 auth2 simp2 pant1 mys1 lib1 trad-1 eco1 good1 anar1 one1","l");
+
+P("pragmatism","プラグマティズム","Pragmatism",1878,"us","C.S.パース、ウィリアム・ジェームズ、ジョン・デューイ","真理とは「うまくいく」ことだ",
+"ある考えの意味は、それが実際にどんな違いや結果をもたらすかで決まる。真理は天から与えられた固定したものではなく、経験の中で試され、役に立つことで真理になっていく。デューイはこれを民主主義と教育の実践へと広げた。",
+"prag2 act2 emp1 sci1 sys-1 form-1 prog1 flux1 rel1 lib1 comm1","e");
+
+P("anarchism","アナキズム","Anarchism",1840,"fr","プルードン、バクーニン、クロポトキン","財産とは盗みである／相互扶助",
+"国家・資本・教会など、あらゆる強制的な権力を廃し、人々の自由な連合と助け合いによる社会をめざす。クロポトキンは、生物の進化において競争よりも「相互扶助」こそが重要な役割を果たしてきたと論じた。",
+"anar2 eq2 lib2 rev2 comm1 good1 state-2 mkt-1 god-1 pow1 care1","s");
+
+P("tolstoyan","トルストイ主義","Tolstoyan Movement",1880,"ru","レフ・トルストイ","悪に暴力で抵抗するな",
+"イエスの「山上の垂訓」を文字どおりに実践しようとした思想。暴力・戦争・国家権力・私有財産を拒否し、農民のように質素に働き、菜食で暮らすことを説いた。その非暴力の思想はガンディーにも影響を与えた。",
+"god1 anar1 care2 simp2 good1 state-2 anim1 duty1 act1 rev-1","lr");
+
+P("spencer","スペンサーの社会進化論","Social Evolutionism",1860,"uk","ハーバート・スペンサー","適者生存",
+"宇宙も生物も社会も、単純なものから複雑なものへと進化していく。「適者生存」という言葉を生み、社会もまた自由な競争を通じて進化すると考えて、国家の介入に反対した。のちにこの考えは弱者切り捨ての正当化に使われ、強い批判を受けた。",
+"evo2 prog2 mkt2 lib1 sci1 state-1 care-1","s");
+
+P("bergson","ベルクソンの生の哲学","Bergsonism",1907,"fr","アンリ・ベルクソン","純粋持続／エラン・ヴィタール（生の躍動）",
+"時計が刻む空間化された時間ではなく、意識が生きる途切れない流れ「持続」こそが本当の時間である。生命は、予測できない新しさを生み出し続ける「生の躍動」によって進化する。知性よりも直観によって、流れゆく実在をとらえよと説いた。",
+"flux2 mys1 free2 rsn-1 evo1 mat-1 psy1","m");
+
+P("cosmism","ロシア宇宙主義","Russian Cosmism",1900,"ru","ニコライ・フョードロフ、ツィオルコフスキー","死者の復活と宇宙への進出",
+"人類の共通の使命は、科学技術によって死を克服し、祖先たちを復活させ、宇宙へと進出することだ。フョードロフのこの壮大な構想は、ロケット工学の父ツィオルコフスキーにも影響を与えた。",
+"tech2 after1 fut2 god1 comm1 prog2 sci1 telos1","s");
+
+P("social_democracy","社会民主主義","Social Democracy",1899,"de","エドゥアルト・ベルンシュタイン、北欧の社会民主党","革命ではなく改革で平等を",
+"資本主義を暴力革命で打倒するのではなく、議会制民主主義の中で少しずつ改革し、福祉や累進課税によって平等を実現していく。市場経済を認めつつ、その弊害を国家が是正する。",
+"eq2 lib1 rev-1 prog1 state1 care1 mkt0","s");
+
+P("protestant","プロテスタント神学","Protestant Theology",1517,"de","マルティン・ルター、ジャン・カルヴァン","信仰のみ・恵みのみ・聖書のみ／予定説",
+"人は善行や教会の儀式によってではなく、ただ神の恵みと信仰によってのみ救われる。教会の権威より聖書そのものを重んじた。カルヴァンは、誰が救われるかは神によってあらかじめ定められていると説いた。",
+"grace2 faith2 god2 det1 good-2 trad-1 rite-1 after2","r");
+
+// ===== 20世紀以降：大陸哲学 =====
+P("phenomenology","現象学","Phenomenology",1900,"de","エトムント・フッサール","事象そのものへ／エポケー（判断停止）",
+"「外の世界は本当にあるのか」という判断をいったん括弧に入れ、意識に現れるがままの経験を厳密に記述する。意識は常に「何かについての意識」であるという志向性を分析し、自然科学的な見方の手前にある「生活世界」に光を当てた。",
+"idl1 rsn1 sys1 mat-1 sci-1 form1 skep1","me");
+
+P("heidegger","ハイデガーの存在論","Heideggerian Ontology",1927,"de","マルティン・ハイデガー","存在と時間／死への存在",
+"哲学は「存在するとはどういうことか」という忘れられた問いに立ち返らねばならない。人間（現存在）は気づけば世界の中に投げ込まれており、ふだんは「世人（ひと）」の中に埋もれて生きている。自らの死に向き合う不安の中でこそ、本来の自己を取り戻す。後期には技術文明の本質を問うた。",
+"dread2 auth2 alien2 sys-1 sci-1 dua-2 lang1 trad1 nat1 void1 mat-1","ml");
+
+P("existentialism","実存主義","Existentialism",1943,"fr","ジャン＝ポール・サルトル","実存は本質に先立つ／人間は自由の刑に処せられている",
+"神がいない以上、人間にあらかじめ定められた本質などない。人はまず存在し、自らの選択と行為によって自分をつくっていく。その自由から逃れることはできず、自分の選択に全面的な責任を負う。社会参加（アンガジュマン）を訴えた。",
+"free2 auth2 god-2 telos-2 nihil1 dread1 act2 det-2 form-2 rev1 eq1 mreal-1","l");
+
+P("absurdism","不条理の哲学","Absurdism",1942,"fr","アルベール・カミュ","シーシュポスの神話／反抗",
+"意味を求めてやまない人間と、黙して答えない世界。その断絶が「不条理」である。自殺や宗教への逃避を拒み、不条理を見つめたまま反抗し、生を味わい尽くす。岩を押し上げ続けるシーシュポスは幸福なのだと想像しなければならない。",
+"abs2 nihil1 god-2 auth1 hed1 faith-2 sys-2 care1 rev1 telos-2 pess-1","l");
+
+P("jaspers","ヤスパースの実存哲学","Jaspers",1932,"de","カール・ヤスパース","限界状況／実存的交わり",
+"死・苦しみ・争い・罪といった、避けることも乗り越えることもできない「限界状況」に直面したとき、人は挫折の中で本当の自己（実存）に目覚め、自分を超えたもの（包括者）に触れる。他者との真剣な「実存的交わり」を重んじた。",
+"dread2 othr2 auth1 mys1 faith1 sys-1","l");
+
+P("beauvoir","実存主義フェミニズム","Existentialist Feminism",1949,"fr","シモーヌ・ド・ボーヴォワール","人は女に生まれるのではない、女になるのだ",
+"「女らしさ」は生まれつきの本質ではなく、社会によって作られ、男性を基準とした「第二の性」として押しつけられてきた立場である。女性が「他者」として規定されてきた構造を明らかにし、自由な主体として生きることを求めた。",
+"opp2 cons2 free2 auth2 eq1 god-1 body1 othr1 rev1","sl");
+
+P("merleau_ponty","身体の現象学","Phenomenology of the Body",1945,"fr","モーリス・メルロ＝ポンティ","私は身体を持つのではなく、身体である",
+"世界は頭の中の表象としてではなく、まず知覚し動く身体を通して生きられている。手が物をつかむとき、そこにはすでに意味の理解がある。心と身体を切り離す二元論を乗り越え、身体と世界が絡み合う「肉」の次元を探究した。",
+"body2 dua-2 mat-1 cmn1 othr1 beau1 rsn-1","pm");
+
+P("hermeneutics","解釈学","Hermeneutics",1960,"de","ディルタイ、ハンス＝ゲオルク・ガダマー、ポール・リクール","地平の融合",
+"理解とは、まっさらな心で対象を客観的に眺めることではない。私たちはすでに伝統や先入見の中にいて、それを通してテクストや他者と対話する。自分の視野（地平）と相手の地平が融け合うところに、理解が生まれる。",
+"trad2 othr2 lang2 cons1 sci-1 rel1 sys-1","e");
+
+P("frankfurt","フランクフルト学派（批判理論）","Critical Theory",1930,"de","ホルクハイマー、アドルノ、マルクーゼ、ベンヤミン","啓蒙の弁証法／文化産業",
+"人間を解放するはずだった理性と啓蒙は、効率だけを追う「道具的理性」となり、管理と支配の手段に変わってしまった。映画や大衆音楽などの「文化産業」は人々を画一化し、批判する力を奪う。社会を変えるための批判的な理論を掲げた。",
+"alien2 pow2 rev2 econ1 dial2 mkt-2 beau1 sci-1 prog-1 eq1 opp1 cons1","s");
+
+P("habermas","ハーバーマスのコミュニケーション的行為論","Communicative Action",1981,"de","ユルゲン・ハーバーマス","公共圏／討議倫理",
+"強制のない自由な議論の中で、ただ「よりよい論拠」だけが人を納得させる。そうした理想的な対話によってこそ、社会の規範の正しさは基礎づけられる。市民が自由に議論し合う「公共圏」こそが民主主義の要だとした。",
+"othr2 rsn2 lib1 cont1 mreal1 prog1 lang1 cosmo1 eq1","s");
+
+P("structuralism","構造主義","Structuralism",1955,"fr","ソシュール、クロード・レヴィ＝ストロース、ロマン・ヤコブソン","意味は差異の体系から生まれる",
+"言葉の意味は単語そのものにあるのではなく、他の単語との違いの網の目（構造）の中で決まる。レヴィ＝ストロースは、親族関係や神話にも人々が意識しない普遍的な構造があると示し、西洋を頂点とする「進歩」の見方を批判した。",
+"strc2 lang2 sys1 free-2 sci1 prog-2 rel1 unc1 auth-1 det1","ks");
+
+P("deconstruction","脱構築","Deconstruction",1967,"fr","ジャック・デリダ","テクストの外はない／差延",
+"西洋の哲学は「話し言葉と書き言葉」「本質と現象」のような二項対立を立て、常に一方を優位に置いてきた。テクストを内側から丁寧に読み解くことでその序列を揺るがし、意味が決して最終的に確定しないことを示そうとした。",
+"lang2 cons2 form-2 sys-2 rel1 strc1 mreal-1","k");
+
+P("foucault","フーコーの権力論","Foucauldian Genealogy",1975,"fr","ミシェル・フーコー","知と権力／規律訓練／生権力",
+"狂気・病院・監獄・性の歴史を掘り起こし、「正常」や「真理」とされるものが、その時代の権力と知の結びつきから生まれたことを暴いた。権力は上から禁止するだけでなく、人々を監視し規律化して、主体そのものを作り出している。",
+"pow2 cons2 strc1 rel1 opp1 rev1 prog-1 form-2 lib1","s");
+
+P("deleuze","ドゥルーズ＝ガタリの差異の哲学","Deleuzian Philosophy",1972,"fr","ジル・ドゥルーズ、フェリックス・ガタリ","リゾーム／生成変化／欲望する機械",
+"同じであることより差異を、固定した存在より「生成」を根本に置く。中心も上下関係もなく四方八方につながり広がる地下茎（リゾーム）を思考のモデルとし、資本主義と精神分析が欲望を飼いならす仕組みを批判した。",
+"flux2 one1 sys-1 form-2 rev1 auth1 unc1 alien1 cons1 dial-1","ms");
+
+P("psychoanalysis","精神分析","Psychoanalysis",1900,"de","ジークムント・フロイト","無意識／エス・自我・超自我",
+"心の大部分は意識することのできない無意識であり、抑圧された欲望が、夢や言い間違いや神経症の症状として姿を現す。人間は自分の心の主人ですらない。宗教は人類の集団的な幻想だとも論じた。",
+"unc2 det1 sci1 god-2 good-1 mat1","p");
+
+P("jung","分析心理学","Analytical Psychology",1921,"de","カール・グスタフ・ユング","集合的無意識／元型／個性化",
+"個人の無意識のさらに奥に、人類に共通する「集合的無意識」があり、世界中の神話や夢にくり返し現れる「元型」を生み出している。心の中の対立する側面を統合し、本来の自己になっていく過程（個性化）を重んじた。",
+"unc2 mys1 one1 auth1 harm1","p");
+
+P("lacan","ラカン派精神分析","Lacanian Psychoanalysis",1953,"fr","ジャック・ラカン","鏡像段階／無意識は言語のように構造化されている",
+"フロイトを言語学の視点から読み直した。幼児は鏡に映った像に「自分」を見出し、言語の秩序に入ることで主体となる。しかしそのとき失われたものを求めて、人は欲望し続ける。欲望とは他者の欲望である。",
+"unc2 strc2 lang2 noself1 othr1","p");
+
+P("levinas","レヴィナスの他者の倫理","Levinasian Ethics",1961,"fr","エマニュエル・レヴィナス","他者の顔／倫理こそ第一哲学",
+"他者の「顔」は、私の理解や支配にけっして収まりきらない彼方から、「殺すなかれ」と私に呼びかけてくる。倫理は存在の理解よりも先にある第一の哲学であり、私は他者に対して限りない責任を負っている。",
+"othr2 care2 duty1 sys-2 god1 mreal1 ego-2","l");
+
+P("buber","ブーバーの対話の哲学","Dialogical Philosophy",1923,"de","マルティン・ブーバー","我と汝",
+"人は、他者や世界をモノとして扱う「我とそれ」の関係と、全人格で向き合う「我と汝」の関係を生きている。真の人生とは出会いであり、あらゆる「汝」の向こうに、永遠の汝である神がかいま見える。",
+"othr2 god2 comm1 care1 mys1","lr");
+
+P("arendt","アーレントの政治哲学","Arendtian Political Thought",1958,"us","ハンナ・アーレント","活動／複数性／悪の陳腐さ",
+"人間の営みを「労働」「仕事」「活動」に分け、多様な人々が言葉と行為によって公共の場に姿を現す「活動」を最も重んじた。全体主義を分析し、ナチスの官僚アイヒマンの裁判では、考えることをやめた平凡な人間が巨大な悪を担う「悪の陳腐さ」を指摘した。",
+"act2 othr2 lib2 comm1 state-1 pow1","s");
+
+P("postmodernism","ポストモダニズム","Postmodernism",1979,"fr","ジャン＝フランソワ・リオタール","大きな物語の終焉",
+"「理性による進歩」や「人類の解放」のように、あらゆる知や営みを正当化してきた「大きな物語」は、もはや信じられなくなった。現代の知は、互いに翻訳しきれない小さな物語や言語ゲームの寄せ集めになっている。",
+"rel2 prog-2 sys-2 cons2 form-2 mreal-2 lang1","ks");
+
+P("baudrillard","シミュラークル論","Simulacra and Simulation",1981,"fr","ジャン・ボードリヤール","シミュラークルとハイパーリアル",
+"現代の消費社会では、オリジナルをもたないコピー（シミュラークル）が増殖し、現実よりもリアルな「ハイパーリアル」が現実に取って代わっている。私たちはモノそのものではなく、モノが表す記号を消費している。",
+"maya2 cons2 alien2 econ1 nihil1 pess1 mkt-1","s");
+
+P("situationism","シチュアシオニスト","Situationism",1967,"fr","ギー・ドゥボール","スペクタクルの社会",
+"現代社会では、生きられた経験がすべてイメージの「スペクタクル」に置き換えられ、人々は受け身の観客になっている。日常生活に遊びと創造を取り戻すため、都市の漂流（デリーヴ）や既存作品の転用などの実践を行った。",
+"alien2 rev2 beau1 maya1 mkt-2 anar1 act1 hed1","sa");
+
+P("gramsci","グラムシのヘゲモニー論","Gramscian Marxism",1930,"it","アントニオ・グラムシ","文化的ヘゲモニー／陣地戦",
+"支配階級は暴力だけでなく、人々の「常識」や文化を通じて同意を取りつけることで支配を保っている（ヘゲモニー）。社会を変えるには、学校・メディア・教会などを舞台にした文化的・思想的な「陣地戦」が欠かせないと考えた。",
+"econ1 pow2 rev2 cons1 eq2 cmn-1 act1 comm1","s");
+
+P("bataille","バタイユの思想","Bataille",1949,"fr","ジョルジュ・バタイユ","呪われた部分／蕩尽とエロティシズム",
+"生命も社会も、生き延びるのに必要な以上の過剰なエネルギーを抱えており、それは祭り・供犠・贈与・エロティシズムといった非生産的な「蕩尽」として使い果たされねばならない。役に立つかどうかの論理を超える、至高の瞬間を探究した。",
+"mys1 hed1 util-2 trad-1 beau1 econ1","l");
+
+P("weil","シモーヌ・ヴェイユの思想","Simone Weil",1943,"fr","シモーヌ・ヴェイユ","注意／重力と恩寵／根をもつこと",
+"工場で働き、苦しむ人々と同じ場所に身を置こうとした哲学者。自我を空しくして、ひたすら「注意」を向けることこそ祈りであり愛である。魂を下へ引く重力に抗うものは神の恩寵だけだと考え、人が土地や共同体に「根をもつ」ことの必要を説いた。",
+"god1 care2 simp2 mys2 othr1 trad1 grace1 noself1","rl");
+
+P("teilhard","テイヤール・ド・シャルダンの進化神学","Teilhardism",1955,"fr","ピエール・テイヤール・ド・シャルダン","オメガ点",
+"古生物学者でもあったイエズス会司祭。宇宙は物質から生命へ、生命から意識へと複雑さを増しながら進化しており、その果てには人類の意識が一つに結ばれる究極点「オメガ点」、すなわち神がある。",
+"evo2 prog2 god2 telos2 one1 union1 sci1","rm");
+
+P("personalism","人格主義","Personalism",1935,"fr","エマニュエル・ムーニエ、ジャック・マリタン","人格の尊厳",
+"人間は単なる「個人」ではなく、他者との交わりの中で開かれた、かけがえのない「人格」である。むき出しの個人主義と、人間を部品のように扱う全体主義の両方を批判し、人格の尊厳を社会の中心に据えようとした。",
+"god1 othr1 comm1 lib1 mreal1 free1 care1","l");
+
+P("perennialism","永遠の哲学","Perennial Philosophy",1945,"ww","オルダス・ハクスリー、ルネ・ゲノン、フリッチョフ・シュオン","すべての宗教の根底にある一つの真理",
+"世界の偉大な宗教と神秘思想は、表面の教義の違いを超えて、同じ一つの神的な実在と、それと一体になる道を指し示している。近代の世俗化と物質主義を批判し、古い伝統に宿る叡智への回帰を説いた。",
+"one2 union2 mys2 trad2 rel-1 sci-1 alien1 after1","r");
+
+P("process","プロセス哲学","Process Philosophy",1929,"uk","アルフレッド・ノース・ホワイトヘッド","実在は過程である",
+"世界をつくっているのは固い物質の粒ではなく、刻々と生まれては消えていく「出来事」の連なりである。あらゆる出来事は過去を感じ取りながら、新しさを生み出していく。神もまた世界とともに生成するとした（プロセス神学）。",
+"flux2 psy2 god1 pant1 sys2 sci1 one1 telos1 beau1","m");
+
+P("speculative_realism","思弁的実在論・オブジェクト指向存在論","Speculative Realism / OOO",2007,"eu","カンタン・メイヤスー、グレアム・ハーマン、レイ・ブラシエ","相関主義を超えて",
+"カント以来の哲学は、「人間に現れるかぎりの世界」しか語れないという考え（相関主義）に閉じこもってきた。人間の思考から独立した実在そのものや、人間もモノも同じく汲み尽くせない「オブジェクト」として存在するあり方を思考しようとする。",
+"cons-2 flat2 god-2 sci1 sys1 form-1","m");
+
+P("new_materialism","新しい唯物論","New Materialism",2010,"us","ジェーン・ベネット、カレン・バラッド","生き生きとした物質",
+"物質は人間に使われるだけの受け身の素材ではなく、それ自体が力をもち、人間と絡み合いながら出来事を引き起こす能動的な存在である。人間中心の見方から離れ、モノや環境の働きに目を向ける。",
+"mat1 psy2 flat2 eco1 flux1 dua-2","m");
+
+P("accelerationism","加速主義","Accelerationism",2013,"uk","ニック・ランド、スルニチェク＆ウィリアムズ","資本主義と技術のプロセスを加速せよ",
+"資本主義や技術の進展を押しとどめたり懐古したりするのではなく、むしろ加速させることで、現在の体制そのものを突き抜けようとする思想。技術による解放をめざす左派と、人間を超えた技術と資本の自律を見据える右派に分かれる。",
+"tech2 prog1 trad-2 rev2 flat1 fut1 alien-1","s");
+
+P("posthumanism","ポストヒューマニズム","Posthumanism",1985,"us","ダナ・ハラウェイ、ロージ・ブライドッティ","サイボーグ宣言",
+"「人間と動物」「人間と機械」「自然と文化」といった西洋近代の境界線は揺らいでいる。人間を万物の中心と考える人間中心主義を問い直し、他の生き物やテクノロジーと絡み合った存在として、人間を捉え直そうとする。",
+"flat2 cons1 dua-2 tech1 opp1 eco1 form-2","s");
+
+P("butler","ジェンダー・パフォーマティヴィティ","Gender Performativity",1990,"us","ジュディス・バトラー","ジェンダーはくり返される行為によって作られる",
+"「男らしさ」「女らしさ」は内側にある本質の表れではなく、日々くり返されるふるまいや言葉によって、そのつど作り上げられていく。生物学的な性でさえ、社会の言説から自由ではないと論じた。",
+"cons2 opp2 form-2 lang1 pow1 body1","s");
+
+// ===== 20世紀以降：分析哲学ほか =====
+P("logical_positivism","論理実証主義","Logical Positivism",1929,"de","シュリック、ルドルフ・カルナップ、ノイラート、エイヤー","検証できない命題は無意味だ",
+"意味のある文は、論理的に真であるか、経験によって確かめられるかのどちらかだけである。神や絶対者についての形而上学的な主張は、真でも偽でもなく、そもそも「無意味」だとして哲学から追放しようとした。ウィーン学団が拠点となった。",
+"sci2 emp2 lgc2 lang2 god-2 form-1 mys-2 emo1 sys1","k");
+
+P("logical_atomism","論理的原子論","Logical Atomism",1918,"uk","バートランド・ラッセル、前期ウィトゲンシュタイン","世界は事実の総体である／語りえぬものについては沈黙しなければならない",
+"世界は、それ以上分解できない単純な事実から成り立っており、正しく整えられた言語はその構造を写し取る。前期ウィトゲンシュタインは言語の限界を示したうえで、倫理や人生の意味は語ることができず、ただ示されるだけだとした。",
+"lgc2 lang2 sys1 mys1 sci1","k");
+
+P("ordinary_language","日常言語学派","Ordinary Language Philosophy",1953,"uk","後期ウィトゲンシュタイン、J.L.オースティン、ギルバート・ライル","意味とは使用である／言語ゲーム",
+"言葉の意味は、それが指し示すモノにあるのではなく、生活の中でどう使われるか（言語ゲーム）にある。哲学の難問の多くは、言葉が日常の文脈から離れて空回りするときに生まれる混乱であり、使い方を丁寧に見れば解消される。",
+"lang2 cmn2 sys-2 form-1 cons1 prag1 lgc-1","k");
+
+P("quine","クワインの自然主義","Quinean Naturalism",1951,"us","W.V.O.クワイン","知識の網の目／経験主義の二つのドグマ",
+"私たちの知識は、一つひとつの文が個別に経験と照らし合わされるのではなく、全体として経験に向き合う「網の目」である。哲学は科学の外から科学を基礎づけるのではなく、科学と地続きの営みだと考えた。",
+"sci2 emp2 lgc2 prag1 form-1 mat1","ke");
+
+P("frege","論理主義","Logicism",1884,"de","ゴットロープ・フレーゲ、バートランド・ラッセル","数学は論理学に還元できる",
+"算数や数学は、純粋な論理だけから導き出すことができる。フレーゲはそのために現代の記号論理学を創始し、数は人間の心が作ったものではなく、客観的に実在する抽象的な対象だと考えた。",
+"lgc2 num2 form2 rsn2 lang1","k");
+
+P("math_intuitionism","数学的直観主義","Mathematical Intuitionism",1907,"eu","L.E.J.ブラウワー","数学は心による構成である",
+"数学の対象は人間の心から独立して存在するのではなく、心の中で一歩一歩構成されるものである。構成できないものの存在は認めず、無限の集合について「真か偽かどちらかだ」という排中律を使うことを拒んだ。",
+"num1 cons2 lgc-1 idl1 form-2","k");
+
+P("physicalism","物理主義（心脳同一説）","Physicalism",1960,"au","J.J.C.スマート、D.M.アームストロング","心とは脳である",
+"存在するものはすべて物理的なものであり、痛みや思考といった心の状態も、脳の状態と同じものであるか、それに還元できる。現代の心の哲学における有力な立場の一つ。",
+"mat2 dua-2 sci2 after-2 free-1 det1 psy-2 god-1 idl-2","p");
+
+P("functionalism","機能主義（心の哲学）","Functionalism",1967,"us","ヒラリー・パトナム、ジェリー・フォーダー","心は脳というハードの上で動くソフトウェアである",
+"心の状態は、それが何でできているかではなく、入力と出力、そして他の心の状態との因果的な役割（機能）によって定まる。同じ機能を果たすなら、脳細胞でもシリコンチップでも心をもちうる。人工知能の哲学的な土台でもある。",
+"mat1 dua-1 sci2 tech1 lgc1 flat1","p");
+
+P("eliminativism","消去的唯物論","Eliminative Materialism",1981,"us","ポール・チャーチランド、パトリシア・チャーチランド","「信念」や「欲求」は存在しない",
+"私たちがふだん使う「信じる」「欲しがる」といった心の言葉（素朴心理学）は、かつての「燃素（フロギストン）」のように、いずれ神経科学によって捨て去られる誤った理論である。",
+"mat2 sci2 cmn-2 noself1 dua-2 psy-2","p");
+
+P("property_dualism","性質二元論","Property Dualism",1996,"au","デイヴィッド・チャーマーズ、フランク・ジャクソン","意識のハードプロブレム／哲学的ゾンビ",
+"脳の物理的な働きをすべて説明しても、なぜそこに「赤さの感じ」のような主観的な体験（クオリア）が伴うのかは説明できない。意識は、物理的な性質には還元できない独自の性質だと主張する。",
+"dua1 mat-1 sci1 psy1 lgc1","p");
+
+P("panpsychism","汎心論","Panpsychism",2006,"uk","フィリップ・ゴフ、ガレン・ストローソン","意識は物質の根本的な性質である",
+"意識は、脳のような複雑なシステムに突然あらわれるのではなく、電子のような物質の最も基本的な構成要素にも、ごく原初的な形で備わっている。物理学は物質の振る舞いを語るが、その内側の本性は「経験」なのかもしれない。",
+"psy2 dua-1 one1 sci1 idl1 flat1","pm");
+
+P("mysterianism","新神秘主義","New Mysterianism",1989,"uk","コリン・マッギン","心身問題は人間には解けない",
+"意識と脳がどう結びついているかという問題には、たしかに答えがある。だが人間の認知能力には限界があるため、私たちには原理的にそれを理解できない。犬が微積分を理解できないのと同じように。",
+"skep1 mat1 dua-1 sci0","p");
+
+P("behaviorism","論理的行動主義","Logical Behaviorism",1949,"uk","ギルバート・ライル","機械の中の幽霊",
+"デカルトの心身二元論は、身体という機械の中に「幽霊」が住んでいると考えるカテゴリーの取り違えである。心について語ることは、ある状況でどうふるまうかという行動の傾向について語ることにほかならない。",
+"dua-2 lang2 mat1 cmn1 sci1 unc-1","p");
+
+P("neutral_monism","中立一元論","Neutral Monism",1921,"uk","ウィリアム・ジェームズ、バートランド・ラッセル、エルンスト・マッハ","心でも物でもない第三のもの",
+"世界の究極の素材は、心的なものでも物理的なものでもない中立的なもの（純粋経験や感覚要素）である。それが一方の仕方で組み合わさると「心」に、別の仕方で組み合わさると「物」に見える。",
+"one2 dua-2 mat-1 idl-1 emp2","mp");
+
+P("emergentism","創発主義","Emergentism",1925,"uk","サミュエル・アレクサンダー、C.D.ブロード","全体は部分の総和以上のものである",
+"物質が複雑に組織化されると、生命や意識のように、部分からは予測できない新しい性質が「創発」する。それは物質に支えられながらも、物質には還元できない独自の実在性をもつ。",
+"mat1 dua-1 sci1 evo1 flux1 free1","pm");
+
+P("modal_realism","様相実在論","Modal Realism",1986,"us","デイヴィッド・ルイス","可能世界は実在する",
+"「〜だったかもしれない」という可能性についての話は、実在する無数の可能世界についての話である。それらの世界は私たちの世界と同じくらい具体的に存在しており、「現実」とは単に私たちがいる世界のことにすぎない。",
+"lgc2 sys1 cmn-2 mat1","m");
+
+P("scientific_realism","科学的実在論","Scientific Realism",1970,"us","リチャード・ボイド、初期のパトナム","科学の成功は奇跡ではない",
+"成熟した科学理論は、電子や遺伝子のように直接は見えないものも含め、世界の本当の姿をおおよそ正しく描いている。そうでなければ、科学がこれほど驚くべき予測に成功することは奇跡になってしまう。",
+"sci2 cons-2 mat1 cmn1 rel-2 emp1 prog1","k");
+
+P("critical_rationalism","批判的合理主義","Critical Rationalism",1934,"uk","カール・ポパー","反証可能性／開かれた社会",
+"科学の理論は決して完全には証明できないが、誤りを示すこと（反証）はできる。反証の可能性に開かれた大胆な仮説と、厳しい批判のくり返しによって知識は成長する。政治においても、誤りを正せる「開かれた社会」を擁護し、全体主義を批判した。",
+"sci2 skep1 rsn1 lib2 prog1 sys-1 rev-1 cons-1","ks");
+
+P("kuhn","パラダイム論","Paradigm Theory",1962,"us","トマス・クーン","科学革命の構造",
+"科学は事実を一つずつ積み上げて一直線に進歩するのではない。ある時代の科学者たちが共有する枠組み（パラダイム）のもとで研究が進み、説明できない変則が積み重なると、世界の見方そのものを一変させる「科学革命」が起こる。",
+"cons1 rel1 sci1 prog-1 strc1","k");
+
+P("feyerabend","認識論的アナキズム","Epistemological Anarchism",1975,"us","ポール・ファイヤアーベント","何でもかまわない",
+"科学に、いつでもどこでも通用する唯一の方法などない。歴史上の科学の飛躍は、むしろ当時の方法論のルールを破ることで起きてきた。科学は、神話や他の知の伝統に対して特権的な地位をもつべきではないと主張した。",
+"rel2 sci-2 anar1 cons1 sys-2 lib1","k");
+
+P("bayesianism","ベイズ主義","Bayesianism",1960,"uk","フランク・ラムジー、ブルーノ・デ・フィネッティ、リチャード・ジェフリー","信念の度合いは確率である",
+"私たちの信念は「正しいか間違いか」の二択ではなく、確からしさの度合い（確率）をもっている。新しい証拠を手に入れたら、ベイズの定理に従って、その度合いを合理的に更新していくべきだ。",
+"num1 lgc2 sci1 rsn1 prag1 emp1","ke");
+
+P("moral_realism","道徳的実在論","Moral Realism",1903,"uk","G.E.ムーア、W.D.ロス、デレク・パーフィット","善は定義できないが、直観できる",
+"「善い」「正しい」といった道徳的な事実は、人々の感情や文化とは独立に、客観的に成り立っている。ムーアは、善を快楽のような自然の性質で定義してしまう誤り（自然主義的誤謬）を指摘し、善は直観によってとらえられるとした。",
+"mreal2 rsn1 emo-2 rel-2 duty1","l");
+
+P("emotivism","情緒主義・表出主義","Emotivism / Expressivism",1936,"uk","A.J.エイヤー、C.L.スティーヴンソン、サイモン・ブラックバーン","「盗みは悪い」とは「盗み、ブー！」ということだ",
+"道徳的な言葉は、世界についての事実を述べているのではなく、話し手の賛成や反対の感情・態度を表し、他人にもそう感じるよう促すものである。だから道徳的な言明は、真でも偽でもない。",
+"emo2 mreal-2 lang1 sci1 god-1","l");
+
+P("error_theory","道徳的錯誤理論","Moral Error Theory",1977,"uk","J.L.マッキー","倫理学：正と邪の発明",
+"私たちの道徳の言葉は、客観的な価値が存在することを前提している。しかし、そんな奇妙な性質は世界のどこにも見当たらない。だから道徳的な主張はすべて、体系的に誤っていると論じた。",
+"mreal-2 nihil1 mat1 sci1 emo1 rel1","l");
+
+P("contractualism","契約主義","Contractualism",1998,"us","T.M.スキャンロン","誰も合理的に拒否できない原則",
+"道徳的に正しい行為とは、関係するどの人も合理的には拒否できないような原則によって許される行為である。道徳とは、互いに理由を示して正当化し合える関係を、他者と結ぶことだ。",
+"cont2 othr1 rsn1 duty1 mreal1 util-1","l");
+
+P("rawls","ロールズの正義論","Rawlsian Liberalism",1971,"us","ジョン・ロールズ","無知のヴェール／公正としての正義",
+"自分が社会でどんな立場に生まれるかわからない「無知のヴェール」の向こうで選ぶなら、人は、基本的な自由の平等と、最も恵まれない人々の暮らしを最大限に良くする格差だけを認める原理を選ぶだろう。現代リベラリズムの金字塔。",
+"eq2 lib2 cont2 duty1 util-1 rsn1 care1","s");
+
+P("libertarianism","リバタリアニズム","Libertarianism",1974,"us","ロバート・ノージック、F.A.ハイエク","最小国家／自己所有権",
+"人は自分の身体と、自分の労働の成果を所有する権利をもつ。国家の役割は、暴力・盗み・詐欺から人々を守る「最小国家」に限られるべきであり、再分配のための課税は、他人のための強制労働に等しいと論じた。",
+"lib2 mkt2 eq-2 state-2 duty1 ego1 cont1 comm-1","s");
+
+P("ancap","無政府資本主義","Anarcho-capitalism",1970,"us","マレー・ロスバード、デイヴィッド・フリードマン","国家なき自由市場",
+"国家は税という名の強制的な収奪によって成り立つ不当な存在である。警察や裁判や防衛まで含め、あらゆるサービスは自由な市場の中で、自発的な契約によって提供されるべきだと主張する。",
+"anar2 mkt2 lib2 state-2 eq-2 ego1 comm-2","s");
+
+P("objectivism","オブジェクティヴィズム","Objectivism",1957,"us","アイン・ランド","利己主義という美徳",
+"現実は人の意識とは独立に客観的に存在し、理性だけがそれを知る手段である。人は自分自身の幸福を人生の最高の目的とする「合理的な利己主義」を生きるべきで、他人のために自分を犠牲にしてはならない。自由放任の資本主義こそが唯一道徳的な体制だとした。",
+"ego2 mkt2 rsn2 lib2 mreal2 god-2 cons-2 care-2 eq-2 auth1 faith-2 cmn1","ls");
+
+P("communitarianism","共同体主義","Communitarianism",1981,"us","アラスデア・マッキンタイア、マイケル・サンデル、チャールズ・テイラー","負荷なき自己への批判",
+"人は、共同体の伝統や人間関係から切り離された「負荷なき自己」ではない。自分が何者であるかは、家族や地域や国の物語の中で形づくられる。だから、共通の善について語ることを避ける中立的なリベラリズムには限界があると批判した。",
+"comm2 trad1 virt1 lib-1 cont-1 othr1 mkt-1","s");
+
+P("republicanism","共和主義","Civic Republicanism",1997,"uk","フィリップ・ペティット、クエンティン・スキナー","支配されないことこそが自由",
+"自由とは、単に干渉されないことではなく、他人の気まぐれな意志に支配されうる状態にないことである。古代ローマ以来の伝統を受け継ぎ、市民が公共の事柄に積極的に参加し、権力を監視し合う制度こそが自由を守ると説く。",
+"lib1 comm1 act1 virt1 pow1 cont1","s");
+
+P("capability","ケイパビリティ・アプローチ","Capability Approach",1985,"us","アマルティア・セン、マーサ・ヌスバウム","何ができ、何になれるか",
+"人の豊かさを、所得の多さや満足感の大きさではなく、その人が価値あると思う生き方を実際に選び取れる力（ケイパビリティ）で測るべきだ。開発や正義を、人々の実質的な自由の拡大として捉え直した。",
+"lib1 eq1 care1 virt1 prog1 cosmo1","s");
+
+P("care_ethics","ケアの倫理","Ethics of Care",1982,"us","キャロル・ギリガン、ネル・ノディングス","正義の倫理から、ケアの倫理へ",
+"普遍的な原則や権利を中心とする倫理に対して、目の前の具体的な他者との関係の中で、相手のニーズに応え気づかうことこそが道徳の核心だと考える。人間を、互いに依存し支え合う存在として出発点に据える。",
+"care2 othr2 comm1 duty-1 rsn-1 opp1 util-1","l");
+
+P("virtue_ethics","現代の徳倫理学","Virtue Ethics",1958,"uk","エリザベス・アンスコム、フィリッパ・フット、ロザリンド・ハーストハウス","「何をすべきか」より「どんな人であるべきか」",
+"規則に従うことや結果を計算することばかりに注目してきた近代の倫理学を批判し、アリストテレスの伝統に立ち返って、正直さ・勇気・思いやりといった「徳」と、人間として善く生きることを倫理の中心に据え直した。",
+"virt2 telos1 duty-1 util-1 mreal1 comm1","l");
+
+P("divine_command","神命説","Divine Command Theory",1300,"eu","ウィリアム・オッカム、ロバート・アダムズ","善とは神が命じることである",
+"ある行為が善いのは、神がそれを命じるからであり、悪いのは神がそれを禁じるからである。道徳の究極の根拠は神の意志にある。「神が命じるから善いのか、善いから神が命じるのか」というエウテュプロンのジレンマをめぐって論争が続く。",
+"god2 duty2 faith2 mreal2 rsn-1","rl");
+
+P("effective_altruism","効果的利他主義","Effective Altruism",2009,"uk","ピーター・シンガー、ウィル・マッカスキル、トビー・オード","最大の善を、最も効果的に",
+"限られたお金や時間で最も多くの善をなすにはどうすればよいかを、証拠と理性にもとづいて考え、実行する運動。遠い国の貧しい人々、動物、将来の世代への支援も、身近な人への支援と同じように真剣に考える。",
+"util2 rsn1 sci2 cosmo2 anim1 care1 fut1 act2","l");
+
+P("longtermism","長期主義","Longtermism",2019,"uk","ウィル・マッカスキル、トビー・オード、ニック・ボストロム","未来の人々も同じように重要だ",
+"これから生まれてくる膨大な数の未来の人々の幸福も、今を生きる人々の幸福と同じように重要である。だから人類の長期的な未来を良くすること、とりわけ人類滅亡のリスクを減らすことこそが、現代の最優先課題だと主張する。",
+"fut2 util2 tech1 sci1 cosmo1","l");
+
+P("animal_liberation","動物解放論","Animal Liberation",1975,"au","ピーター・シンガー、トム・リーガン","種差別への批判",
+"人種や性別によって差別することが不当であるように、苦しむことのできる存在を「人間ではない」という理由だけで軽んじるのは「種差別」である。工場畜産や動物実験を厳しく批判し、菜食を勧めた。",
+"anim2 util1 care1 eq1 flat1","l");
+
+P("deep_ecology","ディープ・エコロジー","Deep Ecology",1973,"eu","アルネ・ネス、アルド・レオポルド","生命圏平等主義",
+"自然は人間のための資源ではない。あらゆる生き物と生態系は、人間の役に立つかどうかとは無関係に、それ自体で価値をもつ。人間中心の文明のあり方を根本から見直し、自己を自然全体へと広げていく生き方を説く。",
+"eco2 flat2 anim1 one1 nat2 simp1 alien1 tech-1 prog-1","l");
+
+P("antinatalism","反出生主義","Antinatalism",2006,"ww","デイヴィッド・ベネター、（シオラン、ショーペンハウアー）","生まれてこないほうが良かった",
+"生まれてこなければ苦痛を味わうことはない。苦痛がないことは良いことだが、快楽がないことは、それを奪われる誰もいない以上、悪いことではない。この非対称性から、新たな命を生み出すことは常に害だと論じる。",
+"anti2 pess2 hed1 care1 util1","l");
+
+P("transhumanism","トランスヒューマニズム","Transhumanism",1990,"us","ニック・ボストロム、マックス・モア、レイ・カーツワイル","人間の限界を技術で超えよ",
+"老化・病気・知能の限界は、変えられない運命ではなく、科学技術によって克服すべき課題である。遺伝子工学・人工知能・脳とコンピュータの接続などを通じて、人間をより健康で賢く長生きな存在へと進化させようとする。",
+"tech2 prog2 sci2 fut1 lib1 nat-2 trad-2","ls");
+
+P("solipsism","独我論","Solipsism",1650,"eu","（特定の提唱者は少なく、思考実験として論じられる）","確かに存在するのは私の心だけ",
+"私が確実に知ることができるのは、私自身の心の中身だけである。外の世界も他人の心も、私の意識の内容にすぎないかもしれない。論駁するのは驚くほど難しいが、本気で主張する哲学者はほとんどいない。",
+"idl2 skep2 othr-2 mat-2","e");
+
+P("feminism","フェミニズム哲学","Feminist Philosophy",1970,"us","ケイト・ミレット、キャサリン・マッキノン、ベル・フックス","個人的なことは政治的なことだ",
+"家庭や恋愛や身体といった「私的」とされてきた領域にも、男性による支配の構造が張りめぐらされている。哲学そのものが男性の視点から作られてきたことを問い直し、あらゆる性差別の廃止をめざす。",
+"opp2 cons1 eq2 rev1 care1 pow1 body1","s");
+
+P("ecofeminism","エコフェミニズム","Ecofeminism",1974,"fr","フランソワーズ・ドボンヌ、ヴァンダナ・シヴァ","自然の支配と女性の支配は根が同じ",
+"自然を搾取する論理と、女性を支配する論理は、同じ家父長的な世界観から生まれている。生命と暮らしを支えるケアの営みを軸に、エコロジーとフェミニズムを結びつける。",
+"eco2 opp2 care1 nat1 flat1 alien1 mkt-1","sl");
+
+P("critical_race","批判的人種理論","Critical Race Theory",1989,"us","デリック・ベル、キンバリー・クレンショー","交差性（インターセクショナリティ）",
+"人種差別は一部の人の偏見ではなく、法や制度の中に組み込まれた構造である。人種・性別・階級などの差別は交差し合い、重なり合って人を抑圧すると論じた。",
+"opp2 pow2 cons2 rev1 eq1","s");
+
+P("postcolonialism","ポストコロニアリズム","Postcolonialism",1978,"ww","エドワード・サイード、ガヤトリ・スピヴァク、ホミ・バーバ","オリエンタリズム／サバルタンは語ることができるか",
+"植民地支配が終わった後も、西洋が「東洋」や「未開」を一方的に描き出す知の枠組みは、支配の道具として生き続けている。抑圧された人々の声が、いかに聞き取られずにきたかを問う。",
+"opp2 pow2 cons2 rel1 lang1 strc1 cosmo-1","s");
+
+P("reformed_epistemology","改革派認識論","Reformed Epistemology",1983,"us","アルヴィン・プランティンガ、ニコラス・ウォルターストーフ","神への信念は「基礎的」でありうる",
+"他人に心があると信じるのに証明がいらないように、神への信念も、証拠や論証がなくても合理的に正当化されうる。信仰は理性に反するものではなく、人間に自然に備わった認識の働きだと主張した。",
+"god2 faith1 rsn1 cmn2 mreal1","re");
+
+P("new_atheism","新無神論","New Atheism",2006,"uk","リチャード・ドーキンス、サム・ハリス、ダニエル・デネット、クリストファー・ヒッチンズ","神は妄想である",
+"神の存在は科学的に支持できない仮説であり、宗教は批判を免れる特権をもつべきではない。進化論と科学的な世界観にもとづいて、宗教を積極的に批判し、理性にもとづく社会を訴えた。",
+"god-2 sci2 faith-2 mat2 evo2 rsn2 mys-2 after-2","r");
+
+P("agnosticism","不可知論","Agnosticism",1869,"uk","T.H.ハクスリー、（プロタゴラス）","神の存在は知りえない",
+"神が存在するかどうかは、人間には確かめようがない。だから「存在する」とも「存在しない」とも断言せず、判断を保留するのが誠実な態度である。ダーウィンの擁護者ハクスリーがこの言葉を作った。",
+"skep2 god0 sci1 faith-1 mys-1 after0","r");
+
+P("secular_humanism","世俗的ヒューマニズム","Secular Humanism",1933,"us","ポール・カーツ、バートランド・ラッセル","神なしで善く生きる",
+"超自然的なものに頼らず、理性・科学・共感にもとづいて、人間の尊厳と幸福を追求する。道徳は神の命令ではなく人間どうしの思いやりから生まれ、人生の意味は私たち自身が作り出すものだと考える。",
+"god-2 sci2 rsn2 care1 lib1 prog1 good1 mreal1 faith-2","l");
+
+P("rorty","ネオプラグマティズム","Neopragmatism",1979,"us","リチャード・ローティ","哲学は自然の鏡ではない",
+"言葉や心が世界を正確に「映し出す」という考えは捨てるべきだ。真理とは、私たちの共同体の中でうまくいく語り方のことにすぎない。哲学は確実な基礎を求めるのをやめ、残酷さを減らすための終わりのない会話になるべきだとした。",
+"prag2 rel1 cons1 sys-2 lib2 form-2","e");
+
+P("cosmopolitanism","現代コスモポリタニズム","Cosmopolitanism",1994,"us","マーサ・ヌスバウム、クワメ・アンソニー・アピア","世界市民としての責任",
+"国籍や民族は偶然の産物にすぎず、道徳的な配慮は国境で途切れるべきではない。ストア派やカントの伝統を受け継ぎ、遠く離れた見知らぬ人々に対しても責任を負う「世界市民」としての生き方を説く。",
+"cosmo2 eq1 care1 nation-2 lib1","s");
+
+P("dialetheism","両真主義","Dialetheism",1987,"au","グレアム・プリースト","真なる矛盾は存在する",
+"「この文は偽である」のようなパラドックスを前に、ある文とその否定がどちらも真であることがありうると認める。矛盾があっても何でも導けてしまわない特別な論理（矛盾許容論理）を使って、矛盾と共存しようとする。",
+"lgc2 dial2","k");
+
+// ===== 中国・朝鮮 =====
+P("confucianism","儒家思想（孔子）","Confucianism",-500,"cn","孔子","仁と礼／己の欲せざる所は人に施すこと勿れ",
+"人を愛する心「仁」と、それを形にした社会の規範「礼」によって、人は徳を身につけ、社会は調和する。親や年長者を敬う「孝」を出発点に、家族から国家へと秩序を広げていく。力ではなく、為政者の徳によって治める政治を理想とした。",
+"rite2 fam2 virt2 comm2 trad2 care1 harm1 good1 act1 god0","ls");
+
+P("mencius","孟子の性善説","Mencius",-320,"cn","孟子","四端の心／易姓革命",
+"井戸に落ちそうな子どもを見れば、誰でもとっさに助けようとする。人の本性は善であり、その芽（四端）を大切に育てれば徳が完成する。民を苦しめる暴君は天命を失ったのであり、倒されてもかまわないとまで説いた。",
+"good2 care2 virt2 fam1 rite1 comm1 rev1","l");
+
+P("xunzi","荀子の性悪説","Xunzi",-260,"cn","荀子","人の性は悪、その善なる者は偽（作為）なり",
+"人の本性は利己的な欲望であり、放っておけば奪い合いが起こる。善は生まれつきのものではなく、学問と礼（社会の規範）によって後から矯正して作り上げるものだ。天は人の世に関心をもたない自然にすぎないとした。",
+"good-2 rite2 trad1 virt1 state1 god-2 nat-1 sci1","l");
+
+P("zhuxi","朱子学","Zhu Xi Neo-Confucianism",1175,"cn","朱熹（朱子）","理気二元論／性即理／格物致知",
+"宇宙は、万物の原理である「理」と、万物の素材となるエネルギー「気」からできている。人の本性はそのまま理であり（性即理）、物事の理を一つひとつ窮めていくことで聖人に至れる。東アジア全体で正統の学問となった。",
+"form2 rsn1 sys2 virt2 rite2 fam2 trad2 mreal2 harm1 dua1 good1","ml");
+
+P("yangming","陽明学","Wang Yangming School",1510,"cn","王陽明","心即理／知行合一／致良知",
+"理は外の事物にあるのではなく、自分の心そのものにある（心即理）。人は誰でも、善悪を見分ける「良知」を生まれながらに備えており、知ることと行うことはもともと一つである（知行合一）。幕末日本の志士たちにも大きな影響を与えた。",
+"act2 idl1 good2 mys1 auth1 sys-1 virt1 rsn-1","l");
+
+P("taoism","老子の道家思想","Taoism",-400,"cn","老子","無為自然／上善は水の如し",
+"万物を生み出す根源は、名づけることもできない「道（タオ）」である。人は作為や欲を捨て、水のように柔らかく、低いところに身を置いて、自然のままに生きるべきだ。為政者も余計なことをしない「無為」によってこそ国はよく治まる。",
+"nat2 simp2 harm2 void1 one1 mys1 lang-1 trad-1 rite-2 state-1 hide1 act-1 calm1","ml");
+
+P("zhuangzi","荘子の思想","Zhuangzi",-300,"cn","荘子","胡蝶の夢／万物斉同／逍遥遊",
+"夢で蝶になった荘子は、目覚めたあと、自分が蝶の夢を見ていたのか、蝶が今の自分の夢を見ているのか分からなくなった。善悪・美醜・生死といった区別は人間の小さな物差しにすぎず、万物は本来ひとしい。とらわれを離れて、自由に遊ぶ境地を説いた。",
+"rel2 one1 nat2 hide2 flux2 calm2 skep1 maya1 auth1 rite-2 state-2 lang-1","ml");
+
+P("legalism","法家思想","Legalism",-250,"cn","韓非、商鞅","信賞必罰",
+"人は利益を求め、罰を恐れて動く存在である。道徳や礼に頼る政治は役に立たない。君主は、誰にでも明らかな厳格な法と、確実な賞罰によって国を治めるべきだとした。秦による中国統一を支えた思想である。",
+"state2 good-2 duty1 rite-2 trad-2 virt-1 lib-2 util1 ego1 care-1","s");
+
+P("mohism","墨家思想","Mohism",-430,"cn","墨子","兼愛・非攻",
+"自分の家族も他人の家族も分け隔てなく愛せよ（兼愛）。侵略戦争を否定し（非攻）、城を守る技術集団として弱い国を助けた。贅沢な葬儀や音楽を無駄として退け、社会全体の利益を基準にした点で、功利主義の先駆ともいわれる。",
+"util2 care2 simp2 cosmo1 eq1 fam-1 rite-1 beau-2 god1","ls");
+
+P("names","名家（論理学派）","School of Names",-300,"cn","公孫竜、恵施","白馬は馬に非ず",
+"言葉と、それが指し示す実物との関係を突き詰めた古代中国の論理学派。「白い馬は馬ではない」のような一見奇妙な命題を論証してみせ、概念の区別の問題を鋭く問うた。",
+"lang2 lgc2 rel1","k");
+
+P("yinyang","陰陽五行思想","Yin-Yang & Five Phases",-300,"cn","鄒衍","陰陽と五行（木・火・土・金・水）",
+"万物は陰と陽という二つの対立しつつ補い合う気の働きと、木・火・土・金・水という五つの要素の循環によって生まれ、変化する。暦・医学・風水・政治にまで応用され、東アジアの世界観の土台となった。",
+"harm2 flux2 dial1 one1 sys2 num1","m");
+
+P("yangzhu","楊朱の為我説","Yangism",-380,"cn","楊朱","一毛を抜いて天下を利するも為さず",
+"何よりも自分自身の生命と身体を大切にせよ。たとえ髪の毛一本を抜くだけで天下の役に立つとしても、それはしない。孟子からは「君主を無視する」と激しく批判されたが、権力に仕えることへの拒否でもあった。",
+"ego2 hed1 hide1 nat1 simp-1","l");
+
+P("korean_confucian","朝鮮儒学（性理学）","Korean Neo-Confucianism",1560,"kr","李退渓（李滉）、李栗谷（李珥）","四端七情論争",
+"朝鮮王朝の国教となった朱子学を独自に深めた学問。人の善なる心（四端）と、喜怒哀楽などの感情（七情）が、理と気のどちらから生じるのかをめぐって、李退渓と奇大升らが長く論争した。",
+"form2 virt2 rite2 fam2 mreal2 trad2 good1 rsn1 sys1","l");
+
+P("donghak","東学思想","Donghak",1860,"kr","崔済愚、崔時亨","人乃天（人すなわち天）",
+"西洋の学問（西学）に対抗して生まれた朝鮮の民衆思想。人の心に天（ハヌルニム）が宿っており、人はすべて天として等しく尊い。身分制度を否定し、のちに大規模な農民蜂起の原動力となった。",
+"pant1 eq2 god1 one1 good1 rev1 comm1","rs");
+
+// ===== インド・チベット =====
+P("advaita","不二一元論ヴェーダーンタ","Advaita Vedanta",750,"in","シャンカラ","梵我一如／世界はマーヤー（幻）",
+"宇宙の根本原理ブラフマン（梵）と、個人の本当の自己アートマン（我）は、もともと一つである。多様に見えるこの世界はマーヤー（幻力）が見せる仮の姿にすぎず、この真理を悟ることで輪廻から解脱する。",
+"one2 maya2 libr2 union2 mys2 after2 idl2 noself-2 simp1","mr");
+
+P("vishishtadvaita","限定不二一元論","Vishishtadvaita",1100,"in","ラーマーヌジャ","神への信愛（バクティ）",
+"世界も一人ひとりの魂も実在であり、人格神ヴィシュヌの「身体」として神のうちに包まれている。解脱は知識だけでなく、神への献身的な愛（バクティ）と、神の恩寵によってもたらされる。",
+"god2 grace2 union1 libr2 after2 one1 care1 maya-1 faith1","r");
+
+P("dvaita","二元論ヴェーダーンタ","Dvaita Vedanta",1250,"in","マドヴァ","神と魂は永遠に別である",
+"神（ヴィシュヌ）と個々の魂と物質は、それぞれ永遠に異なる実在である。魂が神と一つになることはない。魂は神への信愛と神の恩寵によってのみ救われ、救われてもなお神を仰ぎ見る者であり続ける。",
+"god2 one-2 grace2 libr2 after2 maya-2 faith1","r");
+
+P("samkhya","サーンキヤ学派","Samkhya",-300,"in","カピラ（伝承上）、イーシュヴァラクリシュナ","純粋精神（プルシャ）と根本物質（プラクリティ）",
+"世界は、ただ見つめるだけの純粋な精神プルシャと、あらゆるものを生み出す根本物質プラクリティの二つからなる。苦しみは、精神が物質の働きを自分自身だと取り違えることから生まれ、その区別を知ることで解脱に至る。",
+"dua2 libr2 after2 god-1 sys2 rsn1 one-2","m");
+
+P("yoga","ヨーガ学派","Yoga Philosophy",200,"in","パタンジャリ","ヨーガとは心の作用の止滅である",
+"サーンキヤの世界観を土台に、瞑想によって心の揺れ動きを静めていく実践の体系。戒律・姿勢・呼吸・感覚の制御・集中・瞑想などの八つの段階を経て、精神が物質から離れて独り立つ境地に至る。",
+"dua2 libr2 mys2 calm2 simp2 body1 after2 god1 act1","rl");
+
+P("nyaya","ニヤーヤ学派","Nyaya",150,"in","ガウタマ（アクシャパーダ）","正しい認識の手段（プラマーナ）",
+"正しい知識は、知覚・推論・類推・信頼できる証言という四つの手段によって得られる。論証の形式を精密に研究したインド論理学の中心であり、推論によって世界を作った神の存在を論証しようとした。",
+"lgc2 rsn2 god1 libr1 emp1 cmn1 sys1 after1","ek");
+
+P("vaisheshika","ヴァイシェーシカ学派","Vaisheshika",-200,"in","カナーダ","原子論と六つのカテゴリー",
+"世界を、実体・性質・運動・普遍・特殊・内属という六つのカテゴリーに分類して説明した。地・水・火・風はそれぞれ目に見えない原子からできているとする、古代インドの自然哲学である。",
+"mat1 sys2 sci1 libr1 after1 rsn1 one-1 form1","m");
+
+P("mimamsa","ミーマーンサー学派","Mimamsa",-200,"in","ジャイミニ、クマーリラ","ヴェーダの祭祀（ダルマ）",
+"聖典ヴェーダは誰かが作ったものではなく、永遠に存在する言葉である。その命じる祭祀を正しく行うこと（ダルマ）こそが人間の務めであり、祭祀の力によって天界での果報が得られると考えた。",
+"rite2 duty2 trad2 god-1 after1 faith1 lang1","r");
+
+P("charvaka","チャールヴァーカ（ローカーヤタ）","Charvaka",-600,"in","ブリハスパティ（伝承上）、アジタ・ケーサカンバリン","この世がすべて",
+"実際に知覚できるものだけが実在する。魂も来世も神も存在せず、身体は四元素の結合にすぎないから、死ねばすべてが終わる。だから生きているうちに人生の喜びを味わい尽くすべきだと説いた、古代インドの唯物論。",
+"mat2 hed2 emp2 after-2 god-2 rite-2 skep1 libr-2 trad-2","ml");
+
+P("jainism","ジャイナ教の哲学","Jain Philosophy",-500,"in","マハーヴィーラ","アヒンサー（不殺生）／アネーカーンタ（多面性）",
+"あらゆる生き物、植物や小さな虫にまで魂が宿っており、それを傷つけないこと（アヒンサー）を徹底する。真理は多面的で、どんな主張も一つの見方にすぎない。厳しい苦行によって魂にこびりついた業を払い、解脱をめざす。",
+"anim2 psy2 simp2 libr2 after2 rel1 god-2 care2 flat1 dua1","lr");
+
+P("theravada","初期仏教・上座部仏教","Early Buddhism / Theravada",-450,"in","ゴータマ・ブッダ","諸行無常・諸法無我・一切皆苦／四諦八正道",
+"人生は思いどおりにならない苦であり、その原因は渇愛（執着）にある。あらゆるものは移ろい（無常）、変わらない自我などどこにもない（無我）。正しい見方・正しい行いなど八つの道を実践して執着を滅すれば、苦しみの消えた涅槃に至る。",
+"noself2 flux2 libr2 pess1 simp2 calm2 care1 god-1 after1 virt1 act1 emp1 anim1","lr");
+
+P("madhyamaka","中観派（空の思想）","Madhyamaka",150,"in","龍樹（ナーガールジュナ）","空（くう）／縁起／中道",
+"あらゆるものは、他との関わり合い（縁起）の中でのみ成り立っており、それ自体で存在する固定した本性をもたない。すなわち「空」である。「ある」と「ない」という両極端を離れた中道を説き、大乗仏教の哲学的な土台を築いた。",
+"void2 noself2 flux1 lgc1 skep1 maya1 libr2 form-2 lang1","mr");
+
+P("yogacara","唯識派","Yogacara",350,"in","無著（アサンガ）、世親（ヴァスバンドゥ）","唯識無境（ただ識のみがあり、外界はない）",
+"私たちが外の世界だと思っているものは、心（識）が生み出した表象にすぎない。心の最も深い層にある「阿頼耶識」が、あらゆる経験の種子を蓄え、世界を映し出している。心の深層を分析した点で、無意識の理論の先駆ともいわれる。",
+"idl2 maya2 noself1 unc2 libr2 mat-2","mp");
+
+P("vajrayana","チベット密教","Vajrayana",750,"tb","パドマサンバヴァ、ツォンカパ","慈悲と空／菩提心",
+"大乗仏教の空の哲学と慈悲の実践を土台に、真言・曼荼羅・瞑想・師からの秘密の伝授といった密教の技法を用いて、この身のままでの悟りをめざす。すべての生き物を救おうとする菩提心を何より重んじる。",
+"mys2 libr2 rite2 after2 body1 noself1 void1 care2","r");
+
+P("sikhism","シク教の思想","Sikhism",1500,"in","グル・ナーナク","神は一つ／奉仕と平等",
+"神は唯一であり、あらゆる宗教の違いを超えている。カースト制度や偶像崇拝を否定し、神の名を心に念じ、正直に働き、得たものを分かち合う日々の暮らしの中で神と一つになることを説いた。",
+"god2 one1 eq2 act1 care1 union1 rite-1","r");
+
+P("gandhism","ガンディー主義","Gandhism",1909,"in","マハトマ・ガンディー","サティヤーグラハ（真理の把持）／非暴力",
+"真理と非暴力（アヒンサー）を貫き、不正な支配に対しては暴力ではなく、不服従と自己犠牲によって抵抗する。近代の機械文明を批判し、村落の自給自足と簡素な生活を理想とした。インド独立運動の精神的な支柱となった。",
+"care2 simp2 anim1 act2 rev1 god1 duty1 mreal1 alien1 comm1","ls");
+
+P("aurobindo","オーロビンドのインテグラル・ヨーガ","Integral Yoga",1914,"in","シュリ・オーロビンド","精神の進化と超心",
+"宇宙は物質から生命、生命から心へと進化してきたが、進化はまだ終わっていない。人間の心を超えた「超心（スーパーマインド）」が地上に降りてくることで、人類は神的な存在へと変容していく。独立運動家から神秘家へと転じた人物の思想。",
+"one2 evo1 prog2 mys2 union1 telos2 idl1 after1","rm");
+
+P("ambedkar","アンベードカルの思想","Ambedkarite Buddhism",1956,"in","B.R.アンベードカル","カーストの否定と仏教への改宗",
+"不可触民として差別を受けた経験から、カースト制度を根本的に批判した。インド憲法の起草を主導し、晩年には数十万の人々とともに仏教に改宗して、平等と理性にもとづく新しい仏教を打ち立てた。",
+"eq2 opp2 rev1 rsn1 god-1 noself1 lib1","s");
+
+// ===== 日本 =====
+P("shinto","神道の思想","Shinto",700,"jp","（古事記・日本書紀）、のちに本居宣長・平田篤胤ら","八百万の神／清き明き心",
+"山・川・木・岩・風など、自然のあらゆるものに神（カミ）が宿る。唯一の創造神や教祖・教義をもたず、祭りと祈りを通じて神々と人との調和を保ち、けがれを祓って「清き明き心」で生きることを重んじる。",
+"psy2 nat2 rite2 trad2 pant1 comm1 flat1 god-1","r");
+
+P("animism","アニミズム","Animism",-10000,"ww","世界各地の先住民の世界観、（タイラーが命名）","すべてのものに魂が宿る",
+"人間だけでなく、動物・植物・山・川・石にも魂や霊が宿っていると考える、人類最古とも言われる世界観。人間は自然の中の数多くの存在の一つであり、他の存在と互いに敬意を払いながら関係を結んで生きる。",
+"psy2 nat2 flat2 rite1 eco1 after1 comm1","r");
+
+P("pureland","浄土教（法然・親鸞）","Pure Land Buddhism",1175,"jp","法然、親鸞（中国の曇鸞・善導）","南無阿弥陀仏／他力本願／悪人正機",
+"末法の世の凡夫は、自分の力で修行して悟ることはできない。ただ阿弥陀仏の本願の力（他力）を信じ、念仏を称えれば、誰でも極楽浄土に往生できる。親鸞は、自らの罪深さを自覚する悪人こそが救いの目当てだと説いた。",
+"grace2 faith2 after2 libr1 good-1 care1 rsn-1","r");
+
+P("shingon","真言密教","Shingon Buddhism",816,"jp","空海","即身成仏／大日如来",
+"宇宙そのものが大日如来の身体であり、あらゆるものがその現れである。手に印を結び、口に真言を唱え、心に仏を観じる修行によって、人はこの身のままで仏になることができる（即身成仏）。書・詩・曼荼羅など芸術とも深く結びつく。",
+"mys2 one2 rite2 pant1 union2 body1 beau1","r");
+
+P("zen","禅","Zen / Chan Buddhism",520,"cn","達磨、慧能、臨済義玄","不立文字・教外別伝／見性成仏",
+"悟りは経典や言葉による理解ではなく、坐禅などの修行を通じて直接体験されるものである。人はもともと仏の心をもっており、それに気づけばよい。公案と呼ばれる不可解な問答や、日常の一挙手一投足までが修行となる。",
+"mys2 lang-2 act2 void1 noself1 sys-2 simp1 calm1 rsn-2","rl");
+
+P("dogen","道元の思想","Dogen's Zen",1231,"jp","道元","只管打坐／修証一等／有時",
+"悟りを得るために坐禅をするのではない。ひたすら坐ること（只管打坐）そのものが、すでに悟りの現れである（修証一等）。存在はそのまま時間であるという「有時」など、主著『正法眼蔵』で独自の深い思索を展開した。",
+"act2 flux2 mys1 noself1 simp2 void1 lang1","rl");
+
+P("nichiren","日蓮の思想","Nichiren Buddhism",1260,"jp","日蓮","南無妙法蓮華経／立正安国",
+"法華経こそが唯一最高の教えであり、その題目を唱えることで、この世がそのまま仏の国となる。正しい教えを国が立てなければ災いが続くと説き、幕府に諫言して何度も迫害を受けながら信念を貫いた。",
+"faith2 act2 nation1 rev1 rite1 libr1 after1","rs");
+
+P("huayan","華厳思想","Huayan Buddhism",650,"cn","法蔵、杜順","一即一切・一切即一／重重無尽",
+"世界のあらゆるものは、互いに映し合い、入り込み合い、無限に関わり合っている。一粒の塵の中に全宇宙が含まれ、全宇宙は一粒の塵の中に現れる。インドラの網の宝珠のように、万物は重なり合って尽きることがない。",
+"one2 flux1 void1 sys2 harm1 noself1","m");
+
+P("bushido","武士道","Bushido",1600,"jp","山本常朝（『葉隠』）、新渡戸稲造","義・勇・仁・礼・誠・名誉・忠義",
+"武士が守るべき道徳の規範。主君への忠義、名誉を重んじ恥を知る心、死を覚悟することで生まれる潔さを説いた。明治期には新渡戸稲造が英語で著し、日本人の倫理として世界に紹介した。",
+"duty2 virt2 dread1 trad2 rite1 act2 calm1 comm1 nation1 ego-2","l");
+
+P("kokugaku","国学","Kokugaku",1790,"jp","本居宣長、賀茂真淵、平田篤胤","もののあはれ／漢意（からごころ）を去れ",
+"儒教や仏教の理屈っぽい考え（漢意）を取り除き、『古事記』や和歌に表れた日本古来のありのままの心に立ち返ろうとした学問。本居宣長は、物事にしみじみと心を動かされる感受性「もののあはれ」こそが大切だと説いた。",
+"nation2 beau2 emo2 trad2 rsn-2 nat1","a");
+
+P("shingaku","石門心学","Sekimon Shingaku",1729,"jp","石田梅岩","商人の道／正直・倹約",
+"武士の道があるように商人にも道がある。正直に商いをして得る利益は、武士の俸禄と同じく正当なものだ。心を磨き、倹約と勤勉に努めることを説き、江戸の町人たちに広く受け入れられた。",
+"mkt1 simp2 virt2 act1 good1","l");
+
+P("hotoku","報徳思想","Hotoku Thought",1840,"jp","二宮尊徳（金次郎）","至誠・勤労・分度・推譲",
+"天地と人の恩に徳をもって報いる。まごころをもって勤勉に働き、自分の分に応じた暮らしを守って、余ったものを家族や地域や将来のために譲る。この実践で、荒れ果てた数多くの農村を立て直した。",
+"act2 simp2 comm2 virt1 eco1","l");
+
+P("ando","安藤昌益の自然真営道","Ando Shoeki",1753,"jp","安藤昌益","万人直耕",
+"すべての人が自ら田畑を耕して生きる社会こそが、自然本来のあり方である。耕さずに農民の実りを奪って暮らす武士や僧侶や学者を痛烈に批判し、身分も支配もない平等な社会を構想した。長く忘れられ、近代になって再発見された。",
+"eq2 nat2 anar1 rev1 state-2 trad-2 comm1 simp1","s");
+
+P("sorai","徂徠学","Sorai School",1717,"jp","荻生徂徠","聖人の道とは天下を安んずる道",
+"儒教の「道」とは、個人の心を修める道徳ではなく、古代の聖人たちが作った礼楽や制度であり、天下の人々の暮らしを安定させるための政治の技術である。古い言葉を当時のままに読む方法（古文辞学）を確立した。",
+"state1 rite2 trad2 util1 virt-1","s");
+
+P("kyoto","京都学派","Kyoto School",1911,"jp","西田幾多郎、田辺元、西谷啓治","純粋経験／絶対無の場所／絶対矛盾的自己同一",
+"主観と客観が分かれる以前の「純粋経験」こそが、本当の実在である。あらゆる存在を包み込む究極の「場所」は「絶対無」であるとし、西洋哲学の方法と、禅をはじめとする東洋の思想を独自に融合させた。",
+"void2 one2 mys1 dua-2 sys1 idl1 dial1","m");
+
+P("watsuji","和辻倫理学","Watsuji Ethics",1935,"jp","和辻哲郎","間柄的存在／風土",
+"人間とは孤立した個人ではなく、人と人との「間柄」において存在するものである。「人間」という言葉そのものがそれを表している。倫理とはこの間柄の道理である。また人間のあり方は、モンスーン・砂漠・牧場という「風土」によって形づくられると論じた。",
+"comm2 othr2 trad1 nation1 fam1 dua-1","l");
+
+// ===== アフリカ・ラテンアメリカ =====
+P("ubuntu","ウブントゥ","Ubuntu",1960,"af","（南部アフリカの伝統）、デズモンド・ツツ、モゴベ・ラモセ","人は他の人々を通して人となる",
+"南部アフリカに根ざす人間観と倫理。私は、私たちがいるから私である。人間らしさは、他者との関係と共同体の中でこそ実現する。分かち合い、もてなし、和解を重んじ、アパルトヘイト後の南アフリカの真実和解委員会にも影響を与えた。",
+"comm2 othr2 care2 eq1 fam1 ego-2 trad1 good1","l");
+
+P("negritude","ネグリチュード","Négritude",1935,"af","レオポール・セダール・サンゴール、エメ・セゼール","黒人であることの誇り",
+"植民地支配のもとで否定されてきたアフリカの文化・歴史・感性を、誇りをもって肯定し取り戻そうとした文学・思想運動。詩を通じて、西洋の価値観への同化を拒み、黒人としてのアイデンティティを高らかにうたった。",
+"nation2 opp2 beau1 trad1 emo1 comm1","sa");
+
+P("fanon","ファノンの脱植民地化論","Fanonism",1961,"af","フランツ・ファノン","地に呪われたる者／黒い皮膚・白い仮面",
+"精神科医としての経験から、植民地支配が、支配される人々の心の奥深くにまで劣等感と自己否定を植えつけることを明らかにした。アルジェリア独立戦争に加わり、植民地の民衆による根本的な解放を訴えた。",
+"opp2 rev2 pow1 alien1 unc1","s");
+
+P("liberation_theology","解放の神学","Liberation Theology",1971,"la","グスタボ・グティエレス、レオナルド・ボフ","貧しい人々の優先的選択",
+"神はとりわけ貧しい人々、抑圧された人々の側に立っている。信仰とは、来世の救いを待つことだけではなく、この世の貧困と不正な社会構造から人々を解放するための実践でもある。ラテンアメリカのカトリック教会から生まれた。",
+"god2 eq2 rev2 care2 opp2 act1 econ1 faith1","rs");
+
+P("freire","被抑圧者の教育学","Critical Pedagogy",1968,"la","パウロ・フレイレ","銀行型教育から、対話型教育へ",
+"教師が知識を生徒に一方的に預け入れる「銀行型教育」は、抑圧を再生産する。教える者と学ぶ者が対話を通じて、自分たちの置かれた現実を批判的に読み解き、変えていく力（意識化）を育てる教育を唱えた。",
+"othr2 opp2 rev1 act2 comm1 eq1 pow1","s");
+
+P("dussel","解放の哲学・脱植民地的転回","Philosophy of Liberation",1973,"la","エンリケ・ドゥッセル、アニバル・キハーノ、ウォルター・ミニョーロ","近代の裏側からの思考",
+"ヨーロッパの「近代」は、アメリカ大陸の征服と植民地支配を裏側にもって成立した。その陰で排除されてきた「他者」、すなわち周縁に置かれた人々の視点から、哲学と知のあり方を問い直そうとする。",
+"opp2 othr1 rev1 eq1 pow1 cosmo-1","s");
+
+P("buen_vivir","ブエン・ビビール","Buen Vivir / Sumak Kawsay",2008,"la","（アンデス先住民の思想）、アルベルト・アコスタ","良き生／母なる大地（パチャママ）",
+"アンデスの先住民の世界観に根ざした「良く生きる」という理念。経済成長や個人の豊かさではなく、共同体の調和と、母なる大地を含む自然との共生こそが豊かさだと考える。エクアドルやボリビアの憲法にも取り入れられた。",
+"eco2 comm2 nat1 flat1 harm1 mkt-1 prog-1","sl");
+
+// ===== 推論エンジン（ベイズ更新 + 情報利得で次の質問を選ぶ） =====
+// 回答 a: +2(はい) +1(たぶん) 0(わからない) -1(たぶん違う) -2(いいえ)
+// 列 index = 2 - a
+const LK = {
+  "2":  [.55,.22,.10,.08,.05],
+  "1":  [.32,.30,.16,.13,.09],
+  "U":  [.16,.20,.28,.20,.16],   // その思想が特に立場を示していない
+  "N":  [.08,.17,.50,.17,.08],   // その思想が意図的に「中立・保留」の立場
+  "-1": [.09,.13,.16,.30,.32],
+  "-2": [.05,.08,.10,.22,.55]
+};
+
+const ENGINE = (function(){
+  const TKEYS = new Set(TRAITS.map(t => t[0]));
+  const seen = new Set();
+  PH.forEach(p => {
+    if (seen.has(p.id)) throw new Error("duplicate id " + p.id);
+    seen.add(p.id);
+    if (!REGIONS[p.r]) throw new Error("bad region " + p.r + " in " + p.id);
+    p.t = {};
+    p.tr.trim().split(/\s+/).forEach(tok => {
+      const m = tok.match(/^([a-z]+)(-?\d)$/);
+      if (!m) throw new Error("bad token " + tok + " in " + p.id);
+      if (!TKEYS.has(m[1])) throw new Error("unknown trait " + m[1] + " in " + p.id);
+      if (m[1] in p.t) throw new Error("dup trait " + m[1] + " in " + p.id);
+      const v = +m[2];
+      p.t[m[1]] = v === 0 ? "N" : v;
+    });
+    for (const d of p.dom) if (!DOMAINS[d]) throw new Error("bad domain " + d + " in " + p.id);
+    p.macro = REGIONS[p.r].macro;
+  });
+
+  // ---- 「当てる」モード専用のメタ質問（時代・地域・分野）
+  const reg = (pred) => p => p.macro === "world" ? "U" : (pred(p) ? 2 : -2);
+  const era = (boundary, after) => p => {
+    const d = p.y - boundary;
+    if (Math.abs(d) <= 30) return ((d >= 0) === after) ? 1 : -1;
+    return ((d > 0) === after) ? 2 : -2;
+  };
+  const dom = (d) => p => p.dom[0] === d ? 2 : (p.dom.includes(d) ? 1 : (d === "r" ? -2 : -1));
+  const thinkerCount = (p) => {
+    if (p.th.startsWith("（")) return 9;
+    const s = p.th.replace(/（[^）]*）/g, "");
+    return s.split("、").filter(x => x.trim()).length;
+  };
+  const META = [
+    ["m_west","ヨーロッパや北米（いわゆる西洋）で生まれた思想？", reg(p => p.macro === "west")],
+    ["m_gr","古代ギリシア・ローマの思想？", p => p.r === "gr" ? 2 : -2],
+    ["m_eastasia","中国・日本・朝鮮半島など、東アジアで生まれた思想？", reg(p => p.macro === "eastasia")],
+    ["m_china","中国で生まれた思想？", reg(p => p.r === "cn")],
+    ["m_japan","日本で生まれた思想？", reg(p => p.r === "jp")],
+    ["m_india","インドやチベットで生まれた思想？", reg(p => p.macro === "india")],
+    ["m_islam","イスラーム圏や中東で生まれた思想？", reg(p => p.macro === "islam")],
+    ["m_south","アフリカや中南米で生まれた思想？", reg(p => p.macro === "south")],
+    ["m_de","ドイツ語圏で生まれた思想？", reg(p => p.r === "de")],
+    ["m_fr","フランス語圏で生まれた思想？", reg(p => p.r === "fr")],
+    ["m_en","英語圏（イギリス・アメリカなど）で生まれた思想？", reg(p => ["uk","us","au"].includes(p.r))],
+    ["e_bc","紀元前に生まれた思想？", era(0, false)],
+    ["e_1500","西暦1500年より前（古代・中世）の思想？", era(1500, false)],
+    ["e_1800","1800年以降に生まれた思想？", era(1800, true)],
+    ["e_1900","1900年以降に生まれた思想？", era(1900, true)],
+    ["e_1960","1960年以降の、比較的新しい思想？", era(1960, true)],
+    ["d_s","主に政治や社会のあり方を論じる思想？", dom("s")],
+    ["d_l","主に「どう生きるべきか」を説く思想？", dom("l")],
+    ["d_p","主に心や意識について論じる思想？", dom("p")],
+    ["d_k","主に科学・論理・言語について論じる思想？", dom("k")],
+    ["d_r","宗教や信仰と深く結びついた思想？", dom("r")],
+    ["d_m","主に世界や存在の成り立ちを論じる思想？", dom("m")],
+    ["d_e","主に知識や認識について論じる思想？", dom("e")],
+    ["d_a","美や芸術を特に重んじる思想？", p => p.dom.includes("a") ? 2 : (p.t.beau === 2 ? 1 : -1)],
+    ["m_one","特定の一人の思想家の名前と強く結びついている？", p => { const c = thinkerCount(p); return c === 1 ? 2 : (c === 2 ? -1 : -2); }]
+  ];
+
+  const Q = [];
+  TRAITS.forEach(([k, g, text]) => Q.push({ key: k, kind: "belief", group: g, text }));
+  META.forEach(([k, text, fn]) => Q.push({ key: k, kind: "meta", group: "手がかり", text, fn }));
+
+  const N = PH.length;
+  const VAL = Q.map(q => PH.map(p => {
+    if (q.kind === "belief") return (q.key in p.t) ? String(p.t[q.key]) : "U";
+    return String(q.fn(p));
+  }));
+  const ROWS = VAL.map(col => col.map(v => LK[v]));
+  const LOGROWS = ROWS.map(col => col.map(r => r.map(Math.log)));
+  // 各質問・各回答の平均対数尤度（「決め手」の算出用）
+  const AVGLOG = LOGROWS.map(col => [0,1,2,3,4].map(c => col.reduce((s, r) => s + r[c], 0) / N));
+
+  const beliefQs = Q.map((q, i) => i).filter(i => Q[i].kind === "belief");
+  const allQs = Q.map((q, i) => i);
+
+  function newGame(mode) {
+    return { mode, asked: [], logp: new Float64Array(N), excluded: new Set(), wrong: [] };
+  }
+  function applyAnswer(g, qi, a) {
+    g.asked.push({ qi, a });
+    if (g.mode === "guess" && a === 0) return;
+    const c = 2 - a, lr = LOGROWS[qi];
+    for (let p = 0; p < N; p++) g.logp[p] += lr[p][c];
+  }
+  function rebuild(mode, asked, excluded) {
+    const g = newGame(mode);
+    asked.forEach(x => applyAnswer(g, x.qi, x.a));
+    excluded.forEach(e => g.excluded.add(e));
+    return g;
+  }
+  function posterior(g) {
+    let mx = -Infinity;
+    for (let p = 0; p < N; p++) if (!g.excluded.has(p) && g.logp[p] > mx) mx = g.logp[p];
+    const P = new Float64Array(N); let s = 0;
+    for (let p = 0; p < N; p++) { if (g.excluded.has(p)) continue; P[p] = Math.exp(g.logp[p] - mx); s += P[p]; }
+    for (let p = 0; p < N; p++) P[p] /= s;
+    return P;
+  }
+  function ranking(g) {
+    const P = posterior(g);
+    return Array.from({ length: N }, (_, i) => i).filter(i => !g.excluded.has(i)).sort((a, b) => P[b] - P[a]).map(i => ({ i, p: P[i] }));
+  }
+  function questionGains(g) {
+    const P = posterior(g);
+    const idx = [];
+    for (let p = 0; p < N; p++) if (P[p] > 1e-6) idx.push(p);
+    const LP = new Float64Array(N);
+    let H0 = 0;
+    for (const p of idx) { LP[p] = Math.log(P[p]); H0 -= P[p] * LP[p]; }
+    const askedSet = new Set(g.asked.map(x => x.qi));
+    const pool = g.mode === "guess" ? allQs : beliefQs;
+    const out = [];
+    for (const qi of pool) {
+      if (askedSet.has(qi)) continue;
+      const rows = ROWS[qi], lrows = LOGROWS[qi];
+      let EH = 0;
+      for (let c = 0; c < 5; c++) {
+        let s = 0, sl = 0;
+        for (const p of idx) { const w = P[p] * rows[p][c]; s += w; sl += w * (LP[p] + lrows[p][c]); }
+        if (s <= 0) continue;
+        if (g.mode === "guess" && c === 2) { EH += s * H0; continue; }
+        EH += s * (-sl / s + Math.log(s));
+      }
+      out.push({ qi, gain: H0 - EH });
+    }
+    out.sort((a, b) => b.gain - a.gain);
+    return out;
+  }
+  function pickQuestion(g, rng) {
+    rng = rng || Math.random;
+    const gains = questionGains(g);
+    if (!gains.length) return null;
+    const best = gains[0].gain;
+    let cands;
+    if (g.asked.length < 2) cands = gains.slice(0, 6);
+    else cands = gains.filter(x => x.gain >= best * 0.92).slice(0, 3);
+    const pick = cands[Math.floor(rng() * cands.length)] || gains[0];
+    return { qi: pick.qi, gain: pick.gain };
+  }
+  // 一致度：答えたすべての問いについて「その答えに最もよく合う立場」と比べた尤度比の幾何平均。
+  // 事後確率の順位と必ず一致する（事前分布が一様なため）。
+  const MAXL = [0,1,2,3,4].map(c => Math.max(...Object.values(LK).map(r => r[c])));
+  function closeness(g, pi) {
+    let s = 0, n = 0;
+    for (const { qi, a } of g.asked) {
+      if (g.mode === "guess" && a === 0) continue;
+      const c = 2 - a;
+      s += LOGROWS[qi][pi][c] - Math.log(MAXL[c]); n++;
+    }
+    if (!n) return 0;
+    return Math.round(Math.sqrt(Math.exp(s / n)) * 100);
+  }
+  function agreement(g, pi) {
+    let s = 0, n = 0;
+    for (const { qi, a } of g.asked) {
+      const v = VAL[qi][pi];
+      if (v === "U") continue;
+      if (g.mode === "guess" && a === 0) continue;
+      const vv = v === "N" ? 0 : +v;
+      s += 1 - Math.abs(a - vv) / 4; n++;
+    }
+    return n ? { pct: Math.round(s / n * 100), n } : { pct: null, n: 0 };
+  }
+  function reasons(g, pi, k) {
+    const out = [];
+    for (const { qi, a } of g.asked) {
+      if (g.mode === "guess" && a === 0) continue;
+      if (VAL[qi][pi] === "U") continue;
+      const c = 2 - a;
+      const score = LOGROWS[qi][pi][c] - AVGLOG[qi][c];
+      if (score > 0.25) out.push({ qi, a, score });
+    }
+    out.sort((x, y) => y.score - x.score);
+    return out.slice(0, k || 4);
+  }
+  // 図鑑：立場ベクトルの類似度
+  const VEC = PH.map(p => TRAITS.map(([k]) => { const v = p.t[k]; return (v === undefined || v === "N") ? 0 : v; }));
+  function similar(pi, k) {
+    const a = VEC[pi];
+    const na = Math.hypot(...a) || 1;
+    return PH.map((_, j) => {
+      if (j === pi) return { j, s: -2 };
+      const b = VEC[j]; let d = 0;
+      for (let t = 0; t < a.length; t++) d += a[t] * b[t];
+      return { j, s: d / (na * (Math.hypot(...b) || 1)) };
+    }).sort((x, y) => y.s - x.s).slice(0, k || 4);
+  }
+  return { Q, VAL, N, newGame, applyAnswer, rebuild, posterior, ranking, questionGains, pickQuestion, agreement, closeness, reasons, similar };
+})();
+
+</script>
+
+<script>
+(function(){
+"use strict";
+const E = ENGINE, Q = E.Q;
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+// ---------- 梟の SVG ----------
+const OWL = `<svg class="owl" viewBox="0 0 120 130" aria-hidden="true" focusable="false"><g class="owl-tilt">
+<path class="o-tuft" d="M30 32 L21 6 L47 22 Z"/><path class="o-tuft" d="M90 32 L99 6 L73 22 Z"/>
+<path class="o-body" d="M60 14 C90 14 104 36 104 64 C104 98 86 120 60 120 C34 120 16 98 16 64 C16 36 30 14 60 14 Z"/>
+<path class="o-wing" d="M19 60 C9 82 15 106 37 115 C30 96 30 78 19 60 Z"/><path class="o-wing" d="M101 60 C111 82 105 106 83 115 C90 96 90 78 101 60 Z"/>
+<ellipse class="o-belly" cx="60" cy="91" rx="26" ry="24"/>
+<path class="o-chev" d="M49 83 l4 4 l4 -4 M63 83 l4 4 l4 -4 M42 94 l4 4 l4 -4 M56 94 l4 4 l4 -4 M70 94 l4 4 l4 -4 M49 105 l4 4 l4 -4 M63 105 l4 4 l4 -4"/>
+<circle class="o-disc" cx="43" cy="52" r="19"/><circle class="o-disc" cx="77" cy="52" r="19"/>
+<g class="o-eyes"><circle class="o-iris" cx="43" cy="52" r="12"/><circle class="o-iris" cx="77" cy="52" r="12"/>
+<g class="o-pupils"><circle class="o-pupil" cx="43" cy="52" r="6"/><circle class="o-pupil" cx="77" cy="52" r="6"/><circle class="o-glint" cx="45.5" cy="49.5" r="2"/><circle class="o-glint" cx="79.5" cy="49.5" r="2"/></g>
+<g class="o-lids"><rect class="o-lid" x="30" y="39" width="26" height="26" rx="13"/><rect class="o-lid" x="64" y="39" width="26" height="26" rx="13"/></g></g>
+<g><path class="o-happy" d="M33 55 Q43 44 53 55"/><path class="o-happy" d="M67 55 Q77 44 87 55"/></g>
+<path class="o-beak" d="M60 58 L54 66 L60 77 L66 66 Z"/>
+<path class="o-feet" d="M49 119 l-3 7 M53 120 v7 M57 119 l3 7 M63 119 l-3 7 M67 120 v7 M71 119 l3 7"/>
+</g><path class="o-branch" d="M4 126 Q60 120 116 128"/></svg>`;
+document.querySelectorAll(".owl-slot").forEach(el => {
+  el.innerHTML = OWL;
+  if (el.dataset.mini) el.querySelector(".o-branch").remove();
+  if (el.dataset.state) el.querySelector(".owl").classList.add("is-" + el.dataset.state);
+});
+function owlState(slotId, state, bob) {
+  const o = $(slotId).querySelector(".owl");
+  o.classList.remove("is-think", "is-happy", "is-surprise", "is-bob");
+  if (state) o.classList.add("is-" + state);
+  if (bob) { void o.getBoundingClientRect(); o.classList.add("is-bob"); }
+}
+
+// ---------- 表示用ヘルパー ----------
+function eraLabel(y) {
+  if (y <= -3000) return "先史時代から";
+  if (y < 0) return "紀元前" + Math.ceil(-y / 100) + "世紀";
+  return (Math.floor(y / 100) + 1) + "世紀";
+}
+function eraGroup(y) {
+  if (y < 500) return "古代";
+  if (y < 1500) return "中世";
+  if (y < 1800) return "近世";
+  if (y < 1900) return "近代";
+  return "現代";
+}
+const ERA_ORDER = ["古代","中世","近世","近代","現代"];
+function chipsHTML(p) {
+  const out = [eraLabel(p.y), REGIONS[p.r].label, ...[...p.dom].map(d => DOMAINS[d])];
+  return [...new Set(out)].map(s => `<li class="chip">${esc(s)}</li>`).join("");
+}
+const LABELS = {
+  diag:  { 2:"そう思う", 1:"ややそう思う", 0:"どちらとも言えない", "-1":"あまりそう思わない", "-2":"そう思わない" },
+  guess: { 2:"はい", 1:"たぶんそう", 0:"わからない", "-1":"たぶん違う", "-2":"いいえ" }
+};
+const MARKS = { 2:"◎", 1:"○", 0:"―", "-1":"△", "-2":"✕" };
+function pillFor(a) { return a > 0 ? "pos" : a < 0 ? "neg" : "neu"; }
+
+// ---------- 画面切り替え ----------
+const VIEWS = ["home","play","guess","result","fail","dex"];
+function show(name) {
+  VIEWS.forEach(v => $("v-" + v).hidden = v !== name);
+  $("navDex").setAttribute("aria-current", name === "dex" ? "page" : "false");
+  $("navPlay").setAttribute("aria-current", name === "dex" ? "false" : "page");
+  $("resume").hidden = !(S.g && S.live && name === "home");
+  window.scrollTo(0, 0);
+}
+let toastT;
+function toast(msg) {
+  const t = $("toast"); t.textContent = msg; t.hidden = false;
+  clearTimeout(toastT); toastT = setTimeout(() => t.hidden = true, 2200);
+}
+
+// ---------- 問答の状態 ----------
+const S = { mode: null, g: null, cur: null, live: false, sinceGuess: 0, guesses: 0, cap: 20, maxQ: 30, minQ: 12, lastView: "play", resultIdx: null };
+
+const LINES = {
+  start: { diag: "では、最初の問いだ。心のままに答えておくれ。", guess: "思い浮かべたかね？ では始めよう。" },
+  low: ["ふむ。まだ霧の中だ。", "なるほど、面白い。", "手がかりを集めよう。", "ほう、そう来たか。"],
+  mid: ["輪郭が見えてきた。", "いくつかの顔が浮かんでいる。", "ふむふむ、続けよう。"],
+  high: ["だいぶ絞れてきたぞ。", "もう少しで見えそうだ。", "ほう、これは……。"],
+  top: ["見えた気がする。", "確信に近づいている。"]
+};
+const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+
+function buildAnswers() {
+  const L = LABELS[S.mode];
+  $("answers").innerHTML = [2, 1, 0, -1, -2].map((a, i) =>
+    `<button class="ans" type="button" data-a="${a}"><span class="mark" aria-hidden="true">${MARKS[a]}</span><span>${L[a]}</span><span class="key" aria-hidden="true">${i + 1}</span></button>`).join("");
+}
+$("answers").addEventListener("click", e => {
+  const b = e.target.closest(".ans"); if (!b) return;
+  answer(+b.dataset.a);
+});
+
+function start(mode) {
+  S.mode = mode; S.g = E.newGame(mode); S.live = true;
+  S.sinceGuess = 0; S.guesses = 0; S.cap = 20; S.maxQ = 30; S.minQ = 12;
+  buildAnswers();
+  $("owlLine").textContent = LINES.start[mode];
+  show("play");
+  next(true);
+}
+function updateMeter() {
+  const top = E.ranking(S.g)[0];
+  const pct = S.g.asked.length ? Math.round(top.p * 100) : 0;
+  $("meterFill").style.width = pct + "%";
+  $("meterLabel").textContent = "ミネルヴァの確信度 " + pct + "%";
+  return top;
+}
+function next(first) {
+  const q = E.pickQuestion(S.g);
+  if (!q || (q.gain < 1e-3 && S.g.asked.length > 4)) return conclude();
+  S.cur = q.qi;
+  renderQuestion(first);
+}
+function renderQuestion(first) {
+  const q = Q[S.cur], n = S.g.asked.length + 1;
+  $("qNo").textContent = "問 " + n;
+  $("qGroup").textContent = q.group;
+  if (q.kind === "meta") { $("qLead").textContent = "その思想について"; $("qText").textContent = q.text; }
+  else if (S.mode === "diag") { $("qLead").textContent = "あなたはそう思いますか？"; $("qText").textContent = q.text; }
+  else { $("qLead").textContent = "その思想は、こう考えますか？"; $("qText").textContent = "「" + q.text + "」"; }
+  const card = $("qcard"); card.classList.remove("enter"); void card.offsetWidth; card.classList.add("enter");
+  const top = updateMeter();
+  if (!first) {
+    const p = top.p;
+    $("owlLine").textContent = pick(p < .15 ? LINES.low : p < .4 ? LINES.mid : p < .75 ? LINES.high : LINES.top);
+  }
+  owlState("playOwl", top.p > .6 ? "surprise" : (n % 2 ? "think" : null), !first);
+  $("btnUndo").disabled = S.g.asked.length === 0;
+  $("btnFinish").hidden = !(S.mode === "diag" && S.g.asked.length >= 8);
+  resetQuit();
+}
+function answer(a) {
+  if (!S.g || S.cur == null || $("v-play").hidden) return;
+  E.applyAnswer(S.g, S.cur, a);
+  S.sinceGuess++;
+  const asked = S.g.asked.length;
+  const top = E.ranking(S.g)[0];
+  if (S.mode === "diag") {
+    if ((asked >= S.minQ && top.p >= 0.75) || asked >= S.maxQ) return conclude();
+  } else {
+    const need = S.guesses === 0 ? 6 : 3;
+    if ((S.sinceGuess >= need && top.p >= 0.8) || asked >= S.cap) return guessNow(top.i);
+    if (asked >= 50) return giveUp();
+  }
+  next(false);
+}
+function undo() {
+  if (!S.g || !S.g.asked.length) return;
+  const asked = S.g.asked.slice();
+  const last = asked.pop();
+  S.g = E.rebuild(S.mode, asked, [...S.g.excluded]);
+  S.sinceGuess = Math.max(0, S.sinceGuess - 1);
+  S.cur = last.qi;
+  $("owlLine").textContent = "よかろう、その問いに戻ろう。";
+  renderQuestion(true);
+}
+function conclude() {
+  if (S.mode === "diag") return showResult(E.ranking(S.g)[0].i, "diag");
+  const r = E.ranking(S.g);
+  if (r.length && r[0].p > 0.2 && S.guesses < 4) return guessNow(r[0].i);
+  giveUp();
+}
+
+// ---------- 推測（当てるモード） ----------
+function guessNow(pi) {
+  S.guessIdx = pi;
+  const p = PH[pi];
+  $("guessLead").textContent = S.guesses === 0 ? "あなたが思い浮かべているのは……" : "では、これならどうだ……";
+  $("guessName").textContent = p.name;
+  $("guessOrig").textContent = p.orig;
+  $("guessMeta").textContent = eraLabel(p.y) + " ・ " + REGIONS[p.r].label + " ・ " + p.th.replace(/（[^）]*）/g, "").split("、").slice(0, 2).join("、");
+  show("guess");
+  owlState("guessOwl", "surprise", true);
+}
+$("guessYes").addEventListener("click", () => { S.live = false; showResult(S.guessIdx, "win"); });
+$("guessNo").addEventListener("click", () => {
+  S.guesses++;
+  S.g.excluded.add(S.guessIdx);
+  S.sinceGuess = 0;
+  S.cap = S.g.asked.length + 8;
+  if (S.guesses >= 4 || S.g.asked.length >= 50) return giveUp();
+  $("owlLine").textContent = "むむ……違ったか。もう少し聞かせておくれ。";
+  show("play");
+  owlState("playOwl", "surprise");
+  next(true);
+});
+
+// ---------- 結果 ----------
+function showResult(pi, kind) {
+  S.resultIdx = pi; S.resultKind = kind;
+  if (kind !== "diag") S.live = false;
+  const p = PH[pi];
+  $("rVerdict").textContent = kind === "diag" ? "あなたの思想は……" : kind === "win" ? `やはり！ 問 ${S.g.asked.length} で見抜いたぞ。` : "なんと、答えはこれだったか。";
+  $("rName").textContent = p.name;
+  $("rOrig").textContent = p.orig;
+  $("rChips").innerHTML = chipsHTML(p);
+  $("rKw").textContent = p.kw;
+  $("rDesc").textContent = p.desc;
+  $("rTh").textContent = p.th;
+  // 一致度
+  if (kind === "diag") {
+    $("rScore").hidden = false;
+    $("rPct").innerHTML = E.closeness(S.g, pi) + "<small>%</small>";
+    $("rPctCap").textContent = `一致度。あなたが答えた ${S.g.asked.length} 問すべてを、この思想ならどう答えるかと照らし合わせた噛み合い具合です。`;
+  } else if (kind === "win") {
+    $("rScore").hidden = false;
+    $("rPct").innerHTML = S.g.asked.length + "<small>問</small>";
+    $("rPctCap").textContent = S.guesses === 0 ? "一度目の推測で的中。" : `${S.guesses + 1} 度目の推測で的中。`;
+  } else $("rScore").hidden = true;
+  // 決め手
+  const rs = kind === "reveal" ? [] : E.reasons(S.g, pi, 5);
+  $("rReasonsWrap").hidden = !rs.length;
+  const L = LABELS[S.mode];
+  $("rReasons").innerHTML = rs.map(r => `<li><span class="pill ${pillFor(r.a)}">${esc(L[r.a])}</span><span>${esc(Q[r.qi].kind === "belief" && S.mode === "guess" ? "その思想は「" + Q[r.qi].text + "」と考える" : Q[r.qi].text)}</span></li>`).join("");
+  // 近い思想
+  const near = E.ranking(S.g).filter(x => x.i !== pi).slice(0, 5);
+  $("rNearH").textContent = kind === "diag" ? "ほかに近い思想" : "迷った候補";
+  $("rNear").innerHTML = near.map(x => {
+    const pct = kind === "diag" ? E.closeness(S.g, x.i) : Math.round(x.p * 100);
+    return `<li><button type="button" data-pi="${x.i}"><span class="n-name">${esc(PH[x.i].name)}</span><span class="n-pct">${kind === "diag" ? "一致 " + pct + "%" : "確率 " + pct + "%"}</span><span class="bar"><span style="width:${Math.max(2, pct)}%"></span></span></button></li>`;
+  }).join("");
+  $("rNearWrap").hidden = kind === "reveal" || !near.length;
+  $("rMore").hidden = kind !== "diag" || !E.pickQuestion(S.g);
+  $("rCopy").hidden = kind !== "diag";
+  $("copyFallback").hidden = true;
+  show("result");
+}
+$("rNear").addEventListener("click", e => { const b = e.target.closest("button[data-pi]"); if (b) openSheet(+b.dataset.pi); });
+$("rAgain").addEventListener("click", () => start(S.mode || "diag"));
+$("rDetail").addEventListener("click", () => openSheet(S.resultIdx));
+$("rMore").addEventListener("click", () => {
+  S.minQ = S.g.asked.length + 8; S.maxQ = S.g.asked.length + 12; S.live = true;
+  $("owlLine").textContent = "よかろう。さらに深く聞かせておくれ。";
+  show("play"); next(true);
+});
+$("rCopy").addEventListener("click", () => {
+  const p = PH[S.resultIdx];
+  const text = `私の思想は「${p.name}」でした（一致度 ${E.closeness(S.g, S.resultIdx)}%）。${p.kw} ― 哲学アキネーター`;
+  const fallback = () => { const f = $("copyFallback"); f.textContent = text; f.hidden = false; };
+  try {
+    navigator.clipboard.writeText(text).then(() => toast("コピーしました"), fallback);
+  } catch (err) { fallback(); }
+});
+
+// ---------- 降参 ----------
+function giveUp() {
+  S.live = false;
+  const top = E.ranking(S.g).slice(0, 5);
+  $("failTop").innerHTML = top.map(x => nearItem(x.i, "確率 " + Math.round(x.p * 100) + "%")).join("");
+  $("failSearch").value = ""; $("failList").innerHTML = "";
+  show("fail");
+}
+function nearItem(i, right) {
+  return `<li><button type="button" data-pi="${i}"><span class="n-name">${esc(PH[i].name)}</span><span class="n-pct">${esc(right)}</span></button></li>`;
+}
+function matches(p, q) {
+  q = q.trim().toLowerCase(); if (!q) return true;
+  return (p.name + p.orig + p.th + p.kw).toLowerCase().includes(q);
+}
+$("failSearch").addEventListener("input", e => {
+  const q = e.target.value;
+  $("failList").innerHTML = q.trim() ? PH.map((p, i) => [p, i]).filter(([p]) => matches(p, q)).slice(0, 12).map(([p, i]) => nearItem(i, eraLabel(p.y))).join("") || `<li class="empty">見つかりませんでした</li>` : "";
+});
+["failTop","failList"].forEach(id => $(id).addEventListener("click", e => {
+  const b = e.target.closest("button[data-pi]"); if (b) showResult(+b.dataset.pi, "reveal");
+}));
+$("failAgain").addEventListener("click", () => start("guess"));
+
+// ---------- やめる（二段階） ----------
+let quitArmed = false, quitT;
+function resetQuit() { quitArmed = false; clearTimeout(quitT); $("btnQuit").textContent = "やめる"; $("btnQuit").classList.remove("warn"); }
+$("btnQuit").addEventListener("click", () => {
+  if (!quitArmed) {
+    quitArmed = true; $("btnQuit").textContent = "本当にやめる？"; $("btnQuit").classList.add("warn");
+    quitT = setTimeout(resetQuit, 3000); return;
+  }
+  resetQuit(); S.live = false; show("home");
+});
+$("btnUndo").addEventListener("click", undo);
+$("btnFinish").addEventListener("click", () => showResult(E.ranking(S.g)[0].i, "diag"));
+
+// ---------- 図鑑 ----------
+const F = { region: "all", era: "all", q: "" };
+function renderChips() {
+  const regs = [["all","すべての地域"], ...Object.entries(MACROS)];
+  $("regionChips").innerHTML = regs.map(([k, v]) => `<button class="fchip" type="button" data-k="${k}" aria-pressed="${F.region === k}">${esc(v)}</button>`).join("");
+  const eras = [["all","すべての時代"], ...ERA_ORDER.map(e => [e, e])];
+  $("eraChips").innerHTML = eras.map(([k, v]) => `<button class="fchip" type="button" data-k="${k}" aria-pressed="${F.era === k}">${esc(v)}</button>`).join("");
+}
+function renderDex() {
+  const items = PH.map((p, i) => ({ p, i }))
+    .filter(({ p }) => (F.region === "all" || p.macro === F.region) && (F.era === "all" || eraGroup(p.y) === F.era) && matches(p, F.q))
+    .sort((a, b) => a.p.y - b.p.y);
+  $("dexCount").textContent = `${items.length} / ${PH.length} の思想`;
+  if (!items.length) { $("dexBody").innerHTML = `<p class="empty">条件に合う思想はありません。</p>`; return; }
+  let html = "";
+  ERA_ORDER.forEach(era => {
+    const grp = items.filter(x => eraGroup(x.p.y) === era);
+    if (!grp.length) return;
+    html += `<h3 class="era-h">${era}<small>${grp.length}</small></h3><ul class="dex-list">` +
+      grp.map(({ p, i }) => `<li><button class="dex-item" type="button" data-pi="${i}"><span class="d-name">${esc(p.name)}</span><span class="d-sub"><span class="latin">${esc(p.orig)}</span><span>${esc(eraLabel(p.y))} ・ ${esc(REGIONS[p.r].label)}</span></span></button></li>`).join("") + `</ul>`;
+  });
+  $("dexBody").innerHTML = html;
+}
+$("regionChips").addEventListener("click", e => { const b = e.target.closest(".fchip"); if (!b) return; F.region = b.dataset.k; renderChips(); renderDex(); });
+$("eraChips").addEventListener("click", e => { const b = e.target.closest(".fchip"); if (!b) return; F.era = b.dataset.k; renderChips(); renderDex(); });
+$("dexSearch").addEventListener("input", e => { F.q = e.target.value; renderDex(); });
+$("dexBody").addEventListener("click", e => { const b = e.target.closest("[data-pi]"); if (b) openSheet(+b.dataset.pi); });
+function openDex() { if (!$("v-dex").hidden) return; S.lastView = VIEWS.find(v => !$("v-" + v).hidden) || "home"; renderChips(); renderDex(); show("dex"); }
+
+// ---------- 詳細シート ----------
+const STANCE = { 2:["強く肯定","pos"], 1:["肯定","pos"], N:["保留","neu"], "-1":["否定","neg"], "-2":["強く否定","neg"] };
+let lastFocus = null;
+function openSheet(pi) {
+  const p = PH[pi];
+  $("sEra").textContent = eraLabel(p.y) + " ・ " + REGIONS[p.r].label;
+  $("sName").textContent = p.name;
+  $("sOrig").textContent = p.orig;
+  $("sChips").innerHTML = chipsHTML(p);
+  $("sKw").textContent = p.kw;
+  $("sDesc").textContent = p.desc;
+  $("sTh").textContent = p.th;
+  const order = { 2: 0, "-2": 1, 1: 2, "-1": 3, N: 4 };
+  const st = TRAITS.filter(([k]) => k in p.t).map(([k, g, text]) => ({ v: p.t[k], text }))
+    .sort((a, b) => order[a.v] - order[b.v]).slice(0, 10);
+  $("sStances").innerHTML = st.map(s => `<li><span class="pill ${STANCE[s.v][1]}">${STANCE[s.v][0]}</span><span>${esc(s.text)}</span></li>`).join("");
+  $("sRel").innerHTML = E.similar(pi, 5).map(x => `<button type="button" data-pi="${x.j}">${esc(PH[x.j].name)}</button>`).join("");
+  if ($("sheet").hidden) lastFocus = document.activeElement;
+  $("sheet").hidden = false;
+  $("sheet").querySelector(".sheet-panel").scrollTop = 0;
+  $("sheetClose").focus();
+}
+function closeSheet() { $("sheet").hidden = true; if (lastFocus && lastFocus.focus) lastFocus.focus(); }
+$("sRel").addEventListener("click", e => { const b = e.target.closest("[data-pi]"); if (b) openSheet(+b.dataset.pi); });
+$("sheetClose").addEventListener("click", closeSheet);
+$("sheetBackdrop").addEventListener("click", closeSheet);
+
+// ---------- ナビ・キーボード ----------
+$("brand").addEventListener("click", () => show("home"));
+$("navDex").addEventListener("click", openDex);
+$("toDex").addEventListener("click", openDex);
+$("navPlay").addEventListener("click", () => {
+  if (!$("v-dex").hidden) {
+    const v = S.lastView && S.lastView !== "dex" ? S.lastView : "home";
+    if ((v === "play" || v === "guess") && !S.live) return show("home");
+    show(v);
+  }
+});
+$("resume").addEventListener("click", () => { show("play"); renderQuestion(true); });
+$("startDiag").addEventListener("click", () => start("diag"));
+$("startGuess").addEventListener("click", () => start("guess"));
+document.addEventListener("keydown", e => {
+  if (!$("sheet").hidden) { if (e.key === "Escape") closeSheet(); return; }
+  if ($("v-play").hidden || e.target.matches("input")) return;
+  const map = { "1": 2, "2": 1, "3": 0, "4": -1, "5": -2 };
+  if (e.key in map) { e.preventDefault(); answer(map[e.key]); }
+  else if (e.key === "Backspace" || e.key === "z") { e.preventDefault(); undo(); }
+});
+
+// ---------- 初期表示 ----------
+const nReg = new Set(PH.map(p => p.r)).size;
+$("countPh").textContent = PH.length;
+$("fPh").textContent = PH.length;
+$("fQ").textContent = Q.length;
+$("fReg").textContent = nReg;
+show("home");
+})();
+</script>
+</body>
+</html>

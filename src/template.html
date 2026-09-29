@@ -1,0 +1,864 @@
+<title>哲学アキネーター</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+/* Layout: 一本柱の舞台。上に梟と独り言、中央に問いの札、下に答えの札が積み重なる。図鑑は同じ柱の索引カード。 */
+:root{
+  --bg:#E8EAF1;          /* 藍の気配を含んだ和紙 */
+  --surface:#F7F8FB;
+  --surface-2:#DFE3EE;
+  --ink:#1A2140;         /* 藍墨 */
+  --muted:#586082;
+  --line:#C6CCDD;
+  --accent:#8F6212;      /* 真鍮・ランプの灯 */
+  --accent-strong:#6E4A08;
+  --accent-soft:#EFE2C2;
+  --on-accent:#FFFDF6;
+  --agree:#2E6F57;
+  --agree-soft:#D8EBE2;
+  --disagree:#9A3F35;
+  --disagree-soft:#F1DCD8;
+  --owl-body:#3A4570;
+  --owl-wing:#2C3660;
+  --owl-belly:#D8D0BA;
+  --owl-face:#E7E0CC;
+  --owl-eye:#E3A43A;
+  --star:rgba(26,33,64,.10);
+  --shadow:0 1px 2px rgba(26,33,64,.06),0 8px 24px -12px rgba(26,33,64,.25);
+  --font-display:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho","YuMincho",serif;
+  --font-body:"Zen Kaku Gothic New","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;
+  --font-latin:"Cormorant Garamond","Cormorant",Georgia,"Times New Roman",serif;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#10152B; --surface:#182042; --surface-2:#212B55; --ink:#EAE6D9; --muted:#A3A9C6; --line:#2E3968;
+    --accent:#E3B65A; --accent-strong:#F0CB7C; --accent-soft:#3A3220; --on-accent:#1A1406;
+    --agree:#7FC9A6; --agree-soft:#1E3A33; --disagree:#E69A8E; --disagree-soft:#43252A;
+    --owl-body:#5C6899; --owl-wing:#4A5585; --owl-belly:#CFC6AE; --owl-face:#DDD5BF; --owl-eye:#F2BB4B;
+    --star:rgba(234,230,217,.16); --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 28px -14px rgba(0,0,0,.6);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10152B; --surface:#182042; --surface-2:#212B55; --ink:#EAE6D9; --muted:#A3A9C6; --line:#2E3968;
+  --accent:#E3B65A; --accent-strong:#F0CB7C; --accent-soft:#3A3220; --on-accent:#1A1406;
+  --agree:#7FC9A6; --agree-soft:#1E3A33; --disagree:#E69A8E; --disagree-soft:#43252A;
+  --owl-body:#5C6899; --owl-wing:#4A5585; --owl-belly:#CFC6AE; --owl-face:#DDD5BF; --owl-eye:#F2BB4B;
+  --star:rgba(234,230,217,.16); --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 28px -14px rgba(0,0,0,.6);
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html,body{min-height:100%}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:var(--font-body); font-size:16px; line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  background-image:
+    radial-gradient(1.2px 1.2px at 12% 18%, var(--star) 50%, transparent 51%),
+    radial-gradient(1px 1px at 78% 9%, var(--star) 50%, transparent 51%),
+    radial-gradient(1.4px 1.4px at 88% 42%, var(--star) 50%, transparent 51%),
+    radial-gradient(1px 1px at 33% 64%, var(--star) 50%, transparent 51%),
+    radial-gradient(1.2px 1.2px at 61% 83%, var(--star) 50%, transparent 51%),
+    radial-gradient(1px 1px at 5% 92%, var(--star) 50%, transparent 51%);
+  background-size:420px 420px;
+}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+.app{max-width:680px;margin:0 auto;padding-inline:16px;padding-block:0 48px}
+.topbar{
+  position:sticky; top:env(safe-area-inset-top,0px); z-index:5;
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding-block:12px; background:var(--bg);
+  border-bottom:1px solid var(--line);
+}
+.brand{
+  background:none;border:0;padding:4px 0;cursor:pointer;
+  font-family:var(--font-display);font-weight:800;font-size:1.05rem;letter-spacing:.06em;
+  display:flex;align-items:center;gap:8px
+}
+.brand-mark{width:26px;height:26px;display:inline-block}
+.nav{display:flex;gap:4px}
+.nav button{
+  background:none;border:1px solid transparent;border-radius:999px;cursor:pointer;
+  padding:6px 14px;font-size:.88rem;color:var(--muted);font-weight:500
+}
+.nav button[aria-current="page"]{border-color:var(--line);color:var(--ink);background:var(--surface)}
+
+.view{padding-block:20px 0}
+.eyebrow{font-size:.78rem;letter-spacing:.14em;color:var(--muted);margin:0}
+.latin{font-family:var(--font-latin);font-style:italic;font-weight:500;letter-spacing:.02em}
+h1,h2,h3{font-family:var(--font-display);text-wrap:balance;margin:0}
+
+/* ---------- 梟 ---------- */
+.owl{width:100%;height:auto;display:block;overflow:visible}
+.o-body{fill:var(--owl-body)}
+.o-tuft{fill:var(--owl-body)}
+.o-wing{fill:var(--owl-wing)}
+.o-belly{fill:var(--owl-belly)}
+.o-chev{fill:none;stroke:var(--owl-body);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.o-disc{fill:var(--owl-face)}
+.o-iris{fill:var(--owl-eye)}
+.o-pupil{fill:#141A33}
+.o-glint{fill:#FFFDF4}
+.o-lid{fill:var(--owl-face);transform-box:fill-box;transform-origin:center;transform:scaleY(0)}
+.o-beak{fill:var(--accent)}
+.o-feet{fill:none;stroke:var(--accent);stroke-width:2.4;stroke-linecap:round}
+.o-branch{fill:none;stroke:var(--muted);stroke-width:3;stroke-linecap:round;opacity:.5}
+.o-happy{fill:none;stroke:#141A33;stroke-width:3.2;stroke-linecap:round;opacity:0}
+.o-pupils{transition:transform .35s ease}
+.o-lids .o-lid{animation:blink 6s infinite}
+.o-lids .o-lid:nth-child(2){animation-delay:.02s}
+.owl.is-think .o-pupils{transform:translate(-3px,-4px)}
+.owl.is-surprise .o-pupil{transform:scale(1.28);transform-box:fill-box;transform-origin:center}
+.owl.is-surprise .o-lids .o-lid{animation:none}
+.owl.is-happy .o-eyes{opacity:0}
+.owl.is-happy .o-happy{opacity:1}
+.owl-tilt{transform-origin:50% 90%;}
+.owl.is-bob .owl-tilt{animation:bob .6s ease}
+@keyframes blink{0%,94%,100%{transform:scaleY(0)}96%{transform:scaleY(1)}}
+@keyframes bob{0%{transform:rotate(0)}35%{transform:rotate(-6deg)}70%{transform:rotate(3deg)}100%{transform:rotate(0)}}
+
+/* ---------- ホーム ---------- */
+.hero{display:grid;grid-template-columns:120px 1fr;gap:20px;align-items:center;padding-block:16px 8px}
+.hero .owl-slot{width:120px}
+.hero h1{font-size:clamp(2rem,7.5vw,3rem);font-weight:800;line-height:1.15;letter-spacing:.02em}
+.hero .motto{font-family:var(--font-latin);font-style:italic;font-size:1rem;color:var(--muted);margin:0 0 6px}
+.lede{margin:18px 0 0;color:var(--ink);max-width:36em}
+.lede strong{font-family:var(--font-display);font-weight:800;color:var(--accent);font-size:1.15em;font-variant-numeric:tabular-nums}
+.modes{display:grid;gap:12px;margin-top:24px}
+.mode-card{
+  text-align:left;cursor:pointer;display:grid;gap:4px;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  padding:18px 20px;box-shadow:var(--shadow);transition:transform .15s ease,border-color .15s ease
+}
+.mode-card:hover{transform:translateY(-2px);border-color:var(--accent)}
+.mode-card.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.mode-card.primary .mode-desc{color:color-mix(in srgb,var(--bg) 78%,transparent)}
+.mode-card.primary .mode-kicker{color:var(--accent-soft)}
+.mode-kicker{font-size:.75rem;letter-spacing:.2em;color:var(--accent);font-weight:700}
+.mode-title{font-family:var(--font-display);font-size:1.3rem;font-weight:700;line-height:1.35}
+.mode-desc{font-size:.9rem;color:var(--muted);line-height:1.65}
+.resume{margin-top:12px;background:none;border:1px dashed var(--accent);color:var(--accent);border-radius:var(--r);padding:12px 16px;cursor:pointer;width:100%;font-weight:500}
+.facts{display:flex;flex-wrap:wrap;gap:8px 20px;margin:28px 0 0;padding:16px 0 0;border-top:1px solid var(--line);list-style:none;font-size:.85rem;color:var(--muted)}
+.facts b{font-family:var(--font-display);color:var(--ink);font-size:1.25rem;font-weight:800;margin-right:4px;font-variant-numeric:tabular-nums}
+.linkish{background:none;border:0;padding:0;color:var(--accent);cursor:pointer;text-decoration:underline;text-underline-offset:3px;font-weight:500}
+
+/* ---------- 問い ---------- */
+.stage{display:grid;grid-template-columns:78px 1fr;gap:14px;align-items:end}
+.stage .owl-slot{width:78px}
+.owl-talk{position:relative;padding-bottom:6px;min-width:0}
+.owl-line{font-family:var(--font-display);font-size:1rem;margin:0 0 8px;color:var(--ink);min-height:1.6em}
+.meter{height:4px;background:var(--surface-2);border-radius:4px;overflow:hidden}
+.meter span{display:block;height:100%;width:0;background:var(--accent);transition:width .5s ease}
+.meter-label{font-size:.75rem;color:var(--muted);margin:4px 0 0;font-variant-numeric:tabular-nums;letter-spacing:.05em}
+.qcard{
+  margin-top:16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  padding:20px 20px 24px;box-shadow:var(--shadow);position:relative
+}
+.qcard::before{content:"";position:absolute;left:32px;top:-8px;width:14px;height:14px;background:var(--surface);border-left:1px solid var(--line);border-top:1px solid var(--line);transform:rotate(45deg)}
+.qmeta{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.qno{font-family:var(--font-display);font-weight:800;color:var(--accent);font-size:.95rem;letter-spacing:.08em;font-variant-numeric:tabular-nums}
+.qgroup{font-size:.72rem;letter-spacing:.14em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:1px 10px}
+.qlead{margin:0 0 4px;font-size:.85rem;color:var(--muted)}
+.qtext{font-size:clamp(1.18rem,4.6vw,1.45rem);font-weight:700;line-height:1.6;letter-spacing:.01em}
+.qcard.enter{animation:rise .35s ease}
+@keyframes rise{from{transform:translateY(6px);opacity:.4}to{transform:none;opacity:1}}
+.answers{display:grid;gap:8px;margin-top:16px}
+.ans{
+  display:grid;grid-template-columns:28px 1fr auto;align-items:center;gap:10px;
+  text-align:left;cursor:pointer;min-height:50px;padding:8px 14px;
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;font-weight:500;
+  transition:background .12s ease,border-color .12s ease,transform .08s ease
+}
+.ans:hover{border-color:var(--accent)}
+.ans:active{transform:scale(.99)}
+.ans .mark{font-family:var(--font-display);font-size:1.15rem;text-align:center;line-height:1}
+.ans .key{font-size:.72rem;color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:0 6px;font-variant-numeric:tabular-nums}
+.ans[data-a="2"] .mark,.ans[data-a="1"] .mark{color:var(--agree)}
+.ans[data-a="-1"] .mark,.ans[data-a="-2"] .mark{color:var(--disagree)}
+.ans[data-a="0"] .mark{color:var(--muted)}
+.play-foot{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;margin-top:18px}
+.ghost{background:none;border:1px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer;font-size:.85rem;color:var(--muted)}
+.ghost:hover{color:var(--ink);border-color:var(--muted)}
+.ghost:disabled{opacity:.4;cursor:default}
+.ghost.warn{border-color:var(--disagree);color:var(--disagree)}
+
+/* ---------- 推測 ---------- */
+.guess{text-align:center;padding-block:12px 0}
+.guess .owl-slot{width:132px;margin:0 auto}
+.guess-lead{font-family:var(--font-display);color:var(--muted);margin:18px 0 6px}
+.guess-name{font-size:clamp(1.9rem,8vw,2.6rem);font-weight:800;line-height:1.25}
+.guess-orig{font-size:1.2rem;color:var(--muted);margin:4px 0 0}
+.guess-meta{font-size:.85rem;color:var(--muted);margin:10px 0 0}
+.guess-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:26px auto 0;max-width:420px}
+.btn{
+  cursor:pointer;border-radius:12px;padding:12px 16px;font-weight:700;border:1px solid var(--line);
+  background:var(--surface);min-height:48px
+}
+.btn.solid{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn.ink{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.btn:hover{filter:brightness(1.05)}
+
+/* ---------- 結果 ---------- */
+.result-head{display:grid;grid-template-columns:92px 1fr;gap:16px;align-items:center}
+.result-head .owl-slot{width:92px}
+.verdict{margin:0;color:var(--muted);font-family:var(--font-display)}
+.r-name{font-size:clamp(1.9rem,7.6vw,2.7rem);font-weight:800;line-height:1.2;margin-top:4px}
+.r-orig{margin:4px 0 0;color:var(--muted);font-size:1.15rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 0;padding:0;list-style:none}
+.chip{font-size:.78rem;border:1px solid var(--line);border-radius:999px;padding:2px 10px;color:var(--muted);background:var(--surface)}
+.kw{
+  margin:22px 0 0;padding:14px 18px;border-left:3px solid var(--accent);background:var(--accent-soft);
+  font-family:var(--font-display);font-weight:700;font-size:1.08rem;line-height:1.6;border-radius:0 10px 10px 0
+}
+.desc{margin:16px 0 0;max-width:40em}
+.thinkers{margin:12px 0 0;font-size:.9rem;color:var(--muted)}
+.thinkers b{color:var(--ink);font-weight:500}
+.score{display:flex;align-items:baseline;gap:12px;margin:26px 0 0;padding:16px 0;border-block:1px solid var(--line)}
+.score-num{font-family:var(--font-display);font-size:2.6rem;font-weight:800;color:var(--accent);line-height:1;font-variant-numeric:tabular-nums}
+.score-num small{font-size:1rem;margin-left:2px}
+.score-cap{font-size:.85rem;color:var(--muted);line-height:1.5}
+.section-h{font-size:1.02rem;font-weight:700;margin:28px 0 10px;display:flex;align-items:center;gap:10px}
+.section-h::after{content:"";flex:1;height:1px;background:var(--line)}
+.reasons{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.reasons li{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;font-size:.92rem;line-height:1.6}
+.pill{font-size:.72rem;font-weight:700;border-radius:999px;padding:2px 9px;white-space:nowrap;margin-top:2px}
+.pill.pos{background:var(--agree-soft);color:var(--agree)}
+.pill.neg{background:var(--disagree-soft);color:var(--disagree)}
+.pill.neu{background:var(--surface-2);color:var(--muted)}
+.near{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.near button{
+  width:100%;display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:center;text-align:left;cursor:pointer;
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px
+}
+.near button:hover{border-color:var(--accent)}
+.near .n-name{font-family:var(--font-display);font-weight:700;min-width:0}
+.near .n-pct{font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.near .bar{grid-column:1 / -1;height:3px;background:var(--surface-2);border-radius:3px;overflow:hidden}
+.near .bar span{display:block;height:100%;background:var(--accent)}
+.result-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:28px}
+.result-actions .wide{grid-column:1 / -1}
+.copy-fallback{font-size:.85rem;background:var(--surface);border:1px dashed var(--line);border-radius:10px;padding:10px 12px;margin-top:10px;user-select:all}
+
+/* ---------- 降参 ---------- */
+.fail-head{display:grid;grid-template-columns:92px 1fr;gap:16px;align-items:center}
+.fail-head .owl-slot{width:92px}
+.field{
+  width:100%;font:inherit;padding:11px 14px;border-radius:12px;border:1px solid var(--line);
+  background:var(--surface);color:var(--ink)
+}
+.field::placeholder{color:var(--muted)}
+
+/* ---------- 図鑑 ---------- */
+.dex-head h2{font-size:1.8rem;font-weight:800}
+.dex-head p{margin:4px 0 0;color:var(--muted);font-size:.9rem}
+.filters{display:grid;gap:10px;margin:16px 0 8px}
+.chiprow{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+.fchip{
+  flex:none;cursor:pointer;font-size:.82rem;border:1px solid var(--line);border-radius:999px;padding:5px 12px;
+  background:var(--surface);color:var(--muted)
+}
+.fchip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.dex-count{font-size:.82rem;color:var(--muted);margin:6px 0 0;font-variant-numeric:tabular-nums}
+.era-h{font-family:var(--font-display);font-size:1rem;font-weight:700;margin:22px 0 8px;display:flex;align-items:baseline;gap:8px}
+.era-h small{font-family:var(--font-body);font-weight:400;color:var(--muted);font-size:.78rem}
+.dex-list{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.dex-item{
+  width:100%;text-align:left;cursor:pointer;display:grid;gap:0;
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px
+}
+.dex-item:hover{border-color:var(--accent)}
+.dex-item .d-name{font-family:var(--font-display);font-weight:700;font-size:1.02rem;line-height:1.45}
+.dex-item .d-sub{font-size:.8rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:0 10px}
+.dex-item .d-sub .latin{font-size:.95rem}
+.empty{color:var(--muted);text-align:center;padding:24px 0}
+
+/* ---------- 詳細シート ---------- */
+.sheet{position:fixed;inset:0;z-index:20;display:flex;align-items:flex-end;justify-content:center}
+.sheet-backdrop{position:absolute;inset:0;background:rgba(10,13,28,.55)}
+.sheet-panel{
+  position:relative;width:100%;max-width:680px;max-height:88%;overflow-y:auto;
+  background:var(--bg);border-radius:18px 18px 0 0;border:1px solid var(--line);border-bottom:0;
+  padding:18px 20px calc(28px + env(safe-area-inset-bottom,0px));
+  animation:sheetIn .25s ease
+}
+@keyframes sheetIn{from{transform:translateY(30px);opacity:.6}to{transform:none;opacity:1}}
+.sheet-close{position:sticky;top:0;float:right;background:var(--surface);border:1px solid var(--line);border-radius:999px;width:36px;height:36px;cursor:pointer;font-size:1.1rem;line-height:1}
+.stances{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.stances li{display:grid;grid-template-columns:5.6em 1fr;gap:10px;align-items:start;font-size:.9rem;line-height:1.6}
+.stances .pill{text-align:center}
+.rel-row{display:flex;flex-wrap:wrap;gap:6px}
+.rel-row button{cursor:pointer;font-size:.85rem;border:1px solid var(--line);border-radius:999px;padding:5px 12px;background:var(--surface);font-family:var(--font-display);font-weight:700}
+.rel-row button:hover{border-color:var(--accent)}
+
+.toast{
+  position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);
+  background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:.88rem;z-index:30;box-shadow:var(--shadow)
+}
+
+@media (min-width:600px){
+  .modes{grid-template-columns:1fr 1fr}
+  .answers{grid-template-columns:repeat(5,1fr)}
+  .ans{grid-template-columns:1fr;justify-items:center;text-align:center;min-height:92px;padding:12px 8px;gap:6px;font-size:.88rem;line-height:1.4}
+  .ans .mark{font-size:1.5rem}
+  .hero{grid-template-columns:150px 1fr}
+  .hero .owl-slot{width:150px}
+  .stage{grid-template-columns:96px 1fr}
+  .stage .owl-slot{width:96px}
+  .sheet{align-items:center}
+  .sheet-panel{border-radius:18px;border-bottom:1px solid var(--line);max-height:84%}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+
+<div class="app">
+  <header class="topbar">
+    <button class="brand" id="brand" type="button"><span class="brand-mark owl-slot" data-mini="1"></span>哲学アキネーター</button>
+    <nav class="nav" aria-label="メニュー">
+      <button type="button" id="navPlay" aria-current="page">問答</button>
+      <button type="button" id="navDex">思想図鑑</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ホーム -->
+    <section class="view" id="v-home">
+      <div class="hero">
+        <div class="owl-slot" data-state="happy"></div>
+        <div>
+          <p class="motto">γνῶθι σεαυτόν ― 汝自身を知れ</p>
+          <h1>哲学<br>アキネーター</h1>
+        </div>
+      </div>
+      <p class="lede">古代ギリシアから現代まで、東洋・西洋・イスラーム・アフリカ・中南米の <strong id="countPh">0</strong> の思想を知る梟ミネルヴァが、問いを重ねて答えを言い当てます。</p>
+      <div class="modes">
+        <button class="mode-card primary" id="startDiag" type="button">
+          <span class="mode-kicker">診断</span>
+          <span class="mode-title">あなたの思想を言い当てる</span>
+          <span class="mode-desc">世界・知・生き方・社会についての問いに答えると、あなたの考えに最も近い思想を示します。</span>
+        </button>
+        <button class="mode-card" id="startGuess" type="button">
+          <span class="mode-kicker">推理</span>
+          <span class="mode-title">思い浮かべた思想を当てる</span>
+          <span class="mode-desc">哲学者や学派を一つ心に決めてください。時代・地域・主張を尋ねて当てにいきます。</span>
+        </button>
+      </div>
+      <button class="resume" id="resume" type="button" hidden>中断した問答を続ける</button>
+      <ul class="facts">
+        <li><b id="fPh">0</b>の思想</li>
+        <li><b id="fQ">0</b>の問い</li>
+        <li><b id="fReg">0</b>の地域</li>
+        <li><b>先史</b>から現代まで</li>
+      </ul>
+      <p style="margin:14px 0 0;font-size:.9rem;color:var(--muted)">収録されている思想は <button class="linkish" type="button" id="toDex">思想図鑑</button> で一覧できます。</p>
+    </section>
+
+    <!-- 問い -->
+    <section class="view" id="v-play" hidden>
+      <div class="stage">
+        <div class="owl-slot" id="playOwl"></div>
+        <div class="owl-talk">
+          <p class="owl-line" id="owlLine"></p>
+          <div class="meter" aria-hidden="true"><span id="meterFill"></span></div>
+          <p class="meter-label" id="meterLabel"></p>
+        </div>
+      </div>
+      <article class="qcard" id="qcard" aria-live="polite">
+        <div class="qmeta"><span class="qno" id="qNo"></span><span class="qgroup" id="qGroup"></span></div>
+        <p class="qlead" id="qLead"></p>
+        <h2 class="qtext" id="qText"></h2>
+      </article>
+      <div class="answers" id="answers"></div>
+      <div class="play-foot">
+        <button class="ghost" id="btnUndo" type="button">← ひとつ戻る</button>
+        <span style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="ghost" id="btnFinish" type="button" hidden>ここで結果を見る</button>
+          <button class="ghost" id="btnQuit" type="button">やめる</button>
+        </span>
+      </div>
+    </section>
+
+    <!-- 推測 -->
+    <section class="view" id="v-guess" hidden>
+      <div class="guess">
+        <div class="owl-slot" id="guessOwl"></div>
+        <p class="guess-lead" id="guessLead">あなたが思い浮かべているのは……</p>
+        <h2 class="guess-name" id="guessName"></h2>
+        <p class="guess-orig latin" id="guessOrig"></p>
+        <p class="guess-meta" id="guessMeta"></p>
+        <div class="guess-actions">
+          <button class="btn solid" id="guessYes" type="button">正解！</button>
+          <button class="btn" id="guessNo" type="button">違う</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 結果 -->
+    <section class="view" id="v-result" hidden>
+      <div class="result-head">
+        <div class="owl-slot" data-state="happy"></div>
+        <div style="min-width:0">
+          <p class="verdict" id="rVerdict"></p>
+          <h2 class="r-name" id="rName"></h2>
+          <p class="r-orig latin" id="rOrig"></p>
+        </div>
+      </div>
+      <ul class="chips" id="rChips"></ul>
+      <p class="kw" id="rKw"></p>
+      <p class="desc" id="rDesc"></p>
+      <p class="thinkers">代表的な思想家：<b id="rTh"></b></p>
+      <div class="score" id="rScore">
+        <span class="score-num" id="rPct"></span>
+        <span class="score-cap" id="rPctCap"></span>
+      </div>
+      <div id="rReasonsWrap">
+        <h3 class="section-h">決め手になった答え</h3>
+        <ul class="reasons" id="rReasons"></ul>
+      </div>
+      <div id="rNearWrap">
+        <h3 class="section-h" id="rNearH">ほかに近い思想</h3>
+        <ul class="near" id="rNear"></ul>
+      </div>
+      <div class="result-actions">
+        <button class="btn ink wide" id="rAgain" type="button">もう一度はじめる</button>
+        <button class="btn" id="rMore" type="button">さらに答えて精度を上げる</button>
+        <button class="btn" id="rCopy" type="button">結果をコピー</button>
+        <button class="btn wide" id="rDetail" type="button">この思想を図鑑で見る</button>
+      </div>
+      <p class="copy-fallback" id="copyFallback" hidden></p>
+    </section>
+
+    <!-- 降参 -->
+    <section class="view" id="v-fail" hidden>
+      <div class="fail-head">
+        <div class="owl-slot" data-state="surprise"></div>
+        <div>
+          <h2 style="font-size:1.8rem;font-weight:800">参りました……</h2>
+          <p style="margin:4px 0 0;color:var(--muted)">答えを教えてもらえませんか。次の問答の糧にします。</p>
+        </div>
+      </div>
+      <h3 class="section-h">もしかして、この中に？</h3>
+      <ul class="near" id="failTop"></ul>
+      <h3 class="section-h">名前で探す</h3>
+      <label for="failSearch" class="eyebrow" style="display:block;margin-bottom:6px">思想名・哲学者名・原語</label>
+      <input class="field" id="failSearch" type="search" placeholder="例：ストア、カント、禅" autocomplete="off">
+      <ul class="near" id="failList" style="margin-top:10px"></ul>
+      <div class="result-actions"><button class="btn ink wide" id="failAgain" type="button">もう一度はじめる</button></div>
+    </section>
+
+    <!-- 図鑑 -->
+    <section class="view" id="v-dex" hidden>
+      <div class="dex-head">
+        <h2>思想図鑑</h2>
+        <p>ミネルヴァが知っている思想の一覧。時代順に並んでいます。</p>
+      </div>
+      <div class="filters">
+        <input class="field" id="dexSearch" type="search" placeholder="思想名・哲学者・キーワードで検索" autocomplete="off" aria-label="図鑑を検索">
+        <div class="chiprow" id="regionChips" role="group" aria-label="地域で絞り込む"></div>
+        <div class="chiprow" id="eraChips" role="group" aria-label="時代で絞り込む"></div>
+      </div>
+      <p class="dex-count" id="dexCount"></p>
+      <div id="dexBody"></div>
+    </section>
+  </main>
+</div>
+
+<div class="sheet" id="sheet" hidden>
+  <div class="sheet-backdrop" id="sheetBackdrop"></div>
+  <div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="sName">
+    <button class="sheet-close" id="sheetClose" type="button" aria-label="閉じる">×</button>
+    <p class="eyebrow" id="sEra"></p>
+    <h2 id="sName" style="font-size:1.75rem;font-weight:800;line-height:1.3;margin-top:4px"></h2>
+    <p class="latin" id="sOrig" style="margin:2px 0 0;color:var(--muted);font-size:1.1rem"></p>
+    <ul class="chips" id="sChips"></ul>
+    <p class="kw" id="sKw"></p>
+    <p class="desc" id="sDesc"></p>
+    <p class="thinkers">代表的な思想家：<b id="sTh"></b></p>
+    <h3 class="section-h">この思想の立場</h3>
+    <ul class="stances" id="sStances"></ul>
+    <h3 class="section-h">立場の近い思想</h3>
+    <div class="rel-row" id="sRel"></div>
+  </div>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<!--DATA-->
+
+<script>
+(function(){
+"use strict";
+const E = ENGINE, Q = E.Q;
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+// ---------- 梟の SVG ----------
+const OWL = `<svg class="owl" viewBox="0 0 120 130" aria-hidden="true" focusable="false"><g class="owl-tilt">
+<path class="o-tuft" d="M30 32 L21 6 L47 22 Z"/><path class="o-tuft" d="M90 32 L99 6 L73 22 Z"/>
+<path class="o-body" d="M60 14 C90 14 104 36 104 64 C104 98 86 120 60 120 C34 120 16 98 16 64 C16 36 30 14 60 14 Z"/>
+<path class="o-wing" d="M19 60 C9 82 15 106 37 115 C30 96 30 78 19 60 Z"/><path class="o-wing" d="M101 60 C111 82 105 106 83 115 C90 96 90 78 101 60 Z"/>
+<ellipse class="o-belly" cx="60" cy="91" rx="26" ry="24"/>
+<path class="o-chev" d="M49 83 l4 4 l4 -4 M63 83 l4 4 l4 -4 M42 94 l4 4 l4 -4 M56 94 l4 4 l4 -4 M70 94 l4 4 l4 -4 M49 105 l4 4 l4 -4 M63 105 l4 4 l4 -4"/>
+<circle class="o-disc" cx="43" cy="52" r="19"/><circle class="o-disc" cx="77" cy="52" r="19"/>
+<g class="o-eyes"><circle class="o-iris" cx="43" cy="52" r="12"/><circle class="o-iris" cx="77" cy="52" r="12"/>
+<g class="o-pupils"><circle class="o-pupil" cx="43" cy="52" r="6"/><circle class="o-pupil" cx="77" cy="52" r="6"/><circle class="o-glint" cx="45.5" cy="49.5" r="2"/><circle class="o-glint" cx="79.5" cy="49.5" r="2"/></g>
+<g class="o-lids"><rect class="o-lid" x="30" y="39" width="26" height="26" rx="13"/><rect class="o-lid" x="64" y="39" width="26" height="26" rx="13"/></g></g>
+<g><path class="o-happy" d="M33 55 Q43 44 53 55"/><path class="o-happy" d="M67 55 Q77 44 87 55"/></g>
+<path class="o-beak" d="M60 58 L54 66 L60 77 L66 66 Z"/>
+<path class="o-feet" d="M49 119 l-3 7 M53 120 v7 M57 119 l3 7 M63 119 l-3 7 M67 120 v7 M71 119 l3 7"/>
+</g><path class="o-branch" d="M4 126 Q60 120 116 128"/></svg>`;
+document.querySelectorAll(".owl-slot").forEach(el => {
+  el.innerHTML = OWL;
+  if (el.dataset.mini) el.querySelector(".o-branch").remove();
+  if (el.dataset.state) el.querySelector(".owl").classList.add("is-" + el.dataset.state);
+});
+function owlState(slotId, state, bob) {
+  const o = $(slotId).querySelector(".owl");
+  o.classList.remove("is-think", "is-happy", "is-surprise", "is-bob");
+  if (state) o.classList.add("is-" + state);
+  if (bob) { void o.getBoundingClientRect(); o.classList.add("is-bob"); }
+}
+
+// ---------- 表示用ヘルパー ----------
+function eraLabel(y) {
+  if (y <= -3000) return "先史時代から";
+  if (y < 0) return "紀元前" + Math.ceil(-y / 100) + "世紀";
+  return (Math.floor(y / 100) + 1) + "世紀";
+}
+function eraGroup(y) {
+  if (y < 500) return "古代";
+  if (y < 1500) return "中世";
+  if (y < 1800) return "近世";
+  if (y < 1900) return "近代";
+  return "現代";
+}
+const ERA_ORDER = ["古代","中世","近世","近代","現代"];
+function chipsHTML(p) {
+  const out = [eraLabel(p.y), REGIONS[p.r].label, ...[...p.dom].map(d => DOMAINS[d])];
+  return [...new Set(out)].map(s => `<li class="chip">${esc(s)}</li>`).join("");
+}
+const LABELS = {
+  diag:  { 2:"そう思う", 1:"ややそう思う", 0:"どちらとも言えない", "-1":"あまりそう思わない", "-2":"そう思わない" },
+  guess: { 2:"はい", 1:"たぶんそう", 0:"わからない", "-1":"たぶん違う", "-2":"いいえ" }
+};
+const MARKS = { 2:"◎", 1:"○", 0:"―", "-1":"△", "-2":"✕" };
+function pillFor(a) { return a > 0 ? "pos" : a < 0 ? "neg" : "neu"; }
+
+// ---------- 画面切り替え ----------
+const VIEWS = ["home","play","guess","result","fail","dex"];
+function show(name) {
+  VIEWS.forEach(v => $("v-" + v).hidden = v !== name);
+  $("navDex").setAttribute("aria-current", name === "dex" ? "page" : "false");
+  $("navPlay").setAttribute("aria-current", name === "dex" ? "false" : "page");
+  $("resume").hidden = !(S.g && S.live && name === "home");
+  window.scrollTo(0, 0);
+}
+let toastT;
+function toast(msg) {
+  const t = $("toast"); t.textContent = msg; t.hidden = false;
+  clearTimeout(toastT); toastT = setTimeout(() => t.hidden = true, 2200);
+}
+
+// ---------- 問答の状態 ----------
+const S = { mode: null, g: null, cur: null, live: false, sinceGuess: 0, guesses: 0, cap: 20, maxQ: 30, minQ: 12, lastView: "play", resultIdx: null };
+
+const LINES = {
+  start: { diag: "では、最初の問いだ。心のままに答えておくれ。", guess: "思い浮かべたかね？ では始めよう。" },
+  low: ["ふむ。まだ霧の中だ。", "なるほど、面白い。", "手がかりを集めよう。", "ほう、そう来たか。"],
+  mid: ["輪郭が見えてきた。", "いくつかの顔が浮かんでいる。", "ふむふむ、続けよう。"],
+  high: ["だいぶ絞れてきたぞ。", "もう少しで見えそうだ。", "ほう、これは……。"],
+  top: ["見えた気がする。", "確信に近づいている。"]
+};
+const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+
+function buildAnswers() {
+  const L = LABELS[S.mode];
+  $("answers").innerHTML = [2, 1, 0, -1, -2].map((a, i) =>
+    `<button class="ans" type="button" data-a="${a}"><span class="mark" aria-hidden="true">${MARKS[a]}</span><span>${L[a]}</span><span class="key" aria-hidden="true">${i + 1}</span></button>`).join("");
+}
+$("answers").addEventListener("click", e => {
+  const b = e.target.closest(".ans"); if (!b) return;
+  answer(+b.dataset.a);
+});
+
+function start(mode) {
+  S.mode = mode; S.g = E.newGame(mode); S.live = true;
+  S.sinceGuess = 0; S.guesses = 0; S.cap = 20; S.maxQ = 30; S.minQ = 12;
+  buildAnswers();
+  $("owlLine").textContent = LINES.start[mode];
+  show("play");
+  next(true);
+}
+function updateMeter() {
+  const top = E.ranking(S.g)[0];
+  const pct = S.g.asked.length ? Math.round(top.p * 100) : 0;
+  $("meterFill").style.width = pct + "%";
+  $("meterLabel").textContent = "ミネルヴァの確信度 " + pct + "%";
+  return top;
+}
+function next(first) {
+  const q = E.pickQuestion(S.g);
+  if (!q || (q.gain < 1e-3 && S.g.asked.length > 4)) return conclude();
+  S.cur = q.qi;
+  renderQuestion(first);
+}
+function renderQuestion(first) {
+  const q = Q[S.cur], n = S.g.asked.length + 1;
+  $("qNo").textContent = "問 " + n;
+  $("qGroup").textContent = q.group;
+  if (q.kind === "meta") { $("qLead").textContent = "その思想について"; $("qText").textContent = q.text; }
+  else if (S.mode === "diag") { $("qLead").textContent = "あなたはそう思いますか？"; $("qText").textContent = q.text; }
+  else { $("qLead").textContent = "その思想は、こう考えますか？"; $("qText").textContent = "「" + q.text + "」"; }
+  const card = $("qcard"); card.classList.remove("enter"); void card.offsetWidth; card.classList.add("enter");
+  const top = updateMeter();
+  if (!first) {
+    const p = top.p;
+    $("owlLine").textContent = pick(p < .15 ? LINES.low : p < .4 ? LINES.mid : p < .75 ? LINES.high : LINES.top);
+  }
+  owlState("playOwl", top.p > .6 ? "surprise" : (n % 2 ? "think" : null), !first);
+  $("btnUndo").disabled = S.g.asked.length === 0;
+  $("btnFinish").hidden = !(S.mode === "diag" && S.g.asked.length >= 8);
+  resetQuit();
+}
+function answer(a) {
+  if (!S.g || S.cur == null || $("v-play").hidden) return;
+  E.applyAnswer(S.g, S.cur, a);
+  S.sinceGuess++;
+  const asked = S.g.asked.length;
+  const top = E.ranking(S.g)[0];
+  if (S.mode === "diag") {
+    if ((asked >= S.minQ && top.p >= 0.75) || asked >= S.maxQ) return conclude();
+  } else {
+    const need = S.guesses === 0 ? 6 : 3;
+    if ((S.sinceGuess >= need && top.p >= 0.8) || asked >= S.cap) return guessNow(top.i);
+    if (asked >= 50) return giveUp();
+  }
+  next(false);
+}
+function undo() {
+  if (!S.g || !S.g.asked.length) return;
+  const asked = S.g.asked.slice();
+  const last = asked.pop();
+  S.g = E.rebuild(S.mode, asked, [...S.g.excluded]);
+  S.sinceGuess = Math.max(0, S.sinceGuess - 1);
+  S.cur = last.qi;
+  $("owlLine").textContent = "よかろう、その問いに戻ろう。";
+  renderQuestion(true);
+}
+function conclude() {
+  if (S.mode === "diag") return showResult(E.ranking(S.g)[0].i, "diag");
+  const r = E.ranking(S.g);
+  if (r.length && r[0].p > 0.2 && S.guesses < 4) return guessNow(r[0].i);
+  giveUp();
+}
+
+// ---------- 推測（当てるモード） ----------
+function guessNow(pi) {
+  S.guessIdx = pi;
+  const p = PH[pi];
+  $("guessLead").textContent = S.guesses === 0 ? "あなたが思い浮かべているのは……" : "では、これならどうだ……";
+  $("guessName").textContent = p.name;
+  $("guessOrig").textContent = p.orig;
+  $("guessMeta").textContent = eraLabel(p.y) + " ・ " + REGIONS[p.r].label + " ・ " + p.th.replace(/（[^）]*）/g, "").split("、").slice(0, 2).join("、");
+  show("guess");
+  owlState("guessOwl", "surprise", true);
+}
+$("guessYes").addEventListener("click", () => { S.live = false; showResult(S.guessIdx, "win"); });
+$("guessNo").addEventListener("click", () => {
+  S.guesses++;
+  S.g.excluded.add(S.guessIdx);
+  S.sinceGuess = 0;
+  S.cap = S.g.asked.length + 8;
+  if (S.guesses >= 4 || S.g.asked.length >= 50) return giveUp();
+  $("owlLine").textContent = "むむ……違ったか。もう少し聞かせておくれ。";
+  show("play");
+  owlState("playOwl", "surprise");
+  next(true);
+});
+
+// ---------- 結果 ----------
+function showResult(pi, kind) {
+  S.resultIdx = pi; S.resultKind = kind;
+  if (kind !== "diag") S.live = false;
+  const p = PH[pi];
+  $("rVerdict").textContent = kind === "diag" ? "あなたの思想は……" : kind === "win" ? `やはり！ 問 ${S.g.asked.length} で見抜いたぞ。` : "なんと、答えはこれだったか。";
+  $("rName").textContent = p.name;
+  $("rOrig").textContent = p.orig;
+  $("rChips").innerHTML = chipsHTML(p);
+  $("rKw").textContent = p.kw;
+  $("rDesc").textContent = p.desc;
+  $("rTh").textContent = p.th;
+  // 一致度
+  if (kind === "diag") {
+    $("rScore").hidden = false;
+    $("rPct").innerHTML = E.closeness(S.g, pi) + "<small>%</small>";
+    $("rPctCap").textContent = `一致度。あなたが答えた ${S.g.asked.length} 問すべてを、この思想ならどう答えるかと照らし合わせた噛み合い具合です。`;
+  } else if (kind === "win") {
+    $("rScore").hidden = false;
+    $("rPct").innerHTML = S.g.asked.length + "<small>問</small>";
+    $("rPctCap").textContent = S.guesses === 0 ? "一度目の推測で的中。" : `${S.guesses + 1} 度目の推測で的中。`;
+  } else $("rScore").hidden = true;
+  // 決め手
+  const rs = kind === "reveal" ? [] : E.reasons(S.g, pi, 5);
+  $("rReasonsWrap").hidden = !rs.length;
+  const L = LABELS[S.mode];
+  $("rReasons").innerHTML = rs.map(r => `<li><span class="pill ${pillFor(r.a)}">${esc(L[r.a])}</span><span>${esc(Q[r.qi].kind === "belief" && S.mode === "guess" ? "その思想は「" + Q[r.qi].text + "」と考える" : Q[r.qi].text)}</span></li>`).join("");
+  // 近い思想
+  const near = E.ranking(S.g).filter(x => x.i !== pi).slice(0, 5);
+  $("rNearH").textContent = kind === "diag" ? "ほかに近い思想" : "迷った候補";
+  $("rNear").innerHTML = near.map(x => {
+    const pct = kind === "diag" ? E.closeness(S.g, x.i) : Math.round(x.p * 100);
+    return `<li><button type="button" data-pi="${x.i}"><span class="n-name">${esc(PH[x.i].name)}</span><span class="n-pct">${kind === "diag" ? "一致 " + pct + "%" : "確率 " + pct + "%"}</span><span class="bar"><span style="width:${Math.max(2, pct)}%"></span></span></button></li>`;
+  }).join("");
+  $("rNearWrap").hidden = kind === "reveal" || !near.length;
+  $("rMore").hidden = kind !== "diag" || !E.pickQuestion(S.g);
+  $("rCopy").hidden = kind !== "diag";
+  $("copyFallback").hidden = true;
+  show("result");
+}
+$("rNear").addEventListener("click", e => { const b = e.target.closest("button[data-pi]"); if (b) openSheet(+b.dataset.pi); });
+$("rAgain").addEventListener("click", () => start(S.mode || "diag"));
+$("rDetail").addEventListener("click", () => openSheet(S.resultIdx));
+$("rMore").addEventListener("click", () => {
+  S.minQ = S.g.asked.length + 8; S.maxQ = S.g.asked.length + 12; S.live = true;
+  $("owlLine").textContent = "よかろう。さらに深く聞かせておくれ。";
+  show("play"); next(true);
+});
+$("rCopy").addEventListener("click", () => {
+  const p = PH[S.resultIdx];
+  const text = `私の思想は「${p.name}」でした（一致度 ${E.closeness(S.g, S.resultIdx)}%）。${p.kw} ― 哲学アキネーター`;
+  const fallback = () => { const f = $("copyFallback"); f.textContent = text; f.hidden = false; };
+  try {
+    navigator.clipboard.writeText(text).then(() => toast("コピーしました"), fallback);
+  } catch (err) { fallback(); }
+});
+
+// ---------- 降参 ----------
+function giveUp() {
+  S.live = false;
+  const top = E.ranking(S.g).slice(0, 5);
+  $("failTop").innerHTML = top.map(x => nearItem(x.i, "確率 " + Math.round(x.p * 100) + "%")).join("");
+  $("failSearch").value = ""; $("failList").innerHTML = "";
+  show("fail");
+}
+function nearItem(i, right) {
+  return `<li><button type="button" data-pi="${i}"><span class="n-name">${esc(PH[i].name)}</span><span class="n-pct">${esc(right)}</span></button></li>`;
+}
+function matches(p, q) {
+  q = q.trim().toLowerCase(); if (!q) return true;
+  return (p.name + p.orig + p.th + p.kw).toLowerCase().includes(q);
+}
+$("failSearch").addEventListener("input", e => {
+  const q = e.target.value;
+  $("failList").innerHTML = q.trim() ? PH.map((p, i) => [p, i]).filter(([p]) => matches(p, q)).slice(0, 12).map(([p, i]) => nearItem(i, eraLabel(p.y))).join("") || `<li class="empty">見つかりませんでした</li>` : "";
+});
+["failTop","failList"].forEach(id => $(id).addEventListener("click", e => {
+  const b = e.target.closest("button[data-pi]"); if (b) showResult(+b.dataset.pi, "reveal");
+}));
+$("failAgain").addEventListener("click", () => start("guess"));
+
+// ---------- やめる（二段階） ----------
+let quitArmed = false, quitT;
+function resetQuit() { quitArmed = false; clearTimeout(quitT); $("btnQuit").textContent = "やめる"; $("btnQuit").classList.remove("warn"); }
+$("btnQuit").addEventListener("click", () => {
+  if (!quitArmed) {
+    quitArmed = true; $("btnQuit").textContent = "本当にやめる？"; $("btnQuit").classList.add("warn");
+    quitT = setTimeout(resetQuit, 3000); return;
+  }
+  resetQuit(); S.live = false; show("home");
+});
+$("btnUndo").addEventListener("click", undo);
+$("btnFinish").addEventListener("click", () => showResult(E.ranking(S.g)[0].i, "diag"));
+
+// ---------- 図鑑 ----------
+const F = { region: "all", era: "all", q: "" };
+function renderChips() {
+  const regs = [["all","すべての地域"], ...Object.entries(MACROS)];
+  $("regionChips").innerHTML = regs.map(([k, v]) => `<button class="fchip" type="button" data-k="${k}" aria-pressed="${F.region === k}">${esc(v)}</button>`).join("");
+  const eras = [["all","すべての時代"], ...ERA_ORDER.map(e => [e, e])];
+  $("eraChips").innerHTML = eras.map(([k, v]) => `<button class="fchip" type="button" data-k="${k}" aria-pressed="${F.era === k}">${esc(v)}</button>`).join("");
+}
+function renderDex() {
+  const items = PH.map((p, i) => ({ p, i }))
+    .filter(({ p }) => (F.region === "all" || p.macro === F.region) && (F.era === "all" || eraGroup(p.y) === F.era) && matches(p, F.q))
+    .sort((a, b) => a.p.y - b.p.y);
+  $("dexCount").textContent = `${items.length} / ${PH.length} の思想`;
+  if (!items.length) { $("dexBody").innerHTML = `<p class="empty">条件に合う思想はありません。</p>`; return; }
+  let html = "";
+  ERA_ORDER.forEach(era => {
+    const grp = items.filter(x => eraGroup(x.p.y) === era);
+    if (!grp.length) return;
+    html += `<h3 class="era-h">${era}<small>${grp.length}</small></h3><ul class="dex-list">` +
+      grp.map(({ p, i }) => `<li><button class="dex-item" type="button" data-pi="${i}"><span class="d-name">${esc(p.name)}</span><span class="d-sub"><span class="latin">${esc(p.orig)}</span><span>${esc(eraLabel(p.y))} ・ ${esc(REGIONS[p.r].label)}</span></span></button></li>`).join("") + `</ul>`;
+  });
+  $("dexBody").innerHTML = html;
+}
+$("regionChips").addEventListener("click", e => { const b = e.target.closest(".fchip"); if (!b) return; F.region = b.dataset.k; renderChips(); renderDex(); });
+$("eraChips").addEventListener("click", e => { const b = e.target.closest(".fchip"); if (!b) return; F.era = b.dataset.k; renderChips(); renderDex(); });
+$("dexSearch").addEventListener("input", e => { F.q = e.target.value; renderDex(); });
+$("dexBody").addEventListener("click", e => { const b = e.target.closest("[data-pi]"); if (b) openSheet(+b.dataset.pi); });
+function openDex() { if (!$("v-dex").hidden) return; S.lastView = VIEWS.find(v => !$("v-" + v).hidden) || "home"; renderChips(); renderDex(); show("dex"); }
+
+// ---------- 詳細シート ----------
+const STANCE = { 2:["強く肯定","pos"], 1:["肯定","pos"], N:["保留","neu"], "-1":["否定","neg"], "-2":["強く否定","neg"] };
+let lastFocus = null;
+function openSheet(pi) {
+  const p = PH[pi];
+  $("sEra").textContent = eraLabel(p.y) + " ・ " + REGIONS[p.r].label;
+  $("sName").textContent = p.name;
+  $("sOrig").textContent = p.orig;
+  $("sChips").innerHTML = chipsHTML(p);
+  $("sKw").textContent = p.kw;
+  $("sDesc").textContent = p.desc;
+  $("sTh").textContent = p.th;
+  const order = { 2: 0, "-2": 1, 1: 2, "-1": 3, N: 4 };
+  const st = TRAITS.filter(([k]) => k in p.t).map(([k, g, text]) => ({ v: p.t[k], text }))
+    .sort((a, b) => order[a.v] - order[b.v]).slice(0, 10);
+  $("sStances").innerHTML = st.map(s => `<li><span class="pill ${STANCE[s.v][1]}">${STANCE[s.v][0]}</span><span>${esc(s.text)}</span></li>`).join("");
+  $("sRel").innerHTML = E.similar(pi, 5).map(x => `<button type="button" data-pi="${x.j}">${esc(PH[x.j].name)}</button>`).join("");
+  if ($("sheet").hidden) lastFocus = document.activeElement;
+  $("sheet").hidden = false;
+  $("sheet").querySelector(".sheet-panel").scrollTop = 0;
+  $("sheetClose").focus();
+}
+function closeSheet() { $("sheet").hidden = true; if (lastFocus && lastFocus.focus) lastFocus.focus(); }
+$("sRel").addEventListener("click", e => { const b = e.target.closest("[data-pi]"); if (b) openSheet(+b.dataset.pi); });
+$("sheetClose").addEventListener("click", closeSheet);
+$("sheetBackdrop").addEventListener("click", closeSheet);
+
+// ---------- ナビ・キーボード ----------
+$("brand").addEventListener("click", () => show("home"));
+$("navDex").addEventListener("click", openDex);
+$("toDex").addEventListener("click", openDex);
+$("navPlay").addEventListener("click", () => {
+  if (!$("v-dex").hidden) {
+    const v = S.lastView && S.lastView !== "dex" ? S.lastView : "home";
+    if ((v === "play" || v === "guess") && !S.live) return show("home");
+    show(v);
+  }
+});
+$("resume").addEventListener("click", () => { show("play"); renderQuestion(true); });
+$("startDiag").addEventListener("click", () => start("diag"));
+$("startGuess").addEventListener("click", () => start("guess"));
+document.addEventListener("keydown", e => {
+  if (!$("sheet").hidden) { if (e.key === "Escape") closeSheet(); return; }
+  if ($("v-play").hidden || e.target.matches("input")) return;
+  const map = { "1": 2, "2": 1, "3": 0, "4": -1, "5": -2 };
+  if (e.key in map) { e.preventDefault(); answer(map[e.key]); }
+  else if (e.key === "Backspace" || e.key === "z") { e.preventDefault(); undo(); }
+});
+
+// ---------- 初期表示 ----------
+const nReg = new Set(PH.map(p => p.r)).size;
+$("countPh").textContent = PH.length;
+$("fPh").textContent = PH.length;
+$("fQ").textContent = Q.length;
+$("fReg").textContent = nReg;
+show("home");
+})();
+</script>
